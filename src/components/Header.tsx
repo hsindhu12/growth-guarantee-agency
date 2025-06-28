@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
@@ -31,7 +30,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3 group">
             <div className="relative">
-              <Mascot size="sm" className="group-hover:scale-110 transition-transform duration-300" />
+              <Mascot size="sm" type="professional" className="group-hover:scale-110 transition-transform duration-300" />
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-ping"></div>
             </div>
             <div className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-300">
@@ -99,7 +98,7 @@ const Header = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             </a>
             
-            <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+            <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white">
               ✨ Get Free Audit
             </Button>
           </nav>
@@ -132,7 +131,7 @@ const Header = () => {
               <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
                 📞 Contact
               </a>
-              <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 w-fit hover:scale-105 transition-all duration-300">
+              <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 w-fit hover:scale-105 transition-all duration-300 text-white">
                 ✨ Get Free Audit
               </Button>
             </div>

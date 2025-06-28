@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -27,7 +26,7 @@ const HeroSection = () => {
         {/* Mascot in Hero with enhanced animation */}
         <div className="flex justify-center mb-6">
           <div className="relative">
-            <Mascot size="xl" className="animate-bounce hover:animate-pulse transition-all duration-300" />
+            <Mascot size="xl" type="excited" className="animate-bounce hover:animate-pulse transition-all duration-300" />
             <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-ping"></div>
           </div>
         </div>

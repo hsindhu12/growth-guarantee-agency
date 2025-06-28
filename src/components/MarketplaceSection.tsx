@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,16 +5,56 @@ import { ArrowRight, Star } from "lucide-react";
 
 const MarketplaceSection = () => {
   const marketplaces = [
-    { name: "Amazon India", icon: "🛒", color: "from-orange-400 to-orange-600" },
-    { name: "Flipkart", icon: "🛍️", color: "from-blue-400 to-blue-600" },
-    { name: "Myntra", icon: "👗", color: "from-pink-400 to-pink-600" },
-    { name: "Blinkit", icon: "⚡", color: "from-yellow-400 to-orange-500" },
-    { name: "Zepto", icon: "🚀", color: "from-purple-400 to-purple-600" },
-    { name: "Noon.com", icon: "🌙", color: "from-indigo-400 to-blue-600" },
-    { name: "Walmart", icon: "🏪", color: "from-blue-400 to-cyan-600" },
-    { name: "Meesho", icon: "📱", color: "from-green-400 to-green-600" },
-    { name: "Nykaa", icon: "💄", color: "from-rose-400 to-pink-600" },
-    { name: "BigBasket", icon: "🥬", color: "from-emerald-400 to-green-600" }
+    { 
+      name: "Amazon India", 
+      imageUrl: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=100&h=100&fit=crop&crop=center",
+      color: "from-orange-400 to-orange-600" 
+    },
+    { 
+      name: "Flipkart", 
+      imageUrl: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=100&h=100&fit=crop&crop=center",
+      color: "from-blue-400 to-blue-600" 
+    },
+    { 
+      name: "Myntra", 
+      imageUrl: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=100&h=100&fit=crop&crop=center",
+      color: "from-pink-400 to-pink-600" 
+    },
+    { 
+      name: "Blinkit", 
+      imageUrl: "https://images.unsplash.com/photo-1501286353178-1ec881214838?w=100&h=100&fit=crop&crop=center",
+      color: "from-yellow-400 to-orange-500" 
+    },
+    { 
+      name: "Zepto", 
+      imageUrl: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=100&h=100&fit=crop&crop=center",
+      color: "from-purple-400 to-purple-600" 
+    },
+    { 
+      name: "Noon.com", 
+      imageUrl: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=100&h=100&fit=crop&crop=center",
+      color: "from-indigo-400 to-blue-600" 
+    },
+    { 
+      name: "Walmart", 
+      imageUrl: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=100&h=100&fit=crop&crop=center",
+      color: "from-blue-400 to-cyan-600" 
+    },
+    { 
+      name: "Meesho", 
+      imageUrl: "https://images.unsplash.com/photo-1501286353178-1ec881214838?w=100&h=100&fit=crop&crop=center",
+      color: "from-green-400 to-green-600" 
+    },
+    { 
+      name: "Nykaa", 
+      imageUrl: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=100&h=100&fit=crop&crop=center",
+      color: "from-rose-400 to-pink-600" 
+    },
+    { 
+      name: "BigBasket", 
+      imageUrl: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=100&h=100&fit=crop&crop=center",
+      color: "from-emerald-400 to-green-600" 
+    }
   ];
 
   return (
@@ -65,8 +104,12 @@ const MarketplaceSection = () => {
               <div className={`absolute inset-0 bg-gradient-to-br ${marketplace.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}></div>
               
               <div className="relative z-10">
-                <div className="text-4xl mb-3 group-hover:animate-bounce transition-all duration-300">
-                  {marketplace.icon}
+                <div className="mb-3 flex justify-center">
+                  <img 
+                    src={marketplace.imageUrl} 
+                    alt={marketplace.name}
+                    className="w-16 h-16 object-cover rounded-full border-2 border-white/20 group-hover:border-white/40 transition-all duration-300 group-hover:scale-110"
+                  />
                 </div>
                 <div className="text-lg font-semibold group-hover:text-yellow-300 transition-colors duration-300">
                   {marketplace.name}
