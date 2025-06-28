@@ -2,57 +2,111 @@
 import { Button } from "@/components/ui/button";
 import { Card, } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, CheckCircle, Star, Zap, TrendingUp, ShoppingCart, Camera, Video, Users, Globe, Rocket, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle, Star, Zap, TrendingUp, ShoppingCart, Camera, Video, Users, Globe, Rocket, Shield, Monitor, Search, Megaphone, Code, BarChart3, Smartphone } from "lucide-react";
+import Header from "../components/Header";
+import Mascot from "../components/Mascot";
 
 const Index = () => {
   const services = [
+    // Ecommerce Services
     {
       icon: ShoppingCart,
       title: "Ecommerce Marketing",
+      category: "Ecommerce",
       description: "Complete digital marketing strategies tailored for ecommerce success",
       features: ["PPC Campaigns", "Social Media Marketing", "Email Marketing", "SEO Optimization"]
     },
     {
       icon: TrendingUp,
       title: "Ecommerce Sales Growth",
+      category: "Ecommerce", 
       description: "Data-driven strategies to boost your online sales and conversion rates",
       features: ["Conversion Optimization", "Sales Funnel Design", "A/B Testing", "Performance Analytics"]
     },
     {
       icon: Camera,
       title: "Brand Product Shoot",
+      category: "Ecommerce",
       description: "Professional product photography that drives conversions",
       features: ["Studio Photography", "Lifestyle Shots", "360° Product Views", "Image Editing"]
     },
     {
       icon: Video,
       title: "Product Video Production",
+      category: "Ecommerce",
       description: "Engaging video content that showcases your products effectively",
       features: ["Product Demos", "Unboxing Videos", "Brand Stories", "Social Media Videos"]
     },
     {
       icon: Globe,
       title: "Marketplace Management",
+      category: "Ecommerce",
       description: "Expert management across all major ecommerce platforms",
       features: ["Amazon India", "Flipkart", "Myntra", "Blinkit", "Zepto", "Noon.com", "Walmart"]
     },
     {
       icon: Rocket,
       title: "Brand Growth & Launch",
+      category: "Ecommerce",
       description: "End-to-end brand building and product launch strategies",
       features: ["Brand Strategy", "Product Launch", "Market Research", "Competitive Analysis"]
     },
     {
       icon: Users,
       title: "Influencer Management",
+      category: "Ecommerce",
       description: "Strategic influencer partnerships that amplify your brand reach",
       features: ["Influencer Sourcing", "Campaign Management", "Content Strategy", "Performance Tracking"]
     },
     {
       icon: Shield,
       title: "Brand Partnerships",
+      category: "Ecommerce",
       description: "Strategic collaborations that expand your market presence",
       features: ["Partnership Strategy", "Deal Negotiation", "Co-marketing", "Joint Ventures"]
+    },
+    // Digital Services
+    {
+      icon: Monitor,
+      title: "Website Development",
+      category: "Digital",
+      description: "Custom websites that convert visitors into customers",
+      features: ["Responsive Design", "E-commerce Sites", "Landing Pages", "Web Applications"]
+    },
+    {
+      icon: Search,
+      title: "SEO Services",
+      category: "Digital",
+      description: "Dominate search results and drive organic traffic",
+      features: ["Keyword Research", "On-Page SEO", "Link Building", "Technical SEO"]
+    },
+    {
+      icon: Megaphone,
+      title: "Digital Marketing",
+      category: "Digital",
+      description: "Comprehensive digital marketing campaigns across all channels",
+      features: ["Google Ads", "Facebook Ads", "Content Marketing", "Social Media Management"]
+    },
+    {
+      icon: Code,
+      title: "Web Applications",
+      category: "Digital",
+      description: "Custom web applications tailored to your business needs",
+      features: ["SaaS Solutions", "CRM Systems", "Booking Platforms", "Management Tools"]
+    },
+    {
+      icon: BarChart3,
+      title: "Analytics & Reporting",
+      category: "Digital",
+      description: "Data-driven insights to optimize your digital presence",
+      features: ["Google Analytics", "Performance Reports", "ROI Tracking", "Custom Dashboards"]
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile Optimization",
+      category: "Digital",
+      description: "Ensure your digital presence works perfectly on all devices",
+      features: ["Mobile-First Design", "App Development", "Progressive Web Apps", "Mobile SEO"]
     }
   ];
 
@@ -70,21 +124,28 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header />
+      
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 text-white overflow-hidden">
+      <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 text-white overflow-hidden pt-16">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 relative z-10 text-center">
+          {/* Mascot in Hero */}
+          <div className="flex justify-center mb-6">
+            <Mascot size="xl" className="animate-bounce" />
+          </div>
+          
           <Badge className="mb-6 bg-green-500/20 text-green-300 border-green-400 hover:bg-green-500/30 text-lg px-6 py-2">
             100% Growth Guarantee or Work for FREE
           </Badge>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Ecommerce Growth
+            Complete Digital
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
-              Specialists
+              Growth Agency
             </span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
-            We guarantee your brand's growth across all major marketplaces with our proven strategies. 
+            From ecommerce marketing to website development, we guarantee your brand's growth across all digital channels. 
             <span className="font-semibold text-yellow-300"> Zero upfront fees, maximum results.</span>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -118,25 +179,51 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gray-50">
+      <section id="services" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
+            <div className="flex justify-center mb-4">
+              <Mascot size="md" />
+            </div>
             <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200">Our Services</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              Complete Ecommerce Solutions
+              Complete Digital Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From product photography to marketplace management, we handle every aspect of your ecommerce success
+              From ecommerce marketing to website development, we handle every aspect of your digital success
             </p>
+          </div>
+
+          {/* Service Categories */}
+          <div className="mb-12">
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <div className="text-center p-6 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-2xl">
+                <ShoppingCart className="h-12 w-12 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold mb-2">Ecommerce Services</h3>
+                <p className="text-blue-100">Complete ecommerce growth solutions</p>
+              </div>
+              <div className="text-center p-6 bg-gradient-to-br from-green-500 to-teal-600 text-white rounded-2xl">
+                <Monitor className="h-12 w-12 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold mb-2">Digital Services</h3>
+                <p className="text-green-100">Web development & digital marketing</p>
+              </div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <Card key={index} className="p-6 hover:shadow-xl transition-all duration-300 border-0 bg-white hover:-translate-y-2 group">
                 <div className="flex items-center mb-4">
-                  <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl text-white group-hover:scale-110 transition-transform">
+                  <div className={`p-3 rounded-xl text-white group-hover:scale-110 transition-transform ${
+                    service.category === 'Ecommerce' 
+                      ? 'bg-gradient-to-br from-blue-500 to-purple-600' 
+                      : 'bg-gradient-to-br from-green-500 to-teal-600'
+                  }`}>
                     <service.icon className="h-6 w-6" />
                   </div>
+                  <Badge variant="outline" className="ml-auto text-xs">
+                    {service.category}
+                  </Badge>
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-gray-900">{service.title}</h3>
                 <p className="text-gray-600 mb-4">{service.description}</p>
@@ -181,6 +268,9 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-br from-green-50 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center mb-6">
+              <Mascot size="lg" />
+            </div>
             <Badge className="mb-6 bg-green-100 text-green-800 hover:bg-green-200 text-lg px-6 py-3">
               Why Choose Us?
             </Badge>
@@ -221,7 +311,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-gray-900 to-black text-white">
+      <section id="contact" className="py-20 bg-gradient-to-r from-gray-900 to-black text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Guarantee Your Growth?
@@ -246,15 +336,18 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                EcomGrowth Pro
-              </h3>
+              <div className="flex items-center space-x-3 mb-4">
+                <Mascot size="sm" />
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  EcomGrowth Pro
+                </h3>
+              </div>
               <p className="text-gray-400">
-                Your trusted partner for guaranteed ecommerce growth across all major platforms.
+                Your trusted partner for guaranteed digital growth across all platforms and services.
               </p>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Services</h4>
+              <h4 className="text-lg font-semibold mb-4">Ecommerce Services</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>Ecommerce Marketing</li>
                 <li>Marketplace Management</li>
@@ -263,12 +356,12 @@ const Index = () => {
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Platforms</h4>
+              <h4 className="text-lg font-semibold mb-4">Digital Services</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>Amazon India</li>
-                <li>Flipkart</li>
-                <li>Myntra</li>
-                <li>Blinkit & More</li>
+                <li>Website Development</li>
+                <li>SEO Services</li>
+                <li>Digital Marketing</li>
+                <li>Web Applications</li>
               </ul>
             </div>
             <div>
