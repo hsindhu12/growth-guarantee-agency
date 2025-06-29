@@ -1,7 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
-import Mascot from './Mascot';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,11 +30,15 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3 group">
             <div className="relative">
-              <Mascot size="sm" type="professional" className="group-hover:scale-110 transition-transform duration-300" />
+              <img 
+                src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=40&h=40&fit=crop&crop=center" 
+                alt="Blink – The Retargeting Ninja" 
+                className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
+              />
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-ping"></div>
             </div>
             <div className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-300">
-              EcomGrowth Pro
+              Blink Growth Pro
             </div>
             <Sparkles className="h-4 w-4 text-yellow-500 animate-pulse" />
           </div>
@@ -52,19 +56,19 @@ const Header = () => {
                 onClick={toggleServices}
                 className="flex items-center text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium group"
               >
-                🎯 Services 
+                🥷 Blink's Services 
                 <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
               </button>
               {isServicesOpen && (
                 <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-gray-100 py-4 z-10 animate-fade-in">
                   <div className="px-6 py-3 text-sm font-bold text-gray-900 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50">
-                    🛒 Ecommerce Services
+                    🛒 Ecommerce Ninja Skills
                   </div>
                   <a href="#ecommerce-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
-                    📈 Ecommerce Marketing
+                    🎯 Precision Retargeting
                   </a>
                   <a href="#marketplace-management" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
-                    🏪 Marketplace Management
+                    🏪 Marketplace Domination
                   </a>
                   <a href="#product-photography" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
                     📸 Product Photography
@@ -74,13 +78,13 @@ const Header = () => {
                   </a>
                   
                   <div className="px-6 py-3 text-sm font-bold text-gray-900 border-b border-t border-gray-100 mt-2 bg-gradient-to-r from-green-50 to-teal-50">
-                    💻 Digital Services
+                    💻 Digital Ninja Powers
                   </div>
                   <a href="#web-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
                     🌐 Website Development
                   </a>
                   <a href="#seo-services" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
-                    🔍 SEO Services
+                    🔍 SEO Mastery
                   </a>
                   <a href="#digital-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
                     📱 Digital Marketing
@@ -90,7 +94,7 @@ const Header = () => {
             </div>
             
             <a href="#about" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
-              ℹ️ About
+              ℹ️ About Blink
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             </a>
             <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
@@ -99,7 +103,7 @@ const Header = () => {
             </a>
             
             <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white">
-              ✨ Get Free Audit
+              🥷 Get Blink's Audit
             </Button>
           </nav>
 
@@ -123,16 +127,16 @@ const Header = () => {
                 🏠 Home
               </a>
               <a href="#services" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
-                🎯 Services
+                🥷 Blink's Services
               </a>
               <a href="#about" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
-                ℹ️ About
+                ℹ️ About Blink
               </a>
               <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
                 📞 Contact
               </a>
               <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 w-fit hover:scale-105 transition-all duration-300 text-white">
-                ✨ Get Free Audit
+                🥷 Get Blink's Audit
               </Button>
             </div>
           </div>

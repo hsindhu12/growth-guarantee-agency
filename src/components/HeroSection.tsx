@@ -1,8 +1,8 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, ShoppingCart, TrendingUp, Sparkles, Zap } from "lucide-react";
-import Mascot from './Mascot';
 
 const HeroSection = () => {
   const stats = [
@@ -23,43 +23,47 @@ const HeroSection = () => {
       
       <div className="absolute inset-0 bg-black/20"></div>
       <div className="container mx-auto px-4 relative z-10 text-center">
-        {/* Mascot in Hero with enhanced animation */}
+        {/* Blink Mascot in Hero */}
         <div className="flex justify-center mb-6">
           <div className="relative">
-            <Mascot size="xl" type="excited" className="animate-bounce hover:animate-pulse transition-all duration-300" />
+            <img 
+              src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=200&h=200&fit=crop&crop=center" 
+              alt="Blink – The Retargeting Ninja" 
+              className="w-48 h-48 object-contain animate-bounce hover:animate-pulse transition-all duration-300"
+            />
             <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-ping"></div>
           </div>
         </div>
         
         <Badge className="mb-6 bg-green-500/20 text-green-300 border-green-400 hover:bg-green-500/30 text-lg px-6 py-2 animate-pulse hover:animate-none transition-all duration-300 hover:scale-110">
-          ✨ 100% Growth Guarantee or Work for FREE ✨
+          ✨ 100% Growth Guarantee with Blink's Magic ✨
         </Badge>
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          <span className="inline-block animate-fade-in">Complete</span>{" "}
-          <span className="inline-block animate-fade-in delay-200">Digital</span>
+          <span className="inline-block animate-fade-in">Meet Blink</span>{" "}
+          <span className="inline-block animate-fade-in delay-200">The Retargeting</span>
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 animate-gradient-x">
-            Growth Agency
+            Ninja 🥷
           </span>
         </h1>
         
         <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100 animate-fade-in delay-300">
-          From ecommerce marketing to website development, we guarantee your brand's growth across all digital channels. 
+          Blink helps brands dominate digital channels with ninja-like precision! From ecommerce marketing to retargeting mastery, 
           <span className="font-semibold text-yellow-300 inline-block hover:scale-105 transition-transform duration-200"> 
-            ⚡ Zero upfront fees, maximum results.
+            ⚡ Zero upfront fees, maximum ninja results.
           </span>
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in delay-500">
           <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-4 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all group relative overflow-hidden">
             <span className="relative z-10 flex items-center">
-              🚀 Get Free Growth Audit
+              🥷 Get Blink's Growth Audit
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Button>
           <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg rounded-full hover:scale-105 transition-all duration-300 hover:shadow-xl">
-            📊 View Our Success Stories
+            📊 See Blink's Success Stories
           </Button>
         </div>
         
