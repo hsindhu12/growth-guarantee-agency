@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +29,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3 group">
+          <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
               <img 
                 src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=40&h=40&fit=crop&crop=center" 
@@ -41,14 +42,14 @@ const Header = () => {
               Blink Growth Pro
             </div>
             <Sparkles className="h-4 w-4 text-yellow-500 animate-pulse" />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
+            <Link to="/" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
               🏠 Home
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-            </a>
+            </Link>
             
             {/* Services Dropdown */}
             <div className="relative">
@@ -64,46 +65,59 @@ const Header = () => {
                   <div className="px-6 py-3 text-sm font-bold text-gray-900 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50">
                     🛒 Ecommerce Ninja Skills
                   </div>
-                  <a href="#ecommerce-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                  <Link to="/services#ecommerce-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
                     🎯 Precision Retargeting
-                  </a>
-                  <a href="#marketplace-management" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                  </Link>
+                  <Link to="/services#marketplace-management" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
                     🏪 Marketplace Domination
-                  </a>
-                  <a href="#product-photography" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                  </Link>
+                  <Link to="/services#product-photography" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
                     📸 Product Photography
-                  </a>
-                  <a href="#video-production" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                  </Link>
+                  <Link to="/services#video-production" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
                     🎬 Video Production
-                  </a>
+                  </Link>
                   
                   <div className="px-6 py-3 text-sm font-bold text-gray-900 border-b border-t border-gray-100 mt-2 bg-gradient-to-r from-green-50 to-teal-50">
                     💻 Digital Ninja Powers
                   </div>
-                  <a href="#web-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
+                  <Link to="/services#web-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
                     🌐 Website Development
-                  </a>
-                  <a href="#seo-services" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
+                  </Link>
+                  <Link to="/services#seo-services" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
                     🔍 SEO Mastery
-                  </a>
-                  <a href="#digital-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
+                  </Link>
+                  <Link to="/services#digital-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
                     📱 Digital Marketing
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
             
-            <a href="#about" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
+            <Link to="/about" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
               ℹ️ About Blink
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
+            </Link>
+            
+            <Link to="/blog" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
+              📝 Growth Insights
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </Link>
+            
+            <Link to="/success-stories" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
+              🏆 Success Stories
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </Link>
+            
+            <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
               📞 Contact
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-            </a>
+            </Link>
             
-            <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white">
-              🥷 Get Blink's Audit
+            <Button asChild className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white">
+              <Link to="/contact">
+                🥷 Get Blink's Audit
+              </Link>
             </Button>
           </nav>
 
@@ -123,20 +137,28 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-100 bg-white/95 backdrop-blur-md animate-fade-in">
             <div className="flex flex-col space-y-4">
-              <a href="#home" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
+              <Link to="/" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
                 🏠 Home
-              </a>
-              <a href="#services" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
+              </Link>
+              <Link to="/services" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
                 🥷 Blink's Services
-              </a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
+              </Link>
+              <Link to="/about" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
                 ℹ️ About Blink
-              </a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
+              </Link>
+              <Link to="/blog" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
+                📝 Growth Insights
+              </Link>
+              <Link to="/success-stories" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
+                🏆 Success Stories
+              </Link>
+              <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
                 📞 Contact
-              </a>
-              <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 w-fit hover:scale-105 transition-all duration-300 text-white">
-                🥷 Get Blink's Audit
+              </Link>
+              <Button asChild className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 w-fit hover:scale-105 transition-all duration-300 text-white">
+                <Link to="/contact">
+                  🥷 Get Blink's Audit
+                </Link>
               </Button>
             </div>
           </div>
