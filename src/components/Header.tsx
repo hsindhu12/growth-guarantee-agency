@@ -65,30 +65,33 @@ const Header = () => {
                   <div className="px-6 py-3 text-sm font-bold text-gray-900 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-purple-50">
                     🛒 Ecommerce Ninja Skills
                   </div>
-                  <Link to="/services#ecommerce-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                  <Link to="/services/ecommerce-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
                     🎯 Precision Retargeting
                   </Link>
-                  <Link to="/services#marketplace-management" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                  <Link to="/services/marketplace-management" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
                     🏪 Marketplace Domination
                   </Link>
-                  <Link to="/services#product-photography" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                  <Link to="/services/product-photography" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
                     📸 Product Photography
                   </Link>
-                  <Link to="/services#video-production" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                  <Link to="/services/video-production" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
                     🎬 Video Production
                   </Link>
                   
                   <div className="px-6 py-3 text-sm font-bold text-gray-900 border-b border-t border-gray-100 mt-2 bg-gradient-to-r from-green-50 to-teal-50">
                     💻 Digital Ninja Powers
                   </div>
-                  <Link to="/services#web-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
+                  <Link to="/services/website-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
                     🌐 Website Development
                   </Link>
-                  <Link to="/services#seo-services" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
+                  <Link to="/services/seo-services" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
                     🔍 SEO Mastery
                   </Link>
-                  <Link to="/services#digital-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
+                  <Link to="/services/digital-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
                     📱 Digital Marketing
+                  </Link>
+                  <Link to="/services/analytics-reporting" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
+                    📈 Analytics & Reporting
                   </Link>
                 </div>
               )}
@@ -106,6 +109,11 @@ const Header = () => {
             
             <Link to="/success-stories" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
               🏆 Success Stories
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </Link>
+            
+            <Link to="/career" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:scale-105 font-medium relative group">
+              💼 Career
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             </Link>
             
@@ -151,6 +159,9 @@ const Header = () => {
               </Link>
               <Link to="/success-stories" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
                 🏆 Success Stories
+              </Link>
+              <Link to="/career" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
+                💼 Career
               </Link>
               <Link to="/contact" className="text-gray-700 hover:text-blue-600 transition-all duration-300 hover:translate-x-2 font-medium">
                 📞 Contact
