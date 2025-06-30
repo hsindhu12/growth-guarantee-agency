@@ -77,12 +77,24 @@ const Header = () => {
                   <Link to="/services/video-production" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
                     🎬 Video Production
                   </Link>
+                  <Link to="/services/advertising" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                    📢 Advertising Mastery
+                  </Link>
+                  <Link to="/services/brand-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                    🎨 Brand Development
+                  </Link>
+                  <Link to="/services/product-launch" className="block px-6 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 hover:translate-x-2">
+                    🚀 Product Launch
+                  </Link>
                   
                   <div className="px-6 py-3 text-sm font-bold text-gray-900 border-b border-t border-gray-100 mt-2 bg-gradient-to-r from-green-50 to-teal-50">
                     💻 Digital Ninja Powers
                   </div>
                   <Link to="/services/website-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
                     🌐 Website Development
+                  </Link>
+                  <Link to="/services/mobile-app-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
+                    📱 Mobile App Development
                   </Link>
                   <Link to="/services/seo-services" className="block px-6 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-all duration-200 hover:translate-x-2">
                     🔍 SEO Mastery
