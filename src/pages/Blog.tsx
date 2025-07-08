@@ -5,82 +5,104 @@ import Footer from "../components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Calendar, User, Clock, TrendingUp } from "lucide-react";
+import { ArrowRight, Calendar, User, Clock, TrendingUp, Target, Zap, Search, BarChart3, ShoppingCart, Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Blog = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "🥷 The Ninja's Guide to 10x Retargeting ROI in 2024",
-      excerpt: "Discover Blink's secret retargeting techniques that are converting 45% better than industry standards.",
-      author: "Blink The Ninja",
+      title: "Advanced Retargeting Strategies That Deliver 10x ROI in 2024",
+      excerpt: "Discover proven retargeting methodologies that transform window shoppers into loyal customers. Learn advanced pixel implementation, audience segmentation, and dynamic creative optimization techniques that industry leaders use to maximize conversion rates.",
+      author: "ICONA Strategy Team",
       date: "Dec 15, 2024",
-      readTime: "8 min read",
-      category: "Retargeting Mastery",
+      readTime: "12 min read",
+      category: "Digital Marketing",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop&crop=center",
       featured: true
     },
     {
       id: 2,
-      title: "🛒 Amazon Marketplace Domination: Blink's 2024 Blueprint",
-      excerpt: "The complete guide to conquering Amazon with ninja-level strategies that guarantee top rankings.",
-      author: "Blink The Ninja",
+      title: "Complete Guide to Amazon & Marketplace Optimization",
+      excerpt: "Master the art of marketplace domination with comprehensive strategies for product listings, keyword optimization, pricing strategies, and competitive analysis. Includes actionable insights for Amazon, Flipkart, and other major platforms.",
+      author: "ICONA Marketplace Experts",
       date: "Dec 12, 2024",
-      readTime: "12 min read",
-      category: "Marketplace Growth",
+      readTime: "15 min read",
+      category: "Ecommerce Growth",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop&crop=center"
     },
     {
       id: 3,
-      title: "📸 Product Photography That Converts: Blink's Ninja Secrets",
-      excerpt: "Learn how the right product photos can increase your conversion rates by 127% - Blink's proven methods.",
-      author: "Blink The Ninja",
+      title: "Product Photography Mastery: Converting Visuals That Sell",
+      excerpt: "Learn professional product photography techniques that increase conversion rates by up to 127%. From lighting setups and composition rules to post-processing workflows and A/B testing visual elements for maximum impact.",
+      author: "ICONA Creative Team",
       date: "Dec 10, 2024",
-      readTime: "6 min read",
+      readTime: "10 min read",
       category: "Visual Marketing",
       image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=400&h=250&fit=crop&crop=center"
     },
     {
       id: 4,
-      title: "🚀 Growth Hacking with Zero Budget: Blink's Ninja Tactics",
-      excerpt: "Explosive growth strategies that cost nothing but deliver everything. Blink reveals the secrets.",
-      author: "Blink The Ninja",
+      title: "Growth Hacking Strategies for Modern Businesses",
+      excerpt: "Proven growth methodologies that deliver exponential results without massive budgets. Learn data-driven approaches to user acquisition, retention strategies, and viral marketing tactics that scale efficiently.",
+      author: "ICONA Growth Team",
       date: "Dec 8, 2024",
-      readTime: "10 min read",
-      category: "Growth Hacking",
+      readTime: "14 min read",
+      category: "Business Growth",
       image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?w=400&h=250&fit=crop&crop=center"
     },
     {
       id: 5,
-      title: "🎯 Facebook Ads Mastery: Blink's Precision Targeting Guide",
-      excerpt: "How to achieve 8x ROAS with Facebook ads using Blink's ninja-level targeting techniques.",
-      author: "Blink The Ninja",
+      title: "Facebook & Meta Ads: Advanced Targeting and Optimization",
+      excerpt: "Achieve exceptional ROAS with sophisticated Facebook advertising strategies. Master audience insights, creative testing frameworks, bid optimization, and attribution modeling for maximum advertising efficiency.",
+      author: "ICONA Ad Specialists",
       date: "Dec 5, 2024",
-      readTime: "9 min read",
+      readTime: "13 min read",
       category: "Paid Advertising",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop&crop=center"
     },
     {
       id: 6,
-      title: "📱 Social Commerce Revolution: Blink's 2024 Predictions",
-      excerpt: "The future of social selling and how brands can prepare for the next wave of commerce evolution.",
-      author: "Blink The Ninja",
+      title: "The Future of Social Commerce: 2024 Trends & Strategies",
+      excerpt: "Navigate the evolving landscape of social selling with insights into emerging platforms, consumer behavior shifts, and innovative commerce integrations. Prepare your brand for the next wave of social commerce evolution.",
+      author: "ICONA Research Team",
       date: "Dec 3, 2024",
-      readTime: "7 min read",
+      readTime: "11 min read",
       category: "Social Commerce",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop&crop=center"
+    },
+    {
+      id: 7,
+      title: "SEO Mastery: Technical Optimization for Enterprise Growth",
+      excerpt: "Comprehensive guide to advanced SEO strategies including technical audits, Core Web Vitals optimization, schema markup implementation, and enterprise-level link building campaigns that drive organic traffic growth.",
+      author: "ICONA SEO Team",
+      date: "Dec 1, 2024",
+      readTime: "16 min read",
+      category: "Search Marketing",
+      image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&h=250&fit=crop&crop=center"
+    },
+    {
+      id: 8,
+      title: "Data-Driven Marketing: Analytics That Drive Decisions",
+      excerpt: "Transform raw data into actionable marketing insights. Learn advanced analytics implementation, attribution modeling, predictive analytics, and reporting frameworks that optimize marketing performance and ROI.",
+      author: "ICONA Analytics Team",
+      date: "Nov 28, 2024",
+      readTime: "12 min read",
+      category: "Marketing Analytics",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop&crop=center"
     }
   ];
 
   const categories = [
     "All Posts",
-    "Retargeting Mastery",
-    "Marketplace Growth", 
-    "Growth Hacking",
+    "Digital Marketing",
+    "Ecommerce Growth", 
+    "Business Growth",
     "Visual Marketing",
     "Paid Advertising",
-    "Social Commerce"
+    "Social Commerce",
+    "Search Marketing",
+    "Marketing Analytics"
   ];
 
   return (
@@ -88,27 +110,27 @@ const Blog = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 text-white overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-primary via-blue-600 to-blue-800 text-white overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-white/10 to-blue-300/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-300/10 to-cyan-300/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <Badge className="mb-6 bg-green-500/20 text-green-300 border-green-400 text-lg px-6 py-2">
-            🥷 Blink's Growth Insights & Tips
+          <Badge className="mb-6 bg-white/20 text-white border-white/30 text-lg px-6 py-2">
+            📚 Expert Insights & Industry Knowledge
           </Badge>
           
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Growth Insights
+            Digital Growth
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-              From The Ninja 🥷
+              Expert Insights
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
-            Master the art of digital growth with Blink's exclusive insights, strategies, and ninja techniques 
-            that are generating explosive results for 500+ brands.
+            Master digital marketing with ICONA's comprehensive insights, proven strategies, and expert methodologies 
+            that drive measurable growth for ambitious businesses worldwide.
           </p>
         </div>
       </section>
@@ -121,7 +143,7 @@ const Blog = () => {
               <Button
                 key={index}
                 variant={index === 0 ? "default" : "outline"}
-                className={index === 0 ? "bg-gradient-to-r from-blue-500 to-purple-500" : "hover:bg-blue-50"}
+                className={index === 0 ? "bg-gradient-to-r from-primary to-blue-600" : "hover:bg-blue-50"}
               >
                 {category}
               </Button>
@@ -135,10 +157,10 @@ const Blog = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              🌟 Featured Ninja Insight
+              🌟 Featured Expert Analysis
             </h2>
             <p className="text-xl text-gray-600">
-              Blink's latest breakthrough strategy that's revolutionizing digital growth
+              ICONA's latest breakthrough insights that are transforming digital marketing strategies
             </p>
           </div>
           
@@ -154,14 +176,14 @@ const Blog = () => {
                       className="w-full h-full object-cover min-h-[300px]"
                     />
                     <div className="absolute top-4 left-4">
-                      <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                      <Badge className="bg-gradient-to-r from-primary to-blue-600 text-white">
                         Featured
                       </Badge>
                     </div>
                   </div>
                   <div className="p-8">
                     <div className="flex items-center space-x-4 mb-4">
-                      <Badge variant="outline" className="border-purple-200 text-purple-600">
+                      <Badge variant="outline" className="border-blue-200 text-blue-600">
                         {post.category}
                       </Badge>
                       <div className="flex items-center text-gray-500 text-sm">
@@ -184,20 +206,18 @@ const Blog = () => {
                     
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <img 
-                          src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=40&h=40&fit=crop&crop=center" 
-                          alt="Blink The Ninja"
-                          className="w-10 h-10 rounded-full"
-                        />
+                        <div className="w-10 h-10 bg-gradient-to-r from-primary to-blue-600 rounded-full flex items-center justify-center">
+                          <User className="h-5 w-5 text-white" />
+                        </div>
                         <div>
                           <p className="font-semibold text-gray-900">{post.author}</p>
-                          <p className="text-sm text-gray-500">Growth Ninja</p>
+                          <p className="text-sm text-gray-500">Expert Contributors</p>
                         </div>
                       </div>
                       
-                      <Button asChild className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600">
+                      <Button asChild className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700">
                         <Link to={`/blog/${post.id}`}>
-                          Read Full Guide
+                          Read Complete Guide
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
@@ -214,10 +234,10 @@ const Blog = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              🥷 All Growth Insights
+              📈 All Expert Insights
             </h2>
             <p className="text-xl text-gray-600">
-              Every ninja technique, strategy, and secret Blink has mastered
+              Comprehensive strategies, methodologies, and insights from ICONA's expert team
             </p>
           </div>
           
@@ -233,7 +253,7 @@ const Blog = () => {
                       className="w-full h-48 object-cover"
                     />
                     <div className="absolute top-4 left-4">
-                      <Badge variant="outline" className="bg-white/90 border-purple-200 text-purple-600">
+                      <Badge variant="outline" className="bg-white/90 border-blue-200 text-blue-600">
                         {post.category}
                       </Badge>
                     </div>
@@ -261,12 +281,10 @@ const Blog = () => {
                     
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <img 
-                          src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=32&h=32&fit=crop&crop=center" 
-                          alt="Blink The Ninja"
-                          className="w-8 h-8 rounded-full"
-                        />
-                        <span className="text-sm font-medium text-gray-900">Blink</span>
+                        <div className="w-8 h-8 bg-gradient-to-r from-primary to-blue-600 rounded-full flex items-center justify-center">
+                          <User className="h-4 w-4 text-white" />
+                        </div>
+                        <span className="text-sm font-medium text-gray-900">ICONA Team</span>
                       </div>
                       
                       <Button variant="outline" size="sm" asChild>
@@ -279,6 +297,29 @@ const Blog = () => {
                   </CardContent>
                 </Card>
               ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter CTA */}
+      <section className="py-16 bg-gradient-to-r from-primary to-blue-600">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-2xl mx-auto text-white">
+            <h3 className="text-3xl font-bold mb-4">Stay Ahead with Expert Insights</h3>
+            <p className="mb-8 text-blue-100 text-lg">
+              Subscribe to receive ICONA's latest growth strategies, market analysis, and expert methodologies 
+              delivered directly to your inbox.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+              <input 
+                type="email" 
+                placeholder="Enter your email address"
+                className="flex-1 px-4 py-3 rounded-lg text-gray-900 border-0 focus:ring-2 focus:ring-white"
+              />
+              <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-3">
+                Subscribe Now
+              </Button>
+            </div>
           </div>
         </div>
       </section>
