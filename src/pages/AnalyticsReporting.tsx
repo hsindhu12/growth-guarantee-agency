@@ -12,22 +12,22 @@ const AnalyticsReporting = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-red-600 via-pink-600 to-purple-800 text-white overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-primary via-blue-600 to-blue-800 text-white overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <Badge className="mb-6 bg-yellow-500/20 text-yellow-300 border-yellow-400 text-lg px-6 py-2">
-            📈 Growth Hacking Secrets
+          <Badge className="mb-6 bg-white/20 text-white border-white/30 text-lg px-6 py-2">
+            📈 Advanced Analytics
           </Badge>
           
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Analytics & Reporting
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-red-500">
-              Data-Driven Domination 📈
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
+              Data-Driven Excellence 📈
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-pink-100">
-            Blink transforms raw data into actionable insights that drive exponential growth. 
-            <span className="text-yellow-300 font-semibold"> Every decision backed by ninja-level analytics.</span>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
+            ICONA transforms raw data into actionable insights that drive exponential growth. 
+            <span className="text-yellow-300 font-semibold"> Every decision backed by advanced analytics.</span>
           </p>
         </div>
       </section>
@@ -37,10 +37,10 @@ const AnalyticsReporting = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                🥷 Analytics Ninja Vision
+                📈 Strategic Analytics Vision
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                Blink sees what others miss. Through advanced analytics and reporting, every marketing dollar 
+                ICONA sees what others miss. Through advanced analytics and reporting, every marketing dollar 
                 is tracked, optimized, and multiplied for maximum ROI and sustainable growth.
               </p>
               <div className="space-y-4">
@@ -125,9 +125,9 @@ const AnalyticsReporting = () => {
             📈 Ready for Data-Driven Growth?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let Blink unlock the power of your data. Turn insights into action, action into growth.
+            Let ICONA unlock the power of your data. Turn insights into action, action into growth.
           </p>
-          <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
+          <Button size="lg" className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 text-lg px-8 py-4">
             📈 Start Analytics Setup
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

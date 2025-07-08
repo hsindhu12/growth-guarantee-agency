@@ -12,10 +12,10 @@ const VideoProduction = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-orange-600 via-red-600 to-pink-800 text-white overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-primary via-blue-600 to-blue-800 text-white overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <Badge className="mb-6 bg-yellow-500/20 text-yellow-300 border-yellow-400 text-lg px-6 py-2">
-            🎬 Video Production Magic
+          <Badge className="mb-6 bg-white/20 text-white border-white/30 text-lg px-6 py-2">
+            🎬 Video Production Excellence
           </Badge>
           
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -25,8 +25,8 @@ const VideoProduction = () => {
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-orange-100">
-            Blink creates video content that stops the scroll and drives action. Every frame is crafted 
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
+            ICONA creates video content that stops the scroll and drives action. Every frame is strategically crafted 
             <span className="text-yellow-300 font-semibold"> to convert viewers into customers.</span>
           </p>
         </div>
@@ -37,10 +37,10 @@ const VideoProduction = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                🥷 Blink's Video Mastery
+                🎬 ICONA's Video Expertise
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                In the attention economy, video is king. Blink creates compelling video content that 
+                In the attention economy, video is king. ICONA creates compelling video content that 
                 captures attention, tells your story, and drives conversions across all platforms.
               </p>
               <div className="space-y-4">
@@ -72,7 +72,7 @@ const VideoProduction = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            🎬 Video Types Blink Masters
+            🎬 Video Services ICONA Masters
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -125,9 +125,9 @@ const VideoProduction = () => {
             🎬 Ready for Video That Converts?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let Blink create video content that captures attention and drives results. Every frame designed to convert.
+            Let ICONA create video content that captures attention and drives results. Every frame designed to convert.
           </p>
-          <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
+          <Button size="lg" className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 text-lg px-8 py-4">
             🎬 Start Video Production
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

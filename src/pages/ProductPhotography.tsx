@@ -12,22 +12,22 @@ const ProductPhotography = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-pink-600 via-rose-600 to-red-800 text-white overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-primary via-blue-600 to-blue-800 text-white overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <Badge className="mb-6 bg-yellow-500/20 text-yellow-300 border-yellow-400 text-lg px-6 py-2">
-            📸 Ninja Photography
+          <Badge className="mb-6 bg-white/20 text-white border-white/30 text-lg px-6 py-2">
+            📸 Professional Photography
           </Badge>
           
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Product Photography
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-              That Stops Scrolling 📸
+              That Converts Sales 📸
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-pink-100">
-            Blink captures products with ninja precision that makes customers stop scrolling and start buying. 
-            <span className="text-yellow-300 font-semibold"> Every shot converts.</span>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
+            ICONA captures products with professional precision that makes customers stop scrolling and start buying. 
+            <span className="text-yellow-300 font-semibold"> Every shot strategically converts.</span>
           </p>
         </div>
       </section>
@@ -44,20 +44,20 @@ const ProductPhotography = () => {
             </div>
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                🥷 Photography That Converts
+                📸 Photography That Converts
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                Every product photo is a sales weapon in Blink's arsenal. Using professional lighting, 
-                angles, and ninja-level attention to detail, Blink creates images that sell.
+                Every product photo is a strategic sales asset in ICONA's arsenal. Using professional lighting, 
+                optimal angles, and expert attention to detail, ICONA creates images that drive purchases.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center">
-                  <Camera className="h-6 w-6 text-pink-500 mr-3" />
-                  <span>Studio-Quality Product Shots</span>
+                  <Camera className="h-6 w-6 text-primary mr-3" />
+                  <span>Studio-Quality Product Photography</span>
                 </div>
                 <div className="flex items-center">
                   <Eye className="h-6 w-6 text-blue-500 mr-3" />
-                  <span>360° Product Views</span>
+                  <span>360° Interactive Product Views</span>
                 </div>
                 <div className="flex items-center">
                   <Zap className="h-6 w-6 text-yellow-500 mr-3" />
@@ -72,14 +72,14 @@ const ProductPhotography = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            📸 Blink's Photography Arsenal
+            📸 ICONA's Photography Services
           </h2>
           
           <div className="grid md:grid-cols-4 gap-8">
             <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300">
               <CardHeader className="text-center">
-                <Camera className="h-12 w-12 text-pink-500 mx-auto mb-4" />
-                <CardTitle>Studio Shoots</CardTitle>
+                <Camera className="h-12 w-12 text-primary mx-auto mb-4" />
+                <CardTitle>Studio Photography</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-center">Professional studio setup with perfect lighting and backgrounds</p>
@@ -89,7 +89,7 @@ const ProductPhotography = () => {
             <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300">
               <CardHeader className="text-center">
                 <Eye className="h-12 w-12 text-blue-500 mx-auto mb-4" />
-                <CardTitle>Lifestyle Shots</CardTitle>
+                <CardTitle>Lifestyle Photography</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-center">Products in real-world contexts that customers can relate to</p>
@@ -99,7 +99,7 @@ const ProductPhotography = () => {
             <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300">
               <CardHeader className="text-center">
                 <Zap className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-                <CardTitle>360° Views</CardTitle>
+                <CardTitle>360° Photography</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-center">Interactive product views that showcase every angle</p>
@@ -109,10 +109,10 @@ const ProductPhotography = () => {
             <Card className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300">
               <CardHeader className="text-center">
                 <Award className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                <CardTitle>A+ Content</CardTitle>
+                <CardTitle>Premium Content</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 text-center">Premium marketplace content that converts browsers to buyers</p>
+                <p className="text-gray-600 text-center">High-end marketplace content that converts browsers to buyers</p>
               </CardContent>
             </Card>
           </div>
@@ -125,10 +125,10 @@ const ProductPhotography = () => {
             📸 Ready for Photography That Sells?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let Blink capture your products with ninja precision. Every photo will convert browsers into buyers.
+            Let ICONA capture your products with professional precision. Every photo will convert browsers into buyers.
           </p>
-          <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
-            📸 Book Blink's Photo Shoot
+          <Button size="lg" className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 text-lg px-8 py-4">
+            📸 Book Professional Photo Shoot
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>

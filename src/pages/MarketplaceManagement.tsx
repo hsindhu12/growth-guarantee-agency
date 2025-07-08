@@ -21,22 +21,22 @@ const MarketplaceManagement = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-green-600 via-teal-600 to-blue-800 text-white overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-primary via-blue-600 to-blue-800 text-white overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <Badge className="mb-6 bg-yellow-500/20 text-yellow-300 border-yellow-400 text-lg px-6 py-2">
-            🏪 Marketplace Domination
+          <Badge className="mb-6 bg-white/20 text-white border-white/30 text-lg px-6 py-2">
+            🏪 Marketplace Excellence
           </Badge>
           
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Marketplace Management
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-              Master Every Platform 🥷
+              Dominate Every Platform 🏪
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
-            Blink dominates every major marketplace with ninja precision. From Amazon to Zepto, 
-            <span className="text-yellow-300 font-semibold"> your brand will rule them all.</span>
+            ICONA dominates every major marketplace with strategic precision. From Amazon to emerging platforms, 
+            <span className="text-yellow-300 font-semibold"> your brand will achieve market leadership.</span>
           </p>
         </div>
       </section>
@@ -44,7 +44,7 @@ const MarketplaceManagement = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            🏪 Platforms Blink Has Conquered
+            🏪 Platforms ICONA Has Mastered
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8 mb-16">
@@ -69,28 +69,28 @@ const MarketplaceManagement = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                🥷 Blink's Marketplace Mastery
+                🏪 ICONA's Marketplace Expertise
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start">
                   <TrendingUp className="h-6 w-6 text-green-500 mr-3 mt-1" />
                   <div>
                     <h3 className="font-bold text-lg">Listing Optimization</h3>
-                    <p className="text-gray-600">Perfect titles, descriptions, and keywords that rank #1</p>
+                    <p className="text-gray-600">Strategic titles, descriptions, and keywords that achieve top rankings</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Star className="h-6 w-6 text-yellow-500 mr-3 mt-1" />
                   <div>
                     <h3 className="font-bold text-lg">Review Management</h3>
-                    <p className="text-gray-600">5-star reputation building and review optimization</p>
+                    <p className="text-gray-600">5-star reputation building and comprehensive review optimization</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <Shield className="h-6 w-6 text-blue-500 mr-3 mt-1" />
                   <div>
                     <h3 className="font-bold text-lg">Account Protection</h3>
-                    <p className="text-gray-600">Policy compliance and account security management</p>
+                    <p className="text-gray-600">Policy compliance and comprehensive account security management</p>
                   </div>
                 </div>
               </div>
@@ -109,13 +109,13 @@ const MarketplaceManagement = () => {
       <section className="py-16 bg-gradient-to-r from-gray-900 to-black text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            🥷 Dominate Every Marketplace
+            🏪 Dominate Every Marketplace
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let Blink conquer every marketplace for your brand. Zero upfront investment, guaranteed dominance.
+            Let ICONA conquer every marketplace for your brand. Performance-based investment, guaranteed market dominance.
           </p>
-          <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
-            🥷 Start Marketplace Domination
+          <Button size="lg" className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 text-lg px-8 py-4">
+            🏪 Start Marketplace Strategy
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
