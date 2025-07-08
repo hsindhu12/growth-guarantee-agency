@@ -5,29 +5,29 @@ import Footer from "../components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Target, Zap, Shield, Award } from "lucide-react";
+import { ArrowRight, Target, Zap, Shield, Award, Building2 } from "lucide-react";
 
 const About = () => {
-  const teamValues = [
+  const companyValues = [
     {
       icon: Target,
-      title: "Precision Targeting",
-      description: "Like a true ninja, Blink strikes with laser-focused precision in every retargeting campaign."
+      title: "Strategic Excellence",
+      description: "ICONA delivers precision-focused strategies that align with your business objectives and market dynamics."
     },
     {
       icon: Zap,
-      title: "Lightning Fast Results",
-      description: "Blink moves at ninja speed to deliver rapid growth and immediate impact for your brand."
+      title: "Innovative Solutions",
+      description: "We leverage cutting-edge technology and creative approaches to accelerate your digital transformation."
     },
     {
       icon: Shield,
-      title: "Zero Risk Guarantee",
-      description: "With Blink's ninja skills, you get 100% growth guarantee or we work for free."
+      title: "Trusted Partnership",
+      description: "ICONA builds long-term relationships based on transparency, reliability, and consistent results."
     },
     {
       icon: Award,
-      title: "Master-Level Expertise",
-      description: "Blink has mastered the ancient art of digital growth across all platforms and channels."
+      title: "Proven Expertise",
+      description: "Our team combines deep industry knowledge with proven methodologies to deliver exceptional outcomes."
     }
   ];
 
@@ -36,36 +36,35 @@ const About = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 text-white overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-primary via-blue-600 to-blue-800 text-white overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-white/10 to-blue-300/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-300/10 to-cyan-300/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="flex justify-center mb-6">
-            <img 
-              src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=200&h=200&fit=crop&crop=center" 
-              alt="Blink – The Retargeting Ninja" 
-              className="w-48 h-48 object-contain animate-bounce hover:animate-pulse transition-all duration-300"
-            />
+            <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center animate-pulse">
+              <Building2 className="h-12 w-12 text-white" />
+            </div>
           </div>
           
-          <Badge className="mb-6 bg-green-500/20 text-green-300 border-green-400 text-lg px-6 py-2">
-            🥷 Meet The Growth Master
+          <Badge className="mb-6 bg-white/20 text-white border-white/30 text-lg px-6 py-2">
+            About Our Company
           </Badge>
           
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            About Blink
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-              The Retargeting Ninja 🥷
+            About ICONA
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400">
+              Digital Excellence Partner
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
-            Born in the digital dojo, Blink mastered the ancient art of growth hacking. With ninja-like precision, 
-            Blink helps brands dominate every digital channel with <span className="text-yellow-300 font-semibold">zero upfront fees</span> and 
-            <span className="text-green-300 font-semibold"> 100% growth guarantee.</span>
+            ICONA is a leading digital growth agency that transforms businesses through innovative strategies, 
+            cutting-edge technology, and <span className="text-yellow-300 font-semibold">data-driven results</span>. 
+            We partner with ambitious brands to achieve <span className="text-green-300 font-semibold">sustainable growth</span> 
+            and market leadership.
           </p>
         </div>
       </section>
@@ -76,35 +75,36 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                🥷 The Legend of Blink
+                Our Story & Mission
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                In the mystical realm of digital marketing, there emerged a legendary ninja known as Blink. 
-                Unlike ordinary marketers, Blink possessed supernatural abilities to see through the digital 
-                noise and strike precisely where it mattered most.
+                Founded with a vision to democratize digital success, ICONA emerged from the understanding 
+                that every business deserves access to world-class digital marketing and growth strategies, 
+                regardless of size or industry.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                With years of training in the ancient arts of retargeting, conversion optimization, and 
-                growth hacking, Blink developed a unique methodology that guarantees results. No brand 
-                that has worked with Blink has ever failed to achieve explosive growth.
+                Our team of seasoned professionals combines deep industry expertise with innovative 
+                approaches to deliver measurable results. We believe in building authentic partnerships 
+                that drive long-term success for our clients.
               </p>
               <p className="text-lg text-gray-700 mb-8">
-                Today, Blink continues the mission: helping ambitious brands achieve ninja-level dominance 
-                across all digital channels with zero upfront investment and guaranteed results.
+                Today, ICONA continues to lead the digital transformation space by helping businesses 
+                navigate complex digital landscapes and achieve their growth objectives through 
+                strategic, data-driven solutions.
               </p>
-              <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600">
-                🥷 Start Your Growth Journey
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
+                Start Your Journey
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop&crop=center" 
-                alt="Blink in action" 
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop&crop=center" 
+                alt="ICONA team collaboration" 
                 className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center animate-pulse">
-                <span className="text-2xl">🥷</span>
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary to-blue-600 rounded-full flex items-center justify-center animate-pulse">
+                <Building2 className="h-8 w-8 text-white" />
               </div>
             </div>
           </div>
@@ -116,20 +116,20 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              🥷 Blink's Ninja Principles
+              Our Core Values
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              These core values guide every mission Blink undertakes for ambitious brands
+              These principles guide every decision we make and every solution we deliver
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamValues.map((value, index) => {
+            {companyValues.map((value, index) => {
               const IconComponent = value.icon;
               return (
                 <Card key={index} className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
                   <CardHeader className="text-center pb-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-r from-primary to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                       <IconComponent className="h-8 w-8 text-white" />
                     </div>
                     <CardTitle className="text-xl font-bold text-gray-900">{value.title}</CardTitle>
@@ -148,25 +148,25 @@ const About = () => {
       <section className="py-16 bg-gradient-to-r from-gray-900 to-black text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-12">
-            🥷 Blink's Ninja Achievement Stats
+            ICONA by the Numbers
           </h2>
           
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-5xl font-bold text-yellow-400 mb-2">500+</div>
+              <div className="text-5xl font-bold text-primary mb-2">500+</div>
               <div className="text-xl text-gray-300">Brands Grown</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-green-400 mb-2">₹50Cr+</div>
+              <div className="text-5xl font-bold text-green-400 mb-2">$50M+</div>
               <div className="text-xl text-gray-300">Revenue Generated</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-blue-400 mb-2">100%</div>
-              <div className="text-xl text-gray-300">Success Rate</div>
+              <div className="text-5xl font-bold text-blue-400 mb-2">99%</div>
+              <div className="text-xl text-gray-300">Client Satisfaction</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-purple-400 mb-2">0₹</div>
-              <div className="text-xl text-gray-300">Upfront Investment</div>
+              <div className="text-5xl font-bold text-purple-400 mb-2">10+</div>
+              <div className="text-xl text-gray-300">Years Experience</div>
             </div>
           </div>
         </div>
