@@ -12,6 +12,8 @@ import Blog from "./pages/Blog";
 import Career from "./pages/Career";
 import NotFound from "./pages/NotFound";
 import SuccessStories from "./pages/SuccessStories";
+import Auth from "./pages/Auth";
+import Admin from "./pages/Admin";
 
 // Service pages
 import EcommerceMarketing from "./pages/EcommerceMarketing";
@@ -44,6 +46,8 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/career" element={<Career />} />
             <Route path="/success-stories" element={<SuccessStories />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/admin" element={<Admin />} />
             
             {/* Service Routes */}
             <Route path="/services/ecommerce-marketing" element={<EcommerceMarketing />} />

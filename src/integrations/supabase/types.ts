@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_users: {
+        Row: {
+          created_at: string
+          id: string
+          permissions: Json | null
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          permissions?: Json | null
+          role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          permissions?: Json | null
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           author_name: string
@@ -146,6 +173,42 @@ export type Database = {
         }
         Relationships: []
       }
+      media_library: {
+        Row: {
+          alt_text: string | null
+          created_at: string
+          file_size: number | null
+          file_type: string
+          file_url: string
+          filename: string
+          id: string
+          original_name: string
+          uploaded_by: string | null
+        }
+        Insert: {
+          alt_text?: string | null
+          created_at?: string
+          file_size?: number | null
+          file_type: string
+          file_url: string
+          filename: string
+          id?: string
+          original_name: string
+          uploaded_by?: string | null
+        }
+        Update: {
+          alt_text?: string | null
+          created_at?: string
+          file_size?: number | null
+          file_type?: string
+          file_url?: string
+          filename?: string
+          id?: string
+          original_name?: string
+          uploaded_by?: string | null
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           active: boolean | null
@@ -170,6 +233,51 @@ export type Database = {
           name?: string | null
           preferences?: Json | null
           subscribed_at?: string
+        }
+        Relationships: []
+      }
+      pages: {
+        Row: {
+          content: Json
+          created_at: string
+          created_by: string | null
+          featured_image_url: string | null
+          id: string
+          meta_description: string | null
+          meta_title: string | null
+          published: boolean | null
+          slug: string
+          template: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content?: Json
+          created_at?: string
+          created_by?: string | null
+          featured_image_url?: string | null
+          id?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          published?: boolean | null
+          slug: string
+          template?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: Json
+          created_at?: string
+          created_by?: string | null
+          featured_image_url?: string | null
+          id?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          published?: boolean | null
+          slug?: string
+          template?: string | null
+          title?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -220,6 +328,84 @@ export type Database = {
           },
         ]
       }
+      service_pages: {
+        Row: {
+          created_at: string
+          faq: Json | null
+          features: Json | null
+          hero_content: Json | null
+          id: string
+          meta_description: string | null
+          meta_title: string | null
+          pricing: Json | null
+          published: boolean | null
+          service_type: string
+          subtitle: string | null
+          testimonials: Json | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          faq?: Json | null
+          features?: Json | null
+          hero_content?: Json | null
+          id?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          pricing?: Json | null
+          published?: boolean | null
+          service_type: string
+          subtitle?: string | null
+          testimonials?: Json | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          faq?: Json | null
+          features?: Json | null
+          hero_content?: Json | null
+          id?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          pricing?: Json | null
+          published?: boolean | null
+          service_type?: string
+          subtitle?: string | null
+          testimonials?: Json | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          description: string | null
+          id: string
+          key: string
+          updated_at: string
+          updated_by: string | null
+          value: Json
+        }
+        Insert: {
+          description?: string | null
+          id?: string
+          key: string
+          updated_at?: string
+          updated_by?: string | null
+          value: Json
+        }
+        Update: {
+          description?: string | null
+          id?: string
+          key?: string
+          updated_at?: string
+          updated_by?: string | null
+          value?: Json
+        }
+        Relationships: []
+      }
       success_stories: {
         Row: {
           challenge: string
@@ -259,6 +445,33 @@ export type Database = {
           published?: boolean | null
           results?: string
           solution?: string
+        }
+        Relationships: []
+      }
+      themes: {
+        Row: {
+          config: Json
+          created_at: string
+          id: string
+          is_active: boolean | null
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          config?: Json
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          config?: Json
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          updated_at?: string
         }
         Relationships: []
       }

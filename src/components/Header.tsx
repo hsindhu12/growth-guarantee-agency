@@ -1,186 +1,245 @@
 
-import React, { useState, useEffect } from 'react';
+import React from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown, Building2 } from "lucide-react";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { Menu, X, ChevronDown, Shield } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user } = useAuth();
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const toggleServices = () => setIsServicesOpen(!isServicesOpen);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const services = [
+    { name: "E-commerce Marketing", href: "/services/ecommerce-marketing" },
+    { name: "Marketplace Management", href: "/services/marketplace-management" },
+    { name: "SEO Services", href: "/services/seo-services" },
+    { name: "Digital Marketing", href: "/services/digital-marketing" },
+    { name: "Product Photography", href: "/services/product-photography" },
+    { name: "Video Production", href: "/services/video-production" },
+    { name: "Website Development", href: "/services/website-development" },
+    { name: "Mobile App Development", href: "/services/mobile-app-development" },
+    { name: "Brand Development", href: "/services/brand-development" },
+    { name: "Analytics & Reporting", href: "/services/analytics-reporting" },
+    { name: "Product Launch", href: "/services/product-launch" },
+    { name: "Advertising", href: "/services/advertising" },
+  ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg' 
-        : 'bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-sm'
-    }`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <header className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
+      <nav className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Building2 className="h-6 w-6 text-white" />
-            </div>
-            <div className="text-2xl font-bold text-primary group-hover:text-blue-600 transition-colors duration-300">
-              ICONA
-            </div>
+          <Link to="/" className="text-2xl font-bold text-primary">
+            ICONA
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-primary transition-all duration-300 hover:scale-105 font-medium relative group">
-              Home
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            
-            {/* Services Dropdown */}
-            <div className="relative">
-              <button 
-                onClick={toggleServices}
-                className="flex items-center text-gray-700 hover:text-primary transition-all duration-300 hover:scale-105 font-medium group"
-              >
-                Services 
-                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {isServicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 py-4 z-10 animate-fade-in">
-                  <div className="px-6 py-3 text-sm font-bold text-gray-900 border-b border-gray-100 bg-gray-50">
-                    Ecommerce Solutions
-                  </div>
-                  <Link to="/services/ecommerce-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Ecommerce Marketing
+          <div className="hidden lg:flex items-center space-x-8">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link to="/" className="text-gray-700 hover:text-primary transition-colors">
+                    Home
                   </Link>
-                  <Link to="/services/marketplace-management" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Marketplace Management
+                </NavigationMenuItem>
+                
+                <NavigationMenuItem>
+                  <Link to="/about" className="text-gray-700 hover:text-primary transition-colors">
+                    About
                   </Link>
-                  <Link to="/services/product-photography" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Product Photography
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-gray-700 hover:text-primary">
+                    Services
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid w-[600px] grid-cols-2 gap-3 p-4">
+                      {services.map((service) => (
+                        <NavigationMenuLink key={service.name} asChild>
+                          <Link
+                            to={service.href}
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">
+                              {service.name}
+                            </div>
+                          </Link>
+                        </NavigationMenuLink>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link to="/success-stories" className="text-gray-700 hover:text-primary transition-colors">
+                    Success Stories
                   </Link>
-                  <Link to="/services/video-production" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Video Production
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link to="/blog" className="text-gray-700 hover:text-primary transition-colors">
+                    Blog
                   </Link>
-                  <Link to="/services/advertising" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Digital Advertising
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link to="/career" className="text-gray-700 hover:text-primary transition-colors">
+                    Careers
                   </Link>
-                  <Link to="/services/brand-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Brand Development
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link to="/contact" className="text-gray-700 hover:text-primary transition-colors">
+                    Contact
                   </Link>
-                  <Link to="/services/product-launch" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Product Launch
-                  </Link>
-                  
-                  <div className="px-6 py-3 text-sm font-bold text-gray-900 border-b border-t border-gray-100 mt-2 bg-gray-50">
-                    Digital Solutions
-                  </div>
-                  <Link to="/services/website-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Website Development
-                  </Link>
-                  <Link to="/services/mobile-app-development" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Mobile App Development
-                  </Link>
-                  <Link to="/services/seo-services" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    SEO Services
-                  </Link>
-                  <Link to="/services/digital-marketing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Digital Marketing
-                  </Link>
-                  <Link to="/services/analytics-reporting" className="block px-6 py-3 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-all duration-200">
-                    Analytics & Reporting
-                  </Link>
-                </div>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            <div className="flex items-center space-x-4">
+              {user ? (
+                <Link to="/admin">
+                  <Button variant="outline" size="sm">
+                    <Shield className="h-4 w-4 mr-2" />
+                    Admin
+                  </Button>
+                </Link>
+              ) : (
+                <Link to="/auth">
+                  <Button variant="outline" size="sm">
+                    Admin Login
+                  </Button>
+                </Link>
               )}
-            </div>
-            
-            <Link to="/about" className="text-gray-700 hover:text-primary transition-all duration-300 hover:scale-105 font-medium relative group">
-              About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            
-            <Link to="/blog" className="text-gray-700 hover:text-primary transition-all duration-300 hover:scale-105 font-medium relative group">
-              Insights
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            
-            <Link to="/success-stories" className="text-gray-700 hover:text-primary transition-all duration-300 hover:scale-105 font-medium relative group">
-              Case Studies
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            
-            <Link to="/career" className="text-gray-700 hover:text-primary transition-all duration-300 hover:scale-105 font-medium relative group">
-              Careers
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            
-            <Link to="/contact" className="text-gray-700 hover:text-primary transition-all duration-300 hover:scale-105 font-medium relative group">
-              Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-            </Link>
-            
-            <Button asChild className="bg-primary hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-white">
+              
               <Link to="/contact">
-                Get Started
+                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                  Get Started
+                </Button>
               </Link>
-            </Button>
-          </nav>
+            </div>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={toggleMenu}
-            className="md:hidden p-2 text-gray-700 hover:text-primary hover:scale-110 transition-all duration-300"
+            className="lg:hidden p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMenuOpen ? 
-              <X className="h-6 w-6" /> : 
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
               <Menu className="h-6 w-6" />
-            }
+            )}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100 bg-white/95 backdrop-blur-md animate-fade-in">
-            <div className="flex flex-col space-y-4">
-              <Link to="/" className="text-gray-700 hover:text-primary transition-all duration-300 font-medium">
-                Home
-              </Link>
-              <Link to="/services" className="text-gray-700 hover:text-primary transition-all duration-300 font-medium">
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden mt-4 space-y-4 bg-white border rounded-lg p-4 shadow-lg">
+            <Link
+              to="/"
+              className="block py-2 text-gray-700 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className="block py-2 text-gray-700 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+            
+            <div className="py-2">
+              <div className="flex items-center text-gray-700 mb-2">
                 Services
-              </Link>
-              <Link to="/about" className="text-gray-700 hover:text-primary transition-all duration-300 font-medium">
-                About
-              </Link>
-              <Link to="/blog" className="text-gray-700 hover:text-primary transition-all duration-300 font-medium">
-                Insights
-              </Link>
-              <Link to="/success-stories" className="text-gray-700 hover:text-primary transition-all duration-300 font-medium">
-                Case Studies
-              </Link>
-              <Link to="/career" className="text-gray-700 hover:text-primary transition-all duration-300 font-medium">
-                Careers
-              </Link>
-              <Link to="/contact" className="text-gray-700 hover:text-primary transition-all duration-300 font-medium">
-                Contact
-              </Link>
-              <Button asChild className="bg-primary hover:bg-primary/90 w-fit hover:scale-105 transition-all duration-300 text-white">
-                <Link to="/contact">
-                  Get Started
+                <ChevronDown className="h-4 w-4 ml-1" />
+              </div>
+              <div className="pl-4 space-y-2">
+                {services.slice(0, 6).map((service) => (
+                  <Link
+                    key={service.name}
+                    to={service.href}
+                    className="block py-1 text-sm text-gray-600 hover:text-primary transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+                <Link
+                  to="/services"
+                  className="block py-1 text-sm text-primary font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  View All Services →
                 </Link>
-              </Button>
+              </div>
+            </div>
+
+            <Link
+              to="/success-stories"
+              className="block py-2 text-gray-700 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Success Stories
+            </Link>
+            <Link
+              to="/blog"
+              className="block py-2 text-gray-700 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link
+              to="/career"
+              className="block py-2 text-gray-700 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Careers
+            </Link>
+            <Link
+              to="/contact"
+              className="block py-2 text-gray-700 hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
+
+            <div className="pt-4 border-t">
+              {user ? (
+                <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full mb-2">
+                    <Shield className="h-4 w-4 mr-2" />
+                    Admin Dashboard
+                  </Button>
+                </Link>
+              ) : (
+                <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full mb-2">
+                    Admin Login
+                  </Button>
+                </Link>
+              )}
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </div>
         )}
-      </div>
+      </nav>
     </header>
   );
 };
