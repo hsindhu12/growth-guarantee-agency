@@ -6,101 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, TrendingUp, Calendar, Target, Zap } from "lucide-react";
+import { useSuccessStories } from "@/hooks/useSuccessStories";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const SuccessStories = () => {
-  const successStories = [
-    {
-      id: 1,
-      brand: "TechStyle Fashion",
-      industry: "Fashion E-commerce",
-      challenge: "Low conversion rates and high cart abandonment",
-      solution: "Precision retargeting + marketplace optimization",
-      results: {
-        revenue: "+340%",
-        conversion: "+127%",
-        timespan: "6 months"
-      },
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop&crop=center",
-      testimonial: "Blink transformed our entire digital presence. The retargeting campaigns alone generated 3x more revenue than our previous year!",
-      client: "Sarah Chen, CEO",
-      featured: true
-    },
-    {
-      id: 2,
-      brand: "HealthVitals",
-      industry: "Health & Wellness",
-      challenge: "Struggling to scale on Amazon and Flipkart",
-      solution: "Complete marketplace domination strategy",
-      results: {
-        revenue: "+280%",
-        conversion: "+95%",
-        timespan: "4 months"
-      },
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop&crop=center",
-      testimonial: "Blink's ninja techniques helped us dominate health supplements category on all major marketplaces.",
-      client: "Raj Patel, Founder"
-    },
-    {
-      id: 3,
-      brand: "Urban Decor",
-      industry: "Home & Living",
-      challenge: "Poor product photography affecting sales",
-      solution: "Professional photography + video production",
-      results: {
-        revenue: "+220%",
-        conversion: "+156%",
-        timespan: "3 months"
-      },
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=250&fit=crop&crop=center",
-      testimonial: "The new product visuals Blink created increased our conversion rates dramatically. Sales doubled within 3 months!",
-      client: "Priya Sharma, Marketing Head"
-    },
-    {
-      id: 4,
-      brand: "FitGear Pro",
-      industry: "Fitness Equipment",
-      challenge: "Zero online presence and brand awareness",
-      solution: "Complete digital transformation + SEO mastery",
-      results: {
-        revenue: "+450%",
-        conversion: "+89%",
-        timespan: "8 months"
-      },
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop&crop=center",
-      testimonial: "From zero to hero! Blink built our entire online empire from scratch. We're now the #1 fitness brand in our category.",
-      client: "Mike Johnson, Co-founder"
-    },
-    {
-      id: 5,
-      brand: "GourmetSpice Co.",
-      industry: "Food & Beverages",
-      challenge: "High competition in spice market",
-      solution: "Influencer partnerships + social commerce",
-      results: {
-        revenue: "+190%",
-        conversion: "+78%",
-        timespan: "5 months"
-      },
-      image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&h=250&fit=crop&crop=center",
-      testimonial: "Blink's influencer strategy made us a household name. Our spices are now trending on every social platform!",
-      client: "Anita Gupta, Brand Manager"
-    },
-    {
-      id: 6,
-      brand: "EcoClean Solutions",
-      industry: "Eco-friendly Products",
-      challenge: "Educating market about eco-friendly benefits",
-      solution: "Content marketing + educational campaigns",
-      results: {
-        revenue: "+310%",
-        conversion: "+134%",
-        timespan: "7 months"
-      },
-      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=250&fit=crop&crop=center",
-      testimonial: "Blink didn't just grow our sales, they educated an entire market about sustainable living. True ninja mastery!",
-      client: "David Green, Founder"
-    }
-  ];
+  const { data: successStories, isLoading, error } = useSuccessStories();
+  const { data: featuredStories } = useSuccessStories(true);
+
+  if (error) {
+    console.error('Error loading success stories:', error);
+  }
 
   const stats = [
     { number: "500+", label: "Brands Transformed", icon: Target },
@@ -108,6 +23,24 @@ const SuccessStories = () => {
     { number: "340%", label: "Average Growth", icon: Zap },
     { number: "100%", label: "Success Rate", icon: TrendingUp }
   ];
+
+  const SuccessStorySkeleton = () => (
+    <Card className="shadow-lg border-0 overflow-hidden">
+      <Skeleton className="w-full h-48" />
+      <CardContent className="p-6">
+        <div className="space-y-3">
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-6 w-full" />
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-3/4" />
+          <div className="grid grid-cols-2 gap-3 mt-4">
+            <Skeleton className="h-16 w-full" />
+            <Skeleton className="h-16 w-full" />
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
 
   return (
     <div className="min-h-screen bg-background">
@@ -128,12 +61,12 @@ const SuccessStories = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Real Brands, Real
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-              Ninja Results 🥷
+              Results 🚀
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
-            Discover how Blink's ninja techniques transformed ordinary brands into market leaders. 
+            Discover how ICONA's expert strategies transformed ordinary brands into market leaders. 
             <span className="text-yellow-300 font-semibold"> Every story is real, every result is guaranteed.</span>
           </p>
         </div>
@@ -144,10 +77,10 @@ const SuccessStories = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              🥷 Blink's Impact Numbers
+              📊 ICONA's Impact Numbers
             </h2>
             <p className="text-xl text-gray-600">
-              The proof is in the results - here's what Blink delivers consistently
+              The proof is in the results - here's what ICONA delivers consistently
             </p>
           </div>
           
@@ -170,146 +103,162 @@ const SuccessStories = () => {
         </div>
       </section>
 
-      {/* Featured Success Story */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              🌟 Featured Transformation
-            </h2>
-            <p className="text-xl text-gray-600">
-              The most incredible growth story from Blink's ninja archive
-            </p>
-          </div>
-          
-          {successStories
-            .filter(story => story.featured)
-            .map(story => (
-              <Card key={story.id} className="shadow-2xl border-0 overflow-hidden">
-                <div className="grid lg:grid-cols-2 gap-0">
-                  <div className="relative">
-                    <img 
-                      src={story.image} 
-                      alt={story.brand}
-                      className="w-full h-full object-cover min-h-[400px]"
-                    />
-                    <div className="absolute top-6 left-6">
-                      <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-lg px-4 py-2">
-                        Featured Success
-                      </Badge>
-                    </div>
-                  </div>
-                  <div className="p-8">
-                    <div className="flex items-center space-x-4 mb-6">
-                      <Badge variant="outline" className="border-purple-200 text-purple-600">
-                        {story.industry}
-                      </Badge>
-                      <div className="flex items-center text-gray-500">
-                        <Calendar className="h-4 w-4 mr-1" />
-                        {story.results.timespan}
+      {/* Featured Success Stories */}
+      {featuredStories && featuredStories.length > 0 && (
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4 text-gray-900">
+                🌟 Featured Transformations
+              </h2>
+              <p className="text-xl text-gray-600">
+                The most incredible growth stories from ICONA's portfolio
+              </p>
+            </div>
+            
+            {isLoading ? (
+              <div className="grid lg:grid-cols-2 gap-8">
+                {Array(2).fill(0).map((_, index) => <SuccessStorySkeleton key={index} />)}
+              </div>
+            ) : (
+              featuredStories.map(story => (
+                <Card key={story.id} className="mb-8 shadow-2xl border-0 overflow-hidden">
+                  <div className="grid lg:grid-cols-2 gap-0">
+                    <div className="relative">
+                      <img 
+                        src={story.image_url || "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop&crop=center"} 
+                        alt={story.client_name}
+                        className="w-full h-full object-cover min-h-[400px]"
+                      />
+                      <div className="absolute top-6 left-6">
+                        <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-lg px-4 py-2">
+                          Featured Success
+                        </Badge>
                       </div>
                     </div>
-                    
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                      {story.brand}
-                    </h3>
-                    
-                    <div className="mb-6">
-                      <h4 className="font-semibold text-gray-900 mb-2">Challenge:</h4>
-                      <p className="text-gray-600 mb-4">{story.challenge}</p>
+                    <div className="p-8">
+                      <div className="flex items-center space-x-4 mb-6">
+                        <Badge variant="outline" className="border-purple-200 text-purple-600">
+                          {story.industry}
+                        </Badge>
+                        <div className="flex items-center text-gray-500">
+                          <Calendar className="h-4 w-4 mr-1" />
+                          {story.metrics?.timeframe || "6 months"}
+                        </div>
+                      </div>
                       
-                      <h4 className="font-semibold text-gray-900 mb-2">Blink's Solution:</h4>
-                      <p className="text-gray-600 mb-6">{story.solution}</p>
+                      <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                        {story.client_name}
+                      </h3>
+                      
+                      <div className="mb-6">
+                        <h4 className="font-semibold text-gray-900 mb-2">Challenge:</h4>
+                        <p className="text-gray-600 mb-4">{story.challenge}</p>
+                        
+                        <h4 className="font-semibold text-gray-900 mb-2">ICONA's Solution:</h4>
+                        <p className="text-gray-600 mb-6">{story.solution}</p>
+                      </div>
+                      
+                      {story.metrics && (
+                        <div className="grid grid-cols-2 gap-4 mb-6">
+                          {Object.entries(story.metrics).map(([key, value], index) => {
+                            if (key === 'timeframe') return null;
+                            return (
+                              <div key={index} className="text-center p-4 bg-green-50 rounded-lg">
+                                <div className="text-2xl font-bold text-green-600">{value as string}</div>
+                                <div className="text-sm text-gray-600 capitalize">{key.replace('_', ' ')}</div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                      
+                      <blockquote className="border-l-4 border-blue-500 pl-6 mb-6">
+                        <p className="text-lg italic text-gray-700 mb-4">"{story.results}"</p>
+                        <footer className="font-semibold text-gray-900">— {story.client_name}</footer>
+                      </blockquote>
                     </div>
-                    
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="text-center p-4 bg-green-50 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">{story.results.revenue}</div>
-                        <div className="text-sm text-gray-600">Revenue Growth</div>
-                      </div>
-                      <div className="text-center p-4 bg-blue-50 rounded-lg">
-                        <div className="text-2xl font-bold text-blue-600">{story.results.conversion}</div>
-                        <div className="text-sm text-gray-600">Conversion Boost</div>
-                      </div>
-                      <div className="text-center p-4 bg-purple-50 rounded-lg">
-                        <div className="text-2xl font-bold text-purple-600">{story.results.timespan}</div>
-                        <div className="text-sm text-gray-600">Timeline</div>
-                      </div>
-                    </div>
-                    
-                    <blockquote className="border-l-4 border-blue-500 pl-6 mb-6">
-                      <p className="text-lg italic text-gray-700 mb-4">"{story.testimonial}"</p>
-                      <footer className="font-semibold text-gray-900">— {story.client}</footer>
-                    </blockquote>
                   </div>
-                </div>
-              </Card>
-            ))}
-        </div>
-      </section>
+                </Card>
+              ))
+            )}
+          </div>
+        </section>
+      )}
 
       {/* All Success Stories */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              🥷 More Ninja Transformations
+              🚀 More Success Transformations
             </h2>
             <p className="text-xl text-gray-600">
-              Every brand that trusted Blink achieved extraordinary results
+              Every brand that trusted ICONA achieved extraordinary results
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {successStories
-              .filter(story => !story.featured)
-              .map(story => (
-                <Card key={story.id} className="shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border-0 overflow-hidden">
-                  <div className="relative">
-                    <img 
-                      src={story.image} 
-                      alt={story.brand}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <Badge variant="outline" className="bg-white/90 border-purple-200 text-purple-600">
-                        {story.industry}
-                      </Badge>
-                    </div>
-                  </div>
-                  
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
-                      {story.brand}
-                    </h3>
-                    
-                    <div className="grid grid-cols-2 gap-3 mb-4">
-                      <div className="text-center p-3 bg-green-50 rounded-lg">
-                        <div className="text-lg font-bold text-green-600">{story.results.revenue}</div>
-                        <div className="text-xs text-gray-600">Revenue</div>
-                      </div>
-                      <div className="text-center p-3 bg-blue-50 rounded-lg">
-                        <div className="text-lg font-bold text-blue-600">{story.results.conversion}</div>
-                        <div className="text-xs text-gray-600">Conversion</div>
+            {isLoading ? (
+              Array(6).fill(0).map((_, index) => <SuccessStorySkeleton key={index} />)
+            ) : successStories && successStories.length > 0 ? (
+              successStories
+                .filter(story => !story.featured)
+                .map(story => (
+                  <Card key={story.id} className="shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border-0 overflow-hidden">
+                    <div className="relative">
+                      <img 
+                        src={story.image_url || "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop&crop=center"} 
+                        alt={story.client_name}
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <Badge variant="outline" className="bg-white/90 border-purple-200 text-purple-600">
+                          {story.industry}
+                        </Badge>
                       </div>
                     </div>
                     
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                      "{story.testimonial}"
-                    </p>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm text-gray-500">
-                        <Calendar className="h-4 w-4 inline mr-1" />
-                        {story.results.timespan}
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        {story.client_name}
+                      </h3>
+                      
+                      {story.metrics && Object.keys(story.metrics).length > 0 && (
+                        <div className="grid grid-cols-2 gap-3 mb-4">
+                          {Object.entries(story.metrics).slice(0, 2).map(([key, value], index) => {
+                            if (key === 'timeframe') return null;
+                            return (
+                              <div key={index} className="text-center p-3 bg-green-50 rounded-lg">
+                                <div className="text-lg font-bold text-green-600">{value as string}</div>
+                                <div className="text-xs text-gray-600 capitalize">{key.replace('_', ' ')}</div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                      
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                        "{story.results}"
+                      </p>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="text-sm text-gray-500">
+                          <Calendar className="h-4 w-4 inline mr-1" />
+                          {story.metrics?.timeframe || "6 months"}
+                        </div>
+                        <div className="text-sm font-medium text-gray-900">
+                          {story.client_name}
+                        </div>
                       </div>
-                      <div className="text-sm font-medium text-gray-900">
-                        {story.client}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-gray-600 text-lg">No success stories available at the moment.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -318,13 +267,13 @@ const SuccessStories = () => {
       <section className="py-16 bg-gradient-to-r from-gray-900 to-black text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            🥷 Ready to Be Our Next Success Story?
+            🚀 Ready to Be Our Next Success Story?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Join 500+ brands that trusted Blink's ninja techniques. Your transformation story could be next!
+            Join 500+ brands that trusted ICONA's expert strategies. Your transformation story could be next!
           </p>
           <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
-            🥷 Start My Growth Journey
+            🚀 Start My Growth Journey
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
