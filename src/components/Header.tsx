@@ -9,14 +9,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Menu, X, ChevronDown, Shield } from "lucide-react";
+import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { user } = useAuth();
 
   const services = [
     { name: "E-commerce Marketing", href: "/services/ecommerce-marketing" },
@@ -34,12 +32,13 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
+    <header className="fixed top-0 w-full bg-white/95 backdrop-blur-lg z-50 border-b border-gray-100 shadow-sm">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-primary">
-            ICONA
+          <Link to="/" className="flex items-center space-x-2 text-2xl font-bold text-primary hover:text-primary/90 transition-colors">
+            <Sparkles className="h-8 w-8" />
+            <span>ICONA</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -107,23 +106,8 @@ const Header = () => {
             </NavigationMenu>
 
             <div className="flex items-center space-x-4">
-              {user ? (
-                <Link to="/admin">
-                  <Button variant="outline" size="sm">
-                    <Shield className="h-4 w-4 mr-2" />
-                    Admin
-                  </Button>
-                </Link>
-              ) : (
-                <Link to="/auth">
-                  <Button variant="outline" size="sm">
-                    Admin Login
-                  </Button>
-                </Link>
-              )}
-              
               <Link to="/contact">
-                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300">
                   Get Started
                 </Button>
               </Link>
@@ -217,22 +201,8 @@ const Header = () => {
             </Link>
 
             <div className="pt-4 border-t">
-              {user ? (
-                <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="outline" className="w-full mb-2">
-                    <Shield className="h-4 w-4 mr-2" />
-                    Admin Dashboard
-                  </Button>
-                </Link>
-              ) : (
-                <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="outline" className="w-full mb-2">
-                    Admin Login
-                  </Button>
-                </Link>
-              )}
               <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300">
                   Get Started
                 </Button>
               </Link>

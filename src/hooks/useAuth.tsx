@@ -29,6 +29,16 @@ export const useAuth = () => {
     return () => subscription.unsubscribe();
   }, []);
 
+  const checkAdminStatus = async (userId: string) => {
+    const { data, error } = await supabase
+      .from('admin_users')
+      .select('*')
+      .eq('user_id', userId)
+      .single();
+    
+    return { isAdmin: !error && !!data, adminData: data };
+  };
+
   const signUp = async (email: string, password: string) => {
     const redirectUrl = `${window.location.origin}/`;
     
@@ -93,6 +103,7 @@ export const useAuth = () => {
     loading,
     signUp,
     signIn,
-    signOut
+    signOut,
+    checkAdminStatus
   };
 };
