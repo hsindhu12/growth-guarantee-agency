@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -6,49 +5,39 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Search, TrendingUp, Target, Award, BarChart3, Globe, Zap } from "lucide-react";
-
 const SEOServices = () => {
-  const seoServices = [
-    {
-      icon: Search,
-      title: "Advanced Keyword Research & Strategy",
-      description: "Comprehensive keyword analysis using enterprise-grade tools to identify high-value opportunities and competitive gaps in your market.",
-      features: ["Competitor keyword analysis", "Search intent mapping", "Long-tail keyword discovery", "Keyword difficulty assessment"]
-    },
-    {
-      icon: TrendingUp,
-      title: "Technical SEO Optimization",
-      description: "Complete technical audit and optimization of your website's infrastructure for maximum search engine visibility and performance.",
-      features: ["Core Web Vitals optimization", "Site architecture review", "Schema markup implementation", "Mobile-first indexing"]
-    },
-    {
-      icon: Target,
-      title: "Content Strategy & Optimization",
-      description: "Data-driven content strategies that align with search intent and drive qualified organic traffic to your business.",
-      features: ["Content gap analysis", "Topic cluster development", "On-page optimization", "Content performance tracking"]
-    },
-    {
-      icon: Award,
-      title: "Local SEO Domination",
-      description: "Comprehensive local search optimization to dominate local market visibility and drive foot traffic to your business.",
-      features: ["Google My Business optimization", "Local citation building", "Review management", "Local keyword targeting"]
-    },
-    {
-      icon: BarChart3,
-      title: "SEO Analytics & Reporting",
-      description: "Advanced tracking and reporting systems that provide actionable insights into your SEO performance and ROI.",
-      features: ["Custom dashboard creation", "Performance tracking", "Conversion attribution", "Competitive monitoring"]
-    },
-    {
-      icon: Globe,
-      title: "International SEO",
-      description: "Global SEO strategies for businesses targeting multiple countries and languages with technical hreflang implementation.",
-      features: ["Multi-language optimization", "International site structure", "Cultural content adaptation", "Global keyword research"]
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const seoServices = [{
+    icon: Search,
+    title: "Advanced Keyword Research & Strategy",
+    description: "Comprehensive keyword analysis using enterprise-grade tools to identify high-value opportunities and competitive gaps in your market.",
+    features: ["Competitor keyword analysis", "Search intent mapping", "Long-tail keyword discovery", "Keyword difficulty assessment"]
+  }, {
+    icon: TrendingUp,
+    title: "Technical SEO Optimization",
+    description: "Complete technical audit and optimization of your website's infrastructure for maximum search engine visibility and performance.",
+    features: ["Core Web Vitals optimization", "Site architecture review", "Schema markup implementation", "Mobile-first indexing"]
+  }, {
+    icon: Target,
+    title: "Content Strategy & Optimization",
+    description: "Data-driven content strategies that align with search intent and drive qualified organic traffic to your business.",
+    features: ["Content gap analysis", "Topic cluster development", "On-page optimization", "Content performance tracking"]
+  }, {
+    icon: Award,
+    title: "Local SEO Domination",
+    description: "Comprehensive local search optimization to dominate local market visibility and drive foot traffic to your business.",
+    features: ["Google My Business optimization", "Local citation building", "Review management", "Local keyword targeting"]
+  }, {
+    icon: BarChart3,
+    title: "SEO Analytics & Reporting",
+    description: "Advanced tracking and reporting systems that provide actionable insights into your SEO performance and ROI.",
+    features: ["Custom dashboard creation", "Performance tracking", "Conversion attribution", "Competitive monitoring"]
+  }, {
+    icon: Globe,
+    title: "International SEO",
+    description: "Global SEO strategies for businesses targeting multiple countries and languages with technical hreflang implementation.",
+    features: ["Multi-language optimization", "International site structure", "Cultural content adaptation", "Global keyword research"]
+  }];
+  return <div className="min-h-screen bg-background">
       <Header />
       
       <section className="relative pt-20 pb-16 bg-gradient-to-br from-primary via-blue-600 to-blue-800 text-white overflow-hidden">
@@ -80,7 +69,7 @@ const SEOServices = () => {
               Get SEO Audit
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full">
+            <Button variant="outline" size="lg" className="border-white text-black hover:bg-white hover:text-primary px-8 py-4 rounded-full">
               View Case Studies
             </Button>
           </div>
@@ -120,11 +109,7 @@ const SEOServices = () => {
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&h=400&fit=crop&crop=center" 
-                alt="SEO Analytics Dashboard" 
-                className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300"
-              />
+              <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&h=400&fit=crop&crop=center" alt="SEO Analytics Dashboard" className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300" />
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-primary to-blue-600 rounded-full flex items-center justify-center animate-pulse">
                 <Search className="h-8 w-8 text-white" />
               </div>
@@ -148,9 +133,8 @@ const SEOServices = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {seoServices.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <Card key={index} className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
+            const IconComponent = service.icon;
+            return <Card key={index} className="border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 bg-white">
                   <CardHeader className="text-center pb-4">
                     <div className="w-16 h-16 bg-gradient-to-r from-primary to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                       <IconComponent className="h-8 w-8 text-white" />
@@ -160,17 +144,14 @@ const SEOServices = () => {
                   <CardContent>
                     <p className="text-gray-600 mb-4">{service.description}</p>
                     <ul className="space-y-2">
-                      {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-sm text-gray-700">
+                      {service.features.map((feature, featureIndex) => <li key={featureIndex} className="flex items-center text-sm text-gray-700">
                           <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
                           {feature}
-                        </li>
-                      ))}
+                        </li>)}
                     </ul>
                   </CardContent>
-                </Card>
-              );
-            })}
+                </Card>;
+          })}
           </div>
         </div>
       </section>
@@ -231,8 +212,6 @@ const SEOServices = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default SEOServices;
