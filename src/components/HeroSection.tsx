@@ -1,19 +1,26 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, TrendingUp, Users, Award, Building2 } from "lucide-react";
-
 const HeroSection = () => {
-  const stats = [
-    { number: "500+", label: "Brands Grown", icon: Users },
-    { number: "99%", label: "Success Rate", icon: Award },
-    { number: "$50M+", label: "Revenue Generated", icon: TrendingUp },
-    { number: "10+", label: "Years Experience", icon: Building2 }
-  ];
-
-  return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-blue-600 to-blue-800 text-white overflow-hidden pt-16">
+  const stats = [{
+    number: "500+",
+    label: "Brands Grown",
+    icon: Users
+  }, {
+    number: "99%",
+    label: "Success Rate",
+    icon: Award
+  }, {
+    number: "$50M+",
+    label: "Revenue Generated",
+    icon: TrendingUp
+  }, {
+    number: "10+",
+    label: "Years Experience",
+    icon: Building2
+  }];
+  return <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-blue-600 to-blue-800 text-white overflow-hidden pt-16">
       {/* Professional background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-white/10 to-blue-300/10 rounded-full blur-3xl animate-pulse"></div>
@@ -49,7 +56,7 @@ const HeroSection = () => {
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Button>
-          <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary px-8 py-4 text-lg rounded-full hover:scale-105 transition-all duration-300 hover:shadow-xl">
+          <Button variant="outline" size="lg" className="border-white px-8 py-4 text-lg hover:scale-105 transition-all duration-300 hover:shadow-xl text-slate-50 bg-[#ff8402] rounded-full">
             View Our Portfolio
           </Button>
         </div>
@@ -57,9 +64,8 @@ const HeroSection = () => {
         {/* Professional Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
           {stats.map((stat, index) => {
-            const IconComponent = stat.icon;
-            return (
-              <div key={index} className="text-center group hover:scale-110 transition-all duration-300 cursor-pointer">
+          const IconComponent = stat.icon;
+          return <div key={index} className="text-center group hover:scale-110 transition-all duration-300 cursor-pointer">
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4 group-hover:bg-white/20 transition-all duration-300">
                   <IconComponent className="h-8 w-8 mx-auto mb-2 text-yellow-300 group-hover:scale-110 transition-transform duration-300" />
                   <div className="text-3xl md:text-4xl font-bold text-yellow-300 mb-2 group-hover:scale-110 transition-transform duration-300">
@@ -69,13 +75,10 @@ const HeroSection = () => {
                     {stat.label}
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              </div>;
+        })}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;

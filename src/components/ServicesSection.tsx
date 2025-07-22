@@ -1,151 +1,122 @@
-
 import React, { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ShoppingCart, TrendingUp, Camera, Video, Globe, Rocket, Users, Shield, Monitor, Search, Megaphone, Code, BarChart3, Smartphone, ArrowRight } from "lucide-react";
 import Mascot from './Mascot';
-
 const ServicesSection = () => {
   const [activeCategory, setActiveCategory] = useState('all');
-
   const services = [
-    // Ecommerce Services
-    {
-      icon: ShoppingCart,
-      title: "Ecommerce Marketing",
-      category: "Ecommerce",
-      description: "Complete digital marketing strategies tailored for ecommerce success",
-      features: ["PPC Campaigns", "Social Media Marketing", "Email Marketing", "SEO Optimization"],
-      color: "from-blue-500 to-purple-600"
-    },
-    {
-      icon: TrendingUp,
-      title: "Ecommerce Sales Growth",
-      category: "Ecommerce", 
-      description: "Data-driven strategies to boost your online sales and conversion rates",
-      features: ["Conversion Optimization", "Sales Funnel Design", "A/B Testing", "Performance Analytics"],
-      color: "from-green-500 to-teal-600"
-    },
-    {
-      icon: Camera,
-      title: "Brand Product Shoot",
-      category: "Ecommerce",
-      description: "Professional product photography that drives conversions",
-      features: ["Studio Photography", "Lifestyle Shots", "360° Product Views", "Image Editing"],
-      color: "from-pink-500 to-rose-600"
-    },
-    {
-      icon: Video,
-      title: "Product Video Production",
-      category: "Ecommerce",
-      description: "Engaging video content that showcases your products effectively",
-      features: ["Product Demos", "Unboxing Videos", "Brand Stories", "Social Media Videos"],
-      color: "from-orange-500 to-red-600"
-    },
-    {
-      icon: Globe,
-      title: "Marketplace Management",
-      category: "Ecommerce",
-      description: "Expert management across all major ecommerce platforms",
-      features: ["Amazon India", "Flipkart", "Myntra", "Blinkit", "Zepto", "Noon.com", "Walmart"],
-      color: "from-indigo-500 to-blue-600"
-    },
-    {
-      icon: Rocket,
-      title: "Brand Growth & Launch",
-      category: "Ecommerce",
-      description: "End-to-end brand building and product launch strategies",
-      features: ["Brand Strategy", "Product Launch", "Market Research", "Competitive Analysis"],
-      color: "from-cyan-500 to-blue-600"
-    },
-    {
-      icon: Users,
-      title: "Influencer Management",
-      category: "Ecommerce",
-      description: "Strategic influencer partnerships that amplify your brand reach",
-      features: ["Influencer Sourcing", "Campaign Management", "Content Strategy", "Performance Tracking"],
-      color: "from-violet-500 to-purple-600"
-    },
-    {
-      icon: Shield,
-      title: "Brand Partnerships",
-      category: "Ecommerce",
-      description: "Strategic collaborations that expand your market presence",
-      features: ["Partnership Strategy", "Deal Negotiation", "Co-marketing", "Joint Ventures"],
-      color: "from-emerald-500 to-green-600"
-    },
-    // Digital Services
-    {
-      icon: Monitor,
-      title: "Website Development",
-      category: "Digital",
-      description: "Custom websites that convert visitors into customers",
-      features: ["Responsive Design", "E-commerce Sites", "Landing Pages", "Web Applications"],
-      color: "from-slate-500 to-gray-600"
-    },
-    {
-      icon: Search,
-      title: "SEO Services",
-      category: "Digital",
-      description: "Dominate search results and drive organic traffic",
-      features: ["Keyword Research", "On-Page SEO", "Link Building", "Technical SEO"],
-      color: "from-lime-500 to-green-600"
-    },
-    {
-      icon: Megaphone,
-      title: "Digital Marketing",
-      category: "Digital",
-      description: "Comprehensive digital marketing campaigns across all channels",
-      features: ["Google Ads", "Facebook Ads", "Content Marketing", "Social Media Management"],
-      color: "from-yellow-500 to-orange-600"
-    },
-    {
-      icon: Code,
-      title: "Web Applications",
-      category: "Digital",
-      description: "Custom web applications tailored to your business needs",
-      features: ["SaaS Solutions", "CRM Systems", "Booking Platforms", "Management Tools"],
-      color: "from-teal-500 to-cyan-600"
-    },
-    {
-      icon: BarChart3,
-      title: "Analytics & Reporting",
-      category: "Digital",
-      description: "Data-driven insights to optimize your digital presence",
-      features: ["Google Analytics", "Performance Reports", "ROI Tracking", "Custom Dashboards"],
-      color: "from-red-500 to-pink-600"
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Optimization",
-      category: "Digital",
-      description: "Ensure your digital presence works perfectly on all devices",
-      features: ["Mobile-First Design", "App Development", "Progressive Web Apps", "Mobile SEO"],
-      color: "from-purple-500 to-violet-600"
-    }
-  ];
-
-  const filteredServices = activeCategory === 'all' 
-    ? services 
-    : services.filter(service => service.category === activeCategory);
-
-  return (
-    <section id="services" className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 relative overflow-hidden">
+  // Ecommerce Services
+  {
+    icon: ShoppingCart,
+    title: "Ecommerce Marketing",
+    category: "Ecommerce",
+    description: "Complete digital marketing strategies tailored for ecommerce success",
+    features: ["PPC Campaigns", "Social Media Marketing", "Email Marketing", "SEO Optimization"],
+    color: "from-blue-500 to-purple-600"
+  }, {
+    icon: TrendingUp,
+    title: "Ecommerce Sales Growth",
+    category: "Ecommerce",
+    description: "Data-driven strategies to boost your online sales and conversion rates",
+    features: ["Conversion Optimization", "Sales Funnel Design", "A/B Testing", "Performance Analytics"],
+    color: "from-green-500 to-teal-600"
+  }, {
+    icon: Camera,
+    title: "Brand Product Shoot",
+    category: "Ecommerce",
+    description: "Professional product photography that drives conversions",
+    features: ["Studio Photography", "Lifestyle Shots", "360° Product Views", "Image Editing"],
+    color: "from-pink-500 to-rose-600"
+  }, {
+    icon: Video,
+    title: "Product Video Production",
+    category: "Ecommerce",
+    description: "Engaging video content that showcases your products effectively",
+    features: ["Product Demos", "Unboxing Videos", "Brand Stories", "Social Media Videos"],
+    color: "from-orange-500 to-red-600"
+  }, {
+    icon: Globe,
+    title: "Marketplace Management",
+    category: "Ecommerce",
+    description: "Expert management across all major ecommerce platforms",
+    features: ["Amazon India", "Flipkart", "Myntra", "Blinkit", "Zepto", "Noon.com", "Walmart"],
+    color: "from-indigo-500 to-blue-600"
+  }, {
+    icon: Rocket,
+    title: "Brand Growth & Launch",
+    category: "Ecommerce",
+    description: "End-to-end brand building and product launch strategies",
+    features: ["Brand Strategy", "Product Launch", "Market Research", "Competitive Analysis"],
+    color: "from-cyan-500 to-blue-600"
+  }, {
+    icon: Users,
+    title: "Influencer Management",
+    category: "Ecommerce",
+    description: "Strategic influencer partnerships that amplify your brand reach",
+    features: ["Influencer Sourcing", "Campaign Management", "Content Strategy", "Performance Tracking"],
+    color: "from-violet-500 to-purple-600"
+  }, {
+    icon: Shield,
+    title: "Brand Partnerships",
+    category: "Ecommerce",
+    description: "Strategic collaborations that expand your market presence",
+    features: ["Partnership Strategy", "Deal Negotiation", "Co-marketing", "Joint Ventures"],
+    color: "from-emerald-500 to-green-600"
+  },
+  // Digital Services
+  {
+    icon: Monitor,
+    title: "Website Development",
+    category: "Digital",
+    description: "Custom websites that convert visitors into customers",
+    features: ["Responsive Design", "E-commerce Sites", "Landing Pages", "Web Applications"],
+    color: "from-slate-500 to-gray-600"
+  }, {
+    icon: Search,
+    title: "SEO Services",
+    category: "Digital",
+    description: "Dominate search results and drive organic traffic",
+    features: ["Keyword Research", "On-Page SEO", "Link Building", "Technical SEO"],
+    color: "from-lime-500 to-green-600"
+  }, {
+    icon: Megaphone,
+    title: "Digital Marketing",
+    category: "Digital",
+    description: "Comprehensive digital marketing campaigns across all channels",
+    features: ["Google Ads", "Facebook Ads", "Content Marketing", "Social Media Management"],
+    color: "from-yellow-500 to-orange-600"
+  }, {
+    icon: Code,
+    title: "Web Applications",
+    category: "Digital",
+    description: "Custom web applications tailored to your business needs",
+    features: ["SaaS Solutions", "CRM Systems", "Booking Platforms", "Management Tools"],
+    color: "from-teal-500 to-cyan-600"
+  }, {
+    icon: BarChart3,
+    title: "Analytics & Reporting",
+    category: "Digital",
+    description: "Data-driven insights to optimize your digital presence",
+    features: ["Google Analytics", "Performance Reports", "ROI Tracking", "Custom Dashboards"],
+    color: "from-red-500 to-pink-600"
+  }, {
+    icon: Smartphone,
+    title: "Mobile Optimization",
+    category: "Digital",
+    description: "Ensure your digital presence works perfectly on all devices",
+    features: ["Mobile-First Design", "App Development", "Progressive Web Apps", "Mobile SEO"],
+    color: "from-purple-500 to-violet-600"
+  }];
+  const filteredServices = activeCategory === 'all' ? services : services.filter(service => service.category === activeCategory);
+  return <section id="services" className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5">
-        <div className="absolute top-20 left-20 w-40 h-40 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-60 h-60 bg-purple-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
+      
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <div className="flex justify-center mb-4">
-            <div className="relative">
-              <Mascot size="md" className="hover:scale-110 transition-transform duration-300" />
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-ping"></div>
-            </div>
-          </div>
+          
           <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200 hover:scale-105 transition-all duration-300">
             🎯 Our Services
           </Badge>
@@ -160,21 +131,9 @@ const ServicesSection = () => {
         {/* Service Category Filter */}
         <div className="flex justify-center mb-12">
           <div className="bg-white rounded-2xl p-2 shadow-lg border flex flex-wrap gap-2">
-            {['all', 'Ecommerce', 'Digital'].map((category) => (
-              <Button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                variant={activeCategory === category ? "default" : "ghost"}
-                className={`rounded-xl transition-all duration-300 ${
-                  activeCategory === category 
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg scale-105' 
-                    : 'hover:bg-gray-100 hover:scale-105'
-                }`}
-              >
-                {category === 'all' ? '🌟 All Services' : 
-                 category === 'Ecommerce' ? '🛒 Ecommerce' : '💻 Digital'}
-              </Button>
-            ))}
+            {['all', 'Ecommerce', 'Digital'].map(category => <Button key={category} onClick={() => setActiveCategory(category)} variant={activeCategory === category ? "default" : "ghost"} className={`rounded-xl transition-all duration-300 ${activeCategory === category ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg scale-105' : 'hover:bg-gray-100 hover:scale-105'}`}>
+                {category === 'all' ? '🌟 All Services' : category === 'Ecommerce' ? '🛒 Ecommerce' : '💻 Digital'}
+              </Button>)}
           </div>
         </div>
 
@@ -187,7 +146,7 @@ const ServicesSection = () => {
                 <ShoppingCart className="h-16 w-16 mx-auto mb-4 group-hover:animate-bounce" />
                 <h3 className="text-3xl font-bold mb-4">Ecommerce Services</h3>
                 <p className="text-blue-100 text-lg mb-4">Complete ecommerce growth solutions</p>
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+                <Button variant="outline" className="border-white text-white hover:text-blue-600 bg-white-300 hover:bg-blue-200 text-base">
                   Explore Ecommerce <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -198,7 +157,7 @@ const ServicesSection = () => {
                 <Monitor className="h-16 w-16 mx-auto mb-4 group-hover:animate-bounce" />
                 <h3 className="text-3xl font-bold mb-4">Digital Services</h3>
                 <p className="text-green-100 text-lg mb-4">Web development & digital marketing</p>
-                <Button variant="outline" className="border-white text-white hover:bg-white hover:text-green-600">
+                <Button variant="outline" className="border-white text-white hover:text-green-600 bg-green-100">
                   Explore Digital <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -207,8 +166,7 @@ const ServicesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {filteredServices.map((service, index) => (
-            <Card key={index} className="p-6 hover:shadow-2xl transition-all duration-500 border-0 bg-white hover:-translate-y-4 group relative overflow-hidden rounded-2xl">
+          {filteredServices.map((service, index) => <Card key={index} className="p-6 hover:shadow-2xl transition-all duration-500 border-0 bg-white hover:-translate-y-4 group relative overflow-hidden rounded-2xl">
               {/* Gradient background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
               
@@ -226,12 +184,10 @@ const ServicesSection = () => {
                 </h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
                 <ul className="space-y-3">
-                  {service.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-center text-sm text-gray-700 group-hover:text-gray-800 transition-colors duration-200">
+                  {service.features.map((feature, fIndex) => <li key={fIndex} className="flex items-center text-sm text-gray-700 group-hover:text-gray-800 transition-colors duration-200">
                       <CheckCircle className="h-4 w-4 text-green-500 mr-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" />
                       <span className="hover:font-medium transition-all duration-200">{feature}</span>
-                    </li>
-                  ))}
+                    </li>)}
                 </ul>
                 
                 {/* Hidden button that appears on hover */}
@@ -241,12 +197,9 @@ const ServicesSection = () => {
                   </Button>
                 </div>
               </div>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ServicesSection;
