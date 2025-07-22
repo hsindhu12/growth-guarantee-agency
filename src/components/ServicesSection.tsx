@@ -41,7 +41,7 @@ const ServicesSection = () => {
     title: "Marketplace Management",
     category: "Ecommerce",
     description: "Expert management across all major ecommerce platforms",
-    features: ["Amazon India", "Flipkart", "Myntra", "Quick Commerce", "Zepto", "Noon.com", "Walmart"],
+    features: ["Amazon India", "Flipkart", "Myntra", "Blinkit", "Zepto", "Noon.com", "Walmart"],
     color: "from-indigo-500 to-blue-600"
   }, {
     icon: Rocket,

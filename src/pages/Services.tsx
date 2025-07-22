@@ -12,19 +12,19 @@ const Services = () => {
     {
       icon: Target,
       title: "🎯 Precision Retargeting",
-      description: "ICONA's signature technique - laser-focused retargeting that converts browsers into buyers with surgical precision.",
+      description: "Blink's signature ninja technique - laser-focused retargeting that converts browsers into buyers with surgical precision.",
       features: ["Facebook & Instagram Retargeting", "Google Ads Retargeting", "Email Retargeting Sequences", "Cross-platform Tracking"]
     },
     {
       icon: ShoppingCart,
       title: "🏪 Marketplace Domination",
-      description: "Master all major marketplaces with ICONA's proven strategies for Amazon, Flipkart, Myntra, and more.",
+      description: "Master all major marketplaces with Blink's proven strategies for Amazon, Flipkart, Myntra, and more.",
       features: ["Amazon Optimization", "Flipkart Growth", "Myntra Brand Building", "Multi-platform Management"]
     },
     {
       icon: Camera,
-      title: "📸 Professional Photography",
-      description: "Product photography that makes customers stop scrolling and start buying - captured with expert precision.",
+      title: "📸 Ninja Photography",
+      description: "Product photography that makes customers stop scrolling and start buying - captured with ninja precision.",
       features: ["Product Photography", "Lifestyle Shoots", "360° Product Views", "A+ Content Creation"]
     },
     {
@@ -38,14 +38,14 @@ const Services = () => {
   const digitalServices = [
     {
       icon: Globe,
-      title: "🌐 Professional Website Development",
-      description: "Lightning-fast, conversion-optimized websites that turn visitors into customers with ICONA's digital expertise.",
+      title: "🌐 Website Ninja Craft",
+      description: "Lightning-fast, conversion-optimized websites that turn visitors into customers with Blink's digital mastery.",
       features: ["E-commerce Websites", "Landing Pages", "Mobile Optimization", "Speed Optimization"]
     },
     {
       icon: Search,
-      title: "🔍 Advanced SEO",
-      description: "Strategic SEO optimization that dominates search results - ICONA's proven techniques deliver results.",
+      title: "🔍 SEO Stealth Mode",
+      description: "Invisible to competitors but dominating search results - Blink's SEO techniques work like magic.",
       features: ["Keyword Domination", "Technical SEO", "Content Strategy", "Local SEO"]
     },
     {
@@ -75,18 +75,18 @@ const Services = () => {
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <Badge className="mb-6 bg-green-500/20 text-green-300 border-green-400 text-lg px-6 py-2">
-            🚀 ICONA's Service Arsenal
+            🥷 Blink's Ninja Services Arsenal
           </Badge>
           
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            ICONA's Complete
+            Blink's Complete
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-              Growth Mastery Suite
+              Growth Mastery Suite 🥷
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
-            From precision retargeting to marketplace domination, ICONA's expertise covers every aspect of digital growth. 
+            From precision retargeting to marketplace domination, Blink's ninja skills cover every aspect of digital growth. 
             <span className="text-yellow-300 font-semibold"> Zero upfront fees, 100% guaranteed results.</span>
           </p>
         </div>
@@ -97,10 +97,10 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              🛒 Ecommerce Excellence
+              🛒 Ecommerce Ninja Skills
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              ICONA's specialized ecommerce strategies that transform online stores into profit-generating machines
+              Blink's specialized ecommerce techniques that transform online stores into profit-generating machines
             </p>
           </div>
           
@@ -140,7 +140,7 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              💻 Digital Excellence
+              💻 Digital Ninja Powers
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Comprehensive digital solutions that establish your brand's dominance across all online channels
@@ -182,13 +182,13 @@ const Services = () => {
       <section className="py-16 bg-gradient-to-r from-gray-900 to-black text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            🚀 Ready to Unleash ICONA's Power?
+            🥷 Ready to Unleash Blink's Power?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Join 500+ brands that trust ICONA's expert strategies for guaranteed growth. Zero risk, maximum results.
+            Join 500+ brands that trust Blink's ninja techniques for guaranteed growth. Zero risk, maximum results.
           </p>
           <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
-            🚀 Get ICONA's Growth Audit
+            🥷 Get Blink's Growth Audit
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>

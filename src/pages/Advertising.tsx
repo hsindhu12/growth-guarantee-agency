@@ -12,7 +12,7 @@ const Advertising = () => {
     {
       icon: Target,
       title: "Google Ads Mastery",
-      description: "Dominate search results with ICONA's precision targeting",
+      description: "Dominate search results with Blink's precision targeting",
       features: ["Search Campaigns", "Display Advertising", "Shopping Ads", "Video Campaigns"]
     },
     {
@@ -23,8 +23,8 @@ const Advertising = () => {
     },
     {
       icon: Megaphone,
-      title: "Advanced Retargeting",
-      description: "ICONA's signature retargeting that never misses",
+      title: "Retargeting Ninja",
+      description: "Blink's signature retargeting that never misses",
       features: ["Website Retargeting", "Email Retargeting", "Cross-platform Tracking", "Conversion Optimization"]
     }
   ];
@@ -42,12 +42,12 @@ const Advertising = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Digital Advertising
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-              ICONA's Ad Excellence
+              Blink's Ad Domination 🥷
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-orange-100">
-            ICONA's advertising expertise turns every click into profit. 
+            Blink's advertising ninja skills turn every click into profit. 
             <span className="text-yellow-300 font-semibold"> Zero waste, maximum ROI.</span>
           </p>
         </div>
@@ -56,7 +56,7 @@ const Advertising = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            🚀 ICONA's Advertising Arsenal
+            🥷 Blink's Advertising Arsenal
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -93,7 +93,7 @@ const Advertising = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                🎯 ICONA's Advertising Advantage
+                🎯 Blink's Advertising Advantage
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -133,13 +133,13 @@ const Advertising = () => {
       <section className="py-16 bg-gradient-to-r from-gray-900 to-black text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            🚀 Ready to Dominate Advertising?
+            🥷 Ready to Dominate Advertising?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let ICONA's advertising experts multiply your profits. Zero risk, guaranteed results.
+            Let Blink's advertising ninjas multiply your profits. Zero risk, guaranteed results.
           </p>
           <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
-            🚀 Launch Ad Campaigns
+            🥷 Launch Ad Campaigns
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
