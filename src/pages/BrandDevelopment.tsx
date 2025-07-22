@@ -42,12 +42,12 @@ const BrandDevelopment = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Brand Development
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-              Blink's Brand Magic 🥷
+              ICONA's Brand Excellence
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-cyan-100">
-            Blink transforms businesses into unforgettable brands that customers love. 
+            ICONA transforms businesses into unforgettable brands that customers love. 
             <span className="text-yellow-300 font-semibold"> From startup to market leader.</span>
           </p>
         </div>
@@ -56,7 +56,7 @@ const BrandDevelopment = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            🥷 Blink's Brand Building Arsenal
+            🚀 ICONA's Brand Building Arsenal
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -93,7 +93,7 @@ const BrandDevelopment = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                🚀 Why Blink for Brand Development?
+                🚀 Why ICONA for Brand Development?
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -133,13 +133,13 @@ const BrandDevelopment = () => {
       <section className="py-16 bg-gradient-to-r from-gray-900 to-black text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            🥷 Ready to Build Your Brand Empire?
+            🚀 Ready to Build Your Brand Empire?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let Blink transform your business into an unforgettable brand. Zero upfront investment, guaranteed impact.
+            Let ICONA transform your business into an unforgettable brand. Zero upfront investment, guaranteed impact.
           </p>
           <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
-            🥷 Start Brand Transformation
+            🚀 Start Brand Transformation
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>

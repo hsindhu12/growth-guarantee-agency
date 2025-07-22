@@ -14,7 +14,7 @@ const SuccessStoriesSection = () => {
       timespan: "6 months",
       revenue: "₹2.5Cr to ₹11Cr",
       challenge: "Low conversion rates and high cart abandonment",
-      solution: "Blink's precision retargeting campaigns + marketplace optimization",
+      solution: "ICONA's precision retargeting campaigns + marketplace optimization",
       image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop&crop=center",
       color: "from-pink-500 to-rose-600"
     },
@@ -25,7 +25,7 @@ const SuccessStoriesSection = () => {
       timespan: "4 months",
       revenue: "₹1.8Cr to ₹6.8Cr",
       challenge: "Poor Amazon ranking and low visibility",
-      solution: "Blink's ninja SEO tactics + strategic PPC campaigns",
+      solution: "ICONA's expert SEO tactics + strategic PPC campaigns",
       image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=300&h=200&fit=crop&crop=center",
       color: "from-blue-500 to-indigo-600"
     },
@@ -36,7 +36,7 @@ const SuccessStoriesSection = () => {
       timespan: "8 months",
       revenue: "₹80L to ₹4.2Cr",
       challenge: "Brand awareness and customer acquisition",
-      solution: "Blink's multi-platform strategy + influencer retargeting",
+      solution: "ICONA's multi-platform strategy + influencer retargeting",
       image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=300&h=200&fit=crop&crop=center",
       color: "from-green-500 to-emerald-600"
     },
@@ -47,7 +47,7 @@ const SuccessStoriesSection = () => {
       timespan: "5 months",
       revenue: "₹1.2Cr to ₹3.5Cr",
       challenge: "Seasonal sales fluctuations",
-      solution: "Blink's year-round engagement strategy + smart automation",
+      solution: "ICONA's year-round engagement strategy + smart automation",
       image: "https://images.unsplash.com/photo-1501286353178-1ec881214838?w=300&h=200&fit=crop&crop=center",
       color: "from-orange-500 to-red-600"
     },
@@ -58,7 +58,7 @@ const SuccessStoriesSection = () => {
       timespan: "7 months",
       revenue: "₹1.5Cr to ₹6.2Cr",
       challenge: "High competition and low margins",
-      solution: "Blink's value optimization + premium positioning tactics",
+      solution: "ICONA's value optimization + premium positioning tactics",
       image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?w=300&h=200&fit=crop&crop=center",
       color: "from-purple-500 to-violet-600"
     },
@@ -69,7 +69,7 @@ const SuccessStoriesSection = () => {
       timespan: "6 months",
       revenue: "₹90L to ₹3.3Cr",
       challenge: "Building trust with online customers",
-      solution: "Blink's social proof campaigns + review optimization",
+      solution: "ICONA's social proof campaigns + review optimization",
       image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop&crop=center",
       color: "from-cyan-500 to-blue-600"
     }
@@ -99,10 +99,10 @@ const SuccessStoriesSection = () => {
             🏆 Success Stories That Inspire
           </Badge>
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-yellow-200 to-orange-200 bg-clip-text text-transparent">
-            When Blink Works His Magic
+            When ICONA Delivers Results
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Real brands, real growth, real results. See how Blink's ninja techniques transformed these businesses 🥷✨
+            Real brands, real growth, real results. See how ICONA's expert strategies transformed these businesses ✨
           </p>
         </div>
 
@@ -158,7 +158,7 @@ const SuccessStoriesSection = () => {
                 </div>
 
                 <div>
-                  <div className="text-green-300 text-sm font-medium mb-1">Blink's Solution:</div>
+                  <div className="text-green-300 text-sm font-medium mb-1">ICONA's Solution:</div>
                   <div className="text-gray-300 text-sm">{story.solution}</div>
                 </div>
 
@@ -179,11 +179,11 @@ const SuccessStoriesSection = () => {
           <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 backdrop-blur-lg rounded-3xl p-8 max-w-2xl mx-auto border border-yellow-500/30">
             <h3 className="text-2xl font-bold mb-4 text-yellow-300">Ready to Be Our Next Success Story?</h3>
             <p className="text-gray-300 mb-6">
-              Join the ranks of brands that Blink has transformed. Your growth story starts with a single conversation.
+              Join the ranks of brands that ICONA has transformed. Your growth story starts with a single conversation.
             </p>
             <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-semibold px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group">
               <span className="flex items-center">
-                🥷 Start My Success Story
+                🚀 Start My Success Story
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
               </span>
             </Button>

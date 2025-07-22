@@ -22,7 +22,7 @@ const MarketplaceSection = () => {
       color: "from-pink-400 to-pink-600" 
     },
     { 
-      name: "Blinkit", 
+      name: "Quick Commerce", 
       logoUrl: "https://images.unsplash.com/photo-1501286353178-1ec881214838?w=80&h=80&fit=crop&crop=center",
       color: "from-yellow-400 to-orange-500" 
     },
@@ -79,13 +79,13 @@ const MarketplaceSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <Badge className="mb-6 bg-yellow-500/20 text-yellow-300 border-yellow-400 hover:scale-110 transition-all duration-300 text-lg px-6 py-3">
-            🥷 Blink's Marketplace Mastery
+            🚀 Marketplace Excellence
           </Badge>
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-            Where Blink Dominates Every Platform
+            Where ICONA Dominates Every Platform
           </h2>
           <p className="text-xl text-blue-200 max-w-3xl mx-auto mb-8">
-            Watch Blink work his ninja magic across all major Indian and global marketplaces 🌐
+            Watch ICONA drive exceptional results across all major Indian and global marketplaces 🌐
           </p>
           <div className="flex justify-center space-x-4 mb-8">
             {[...Array(5)].map((_, i) => (
@@ -120,7 +120,7 @@ const MarketplaceSection = () => {
                 <div className="mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex justify-center">
                     <Badge className="bg-green-500/20 text-green-300 border-green-400 text-xs">
-                      🥷 Ninja Optimized
+                      ⚡ Expert Optimized
                     </Badge>
                   </div>
                 </div>
@@ -132,13 +132,13 @@ const MarketplaceSection = () => {
         {/* Call to action */}
         <div className="text-center">
           <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 max-w-2xl mx-auto border border-white/20">
-            <h3 className="text-2xl font-bold mb-4 text-yellow-300">Ready for Blink's Ninja Magic?</h3>
+            <h3 className="text-2xl font-bold mb-4 text-yellow-300">Ready for ICONA's Expert Solutions?</h3>
             <p className="text-blue-200 mb-6">
-              Let Blink handle your marketplace presence with ninja-like precision while you focus on growing your business.
+              Let ICONA handle your marketplace presence with expert precision while you focus on growing your business.
             </p>
             <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-semibold px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group">
               <span className="flex items-center">
-                🥷 Unleash Blink's Power
+                🚀 Unleash ICONA's Power
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
               </span>
             </Button>
