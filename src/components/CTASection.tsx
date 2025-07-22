@@ -1,11 +1,8 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, MessageCircle, Calendar } from "lucide-react";
-
 const CTASection = () => {
-  return (
-    <section id="contact" className="py-20 bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
+  return <section id="contact" className="py-20 bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -15,18 +12,12 @@ const CTASection = () => {
       
       {/* Floating particles */}
       <div className="absolute inset-0">
-        {[...Array(30)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 4}s`
-            }}
-          />
-        ))}
+        {[...Array(30)].map((_, i) => <div key={i} className="absolute w-1 h-1 bg-white/30 rounded-full animate-pulse" style={{
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 3}s`,
+        animationDuration: `${2 + Math.random() * 4}s`
+      }} />)}
       </div>
       
       <div className="container mx-auto px-4 text-center relative z-10">
@@ -74,7 +65,7 @@ const CTASection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Button>
             
-            <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-black px-12 py-6 text-xl font-bold rounded-full hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+            <Button variant="outline" size="lg" className="border-2 border-white hover:bg-white px-12 py-6 text-xl font-bold rounded-full hover:scale-105 transition-all duration-300 group relative overflow-hidden text-slate-800">
               <span className="flex items-center">
                 📱 WhatsApp: +91 XXXXX XXXXX
                 <MessageCircle className="ml-3 h-6 w-6 group-hover:animate-bounce" />
@@ -93,8 +84,6 @@ const CTASection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CTASection;
