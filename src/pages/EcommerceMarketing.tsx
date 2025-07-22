@@ -1,114 +1,76 @@
-
 import React from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  TrendingUp, 
-  ShoppingCart, 
-  Target, 
-  BarChart, 
-  Users, 
-  DollarSign,
-  CheckCircle,
-  ArrowRight,
-  Star
-} from "lucide-react";
+import { TrendingUp, ShoppingCart, Target, BarChart, Users, DollarSign, CheckCircle, ArrowRight, Star } from "lucide-react";
 import { useServicePage } from '@/hooks/useServicePages';
 import { Skeleton } from "@/components/ui/skeleton";
-
 const EcommerceMarketing = () => {
-  const { data: serviceData, isLoading } = useServicePage('ecommerce-marketing');
-
-  const defaultFeatures = [
-    {
-      icon: TrendingUp,
-      title: "SEO Optimization",
-      description: "Improve your search rankings and drive organic traffic to your e-commerce store."
-    },
-    {
-      icon: Target,
-      title: "PPC Advertising",
-      description: "Targeted pay-per-click campaigns that deliver high-converting traffic."
-    },
-    {
-      icon: BarChart,
-      title: "Conversion Rate Optimization",
-      description: "Optimize your store to convert more visitors into paying customers."
-    },
-    {
-      icon: Users,
-      title: "Social Media Marketing",
-      description: "Build your brand presence and engage customers on social platforms."
-    },
-    {
-      icon: DollarSign,
-      title: "Email Marketing",
-      description: "Automated email campaigns that nurture leads and increase customer lifetime value."
-    },
-    {
-      icon: ShoppingCart,
-      title: "Marketplace Integration",
-      description: "Expand your reach by selling on Amazon, eBay, and other major marketplaces."
-    }
-  ];
-
-  const benefits = [
-    "Increase online sales by 200-400%",
-    "Improve search engine rankings",
-    "Reduce customer acquisition costs",
-    "Enhance brand visibility",
-    "Optimize conversion rates",
-    "Build customer loyalty"
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      company: "FashionForward",
-      text: "ICONA transformed our e-commerce business. Sales increased by 350% in just 6 months!",
-      rating: 5
-    },
-    {
-      name: "Mike Chen",
-      company: "TechGadgets Pro",
-      text: "Their strategic approach to e-commerce marketing delivered results beyond our expectations.",
-      rating: 5
-    }
-  ];
-
+  const {
+    data: serviceData,
+    isLoading
+  } = useServicePage('ecommerce-marketing');
+  const defaultFeatures = [{
+    icon: TrendingUp,
+    title: "SEO Optimization",
+    description: "Improve your search rankings and drive organic traffic to your e-commerce store."
+  }, {
+    icon: Target,
+    title: "PPC Advertising",
+    description: "Targeted pay-per-click campaigns that deliver high-converting traffic."
+  }, {
+    icon: BarChart,
+    title: "Conversion Rate Optimization",
+    description: "Optimize your store to convert more visitors into paying customers."
+  }, {
+    icon: Users,
+    title: "Social Media Marketing",
+    description: "Build your brand presence and engage customers on social platforms."
+  }, {
+    icon: DollarSign,
+    title: "Email Marketing",
+    description: "Automated email campaigns that nurture leads and increase customer lifetime value."
+  }, {
+    icon: ShoppingCart,
+    title: "Marketplace Integration",
+    description: "Expand your reach by selling on Amazon, eBay, and other major marketplaces."
+  }];
+  const benefits = ["Increase online sales by 200-400%", "Improve search engine rankings", "Reduce customer acquisition costs", "Enhance brand visibility", "Optimize conversion rates", "Build customer loyalty"];
+  const testimonials = [{
+    name: "Sarah Johnson",
+    company: "FashionForward",
+    text: "ICONA transformed our e-commerce business. Sales increased by 350% in just 6 months!",
+    rating: 5
+  }, {
+    name: "Mike Chen",
+    company: "TechGadgets Pro",
+    text: "Their strategic approach to e-commerce marketing delivered results beyond our expectations.",
+    rating: 5
+  }];
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background">
+    return <div className="min-h-screen bg-background">
         <Header />
         <div className="pt-20 pb-16">
           <div className="container mx-auto px-4">
             <Skeleton className="h-12 w-3/4 mb-4" />
             <Skeleton className="h-6 w-1/2 mb-8" />
             <div className="grid md:grid-cols-3 gap-6">
-              {Array(6).fill(0).map((_, i) => (
-                <Skeleton key={i} className="h-48" />
-              ))}
+              {Array(6).fill(0).map((_, i) => <Skeleton key={i} className="h-48" />)}
             </div>
           </div>
         </div>
         <Footer />
-      </div>
-    );
+      </div>;
   }
-
   const heroContent = serviceData?.hero_content || {
     heading: "Boost Your E-commerce Sales",
     description: "Comprehensive marketing solutions for online retailers",
     cta: "Get Started Today"
   };
-
   const features = serviceData?.features || defaultFeatures;
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
@@ -140,7 +102,7 @@ const EcommerceMarketing = () => {
                 {heroContent.cta}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-4">
+              <Button size="lg" variant="outline" className="border-white text-grey hover:bg-white hover:text-blue-600 text-lg px-8 py-4">
                 View Case Studies
               </Button>
             </div>
@@ -162,9 +124,8 @@ const EcommerceMarketing = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => {
-              const IconComponent = feature.icon || TrendingUp;
-              return (
-                <Card key={index} className="shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border-0">
+            const IconComponent = feature.icon || TrendingUp;
+            return <Card key={index} className="shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border-0">
                   <CardContent className="p-8 text-center">
                     <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
                       <IconComponent className="h-8 w-8 text-white" />
@@ -172,9 +133,8 @@ const EcommerceMarketing = () => {
                     <h3 className="text-xl font-bold text-gray-900 mb-4">{feature.title}</h3>
                     <p className="text-gray-600">{feature.description}</p>
                   </CardContent>
-                </Card>
-              );
-            })}
+                </Card>;
+          })}
           </div>
         </div>
       </section>
@@ -192,21 +152,15 @@ const EcommerceMarketing = () => {
               </p>
               
               <div className="space-y-4">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start">
+                {benefits.map((benefit, index) => <div key={index} className="flex items-start">
                     <CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700 text-lg">{benefit}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
             
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&crop=center" 
-                alt="E-commerce Success"
-                className="rounded-lg shadow-2xl"
-              />
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&crop=center" alt="E-commerce Success" className="rounded-lg shadow-2xl" />
               <div className="absolute -top-6 -right-6 bg-gradient-to-r from-green-500 to-blue-500 text-white p-6 rounded-lg shadow-xl">
                 <div className="text-3xl font-bold">350%</div>
                 <div className="text-sm">Average Sales Increase</div>
@@ -229,13 +183,10 @@ const EcommerceMarketing = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="shadow-lg border-0">
+            {testimonials.map((testimonial, index) => <Card key={index} className="shadow-lg border-0">
                 <CardContent className="p-8">
                   <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                    ))}
+                    {[...Array(testimonial.rating)].map((_, i) => <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />)}
                   </div>
                   <blockquote className="text-lg text-gray-700 mb-6 italic">
                     "{testimonial.text}"
@@ -245,8 +196,7 @@ const EcommerceMarketing = () => {
                     <div className="text-gray-600">{testimonial.company}</div>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -265,7 +215,7 @@ const EcommerceMarketing = () => {
               🚀 Start My Growth Journey
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black text-lg px-8 py-4">
+            <Button size="lg" variant="outline" className="border-white text-black hover:bg-white hover:text-black text-lg px-8 py-4">
               📞 Schedule Free Consultation
             </Button>
           </div>
@@ -273,8 +223,6 @@ const EcommerceMarketing = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default EcommerceMarketing;
