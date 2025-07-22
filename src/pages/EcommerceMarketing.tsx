@@ -102,7 +102,7 @@ const EcommerceMarketing = () => {
                 {heroContent.cta}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-grey hover:bg-white hover:text-blue-600 text-lg px-8 py-4">
+              <Button size="lg" variant="outline" className="border-white text-black hover:bg-white hover:text-blue-600 text-lg px-8 py-4">
                 View Case Studies
               </Button>
             </div>
