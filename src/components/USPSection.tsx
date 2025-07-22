@@ -1,14 +1,11 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Zap, Shield, Heart, Trophy, Target } from "lucide-react";
 import Mascot from './Mascot';
-
 const USPSection = () => {
-  return (
-    <section className="py-20 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 relative overflow-hidden">
+  return <section className="py-20 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-10 left-10 w-20 h-20 bg-green-400 rounded-full blur-xl animate-pulse"></div>
@@ -18,14 +15,7 @@ const USPSection = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="flex justify-center mb-8">
-            <div className="relative">
-              <Mascot size="lg" className="hover:scale-110 transition-transform duration-300" />
-              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-full p-2 animate-bounce">
-                <Heart className="h-6 w-6 text-white" />
-              </div>
-            </div>
-          </div>
+          
           
           <Badge className="mb-8 bg-green-100 text-green-800 hover:bg-green-200 text-xl px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg">
             ✨ Why Choose Us?
@@ -112,9 +102,9 @@ const USPSection = () => {
                 <div className="text-center">
                   <div className="text-sm text-gray-500 mb-2">Trusted by 500+ brands</div>
                   <div className="flex justify-center space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <div key={i} className="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse" style={{ animationDelay: `${i * 0.2}s` }}></div>
-                    ))}
+                    {[...Array(5)].map((_, i) => <div key={i} className="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse" style={{
+                    animationDelay: `${i * 0.2}s`
+                  }}></div>)}
                   </div>
                 </div>
               </div>
@@ -122,8 +112,6 @@ const USPSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default USPSection;

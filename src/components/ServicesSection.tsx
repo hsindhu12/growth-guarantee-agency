@@ -157,7 +157,7 @@ const ServicesSection = () => {
                 <Monitor className="h-16 w-16 mx-auto mb-4 group-hover:animate-bounce" />
                 <h3 className="text-3xl font-bold mb-4">Digital Services</h3>
                 <p className="text-green-100 text-lg mb-4">Web development & digital marketing</p>
-                <Button variant="outline" className="border-white text-white hover:text-green-600 bg-green-100">
+                <Button variant="outline" className="border-white bg-green-100/0 text-slate-50">
                   Explore Digital <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
