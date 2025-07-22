@@ -12,7 +12,7 @@ const MarketplaceManagement = () => {
     { name: "Amazon India", growth: "+300%", timespan: "6 months" },
     { name: "Flipkart", growth: "+250%", timespan: "4 months" },
     { name: "Myntra", growth: "+400%", timespan: "8 months" },
-    { name: "Blinkit", growth: "+180%", timespan: "3 months" },
+    { name: "Swiggy Instamart", growth: "+180%", timespan: "3 months" },
     { name: "Zepto", growth: "+220%", timespan: "5 months" },
     { name: "Noon.com", growth: "+350%", timespan: "7 months" }
   ];

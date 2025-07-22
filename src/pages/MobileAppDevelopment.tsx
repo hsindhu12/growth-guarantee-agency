@@ -42,13 +42,13 @@ const MobileAppDevelopment = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Mobile App Development
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-              Blink's Mobile Magic 🥷
+              ICONA's Mobile Magic 🚀
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
-            Blink crafts mobile apps that users love and businesses profit from. 
-            <span className="text-yellow-300 font-semibold"> Native performance, ninja speed.</span>
+            ICONA crafts mobile apps that users love and businesses profit from. 
+            <span className="text-yellow-300 font-semibold"> Native performance, lightning speed.</span>
           </p>
         </div>
       </section>
@@ -56,7 +56,7 @@ const MobileAppDevelopment = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            🥷 Blink's App Arsenal
+            🚀 ICONA's App Arsenal
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -93,7 +93,7 @@ const MobileAppDevelopment = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                🚀 Why Choose Blink's Apps?
+                🚀 Why Choose ICONA's Apps?
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -136,7 +136,7 @@ const MobileAppDevelopment = () => {
             🥷 Ready for Mobile Domination?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let Blink create the mobile app that transforms your business. Zero upfront costs, guaranteed results.
+            Let ICONA create the mobile app that transforms your business. Zero upfront costs, guaranteed results.
           </p>
           <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
             🥷 Start Your App Journey

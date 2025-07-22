@@ -42,12 +42,12 @@ const ProductLaunch = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Product Launch
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500">
-              Blink's Launch Mastery 🥷
+              ICONA's Launch Mastery 🚀
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-purple-100">
-            Blink orchestrates product launches that create market explosions. 
+            ICONA orchestrates product launches that create market explosions. 
             <span className="text-yellow-300 font-semibold"> Zero failed launches, guaranteed success.</span>
           </p>
         </div>
@@ -56,7 +56,7 @@ const ProductLaunch = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            🥷 Blink's Launch Strategy
+            🚀 ICONA's Launch Strategy
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -93,7 +93,7 @@ const ProductLaunch = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6 text-gray-900">
-                🎯 Blink's Launch Guarantee
+                🎯 ICONA's Launch Guarantee
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start">
@@ -136,7 +136,7 @@ const ProductLaunch = () => {
             🥷 Ready for Launch Success?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let Blink orchestrate your product launch for maximum market impact. Zero risk, guaranteed success.
+            Let ICONA orchestrate your product launch for maximum market impact. Zero risk, guaranteed success.
           </p>
           <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
             🥷 Plan Your Launch

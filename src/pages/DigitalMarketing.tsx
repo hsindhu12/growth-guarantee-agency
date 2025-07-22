@@ -26,7 +26,7 @@ const DigitalMarketing = () => {
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-yellow-100">
-            Blink builds engaged communities and drives sales through strategic digital marketing 
+            ICONA builds engaged communities and drives sales through strategic digital marketing 
             <span className="text-yellow-300 font-semibold"> across all platforms.</span>
           </p>
         </div>
@@ -47,7 +47,7 @@ const DigitalMarketing = () => {
                 🥷 Digital Marketing Mastery
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                Blink orchestrates comprehensive digital marketing campaigns that build brand awareness, 
+                ICONA orchestrates comprehensive digital marketing campaigns that build brand awareness, 
                 engage audiences, and drive conversions across every digital touchpoint.
               </p>
               <div className="space-y-4">
@@ -125,7 +125,7 @@ const DigitalMarketing = () => {
             📱 Ready to Build Your Digital Empire?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let Blink orchestrate your digital marketing strategy. Build communities, drive sales, dominate markets.
+            Let ICONA orchestrate your digital marketing strategy. Build communities, drive sales, dominate markets.
           </p>
           <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-lg px-8 py-4">
             📱 Launch Digital Marketing
