@@ -1,6 +1,6 @@
 
 import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import { apiClient } from '@/lib/api';
 
 export interface BlogPost {
   id: string;
@@ -22,23 +22,7 @@ export const useBlogPosts = (featured?: boolean) => {
   return useQuery({
     queryKey: ['blogPosts', featured],
     queryFn: async () => {
-      let query = supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('published', true)
-        .order('created_at', { ascending: false });
-
-      if (featured !== undefined) {
-        query = query.eq('featured', featured);
-      }
-
-      const { data, error } = await query;
-
-      if (error) {
-        console.error('Error fetching blog posts:', error);
-        throw error;
-      }
-
+      const data = await apiClient.getBlogPosts({ featured });
       return data as BlogPost[];
     },
   });
@@ -48,19 +32,15 @@ export const useBlogPost = (slug: string) => {
   return useQuery({
     queryKey: ['blogPost', slug],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('slug', slug)
-        .eq('published', true)
-        .maybeSingle();
-
-      if (error) {
-        console.error('Error fetching blog post:', error);
+      try {
+        const data = await apiClient.getBlogPost(slug);
+        return data as BlogPost | null;
+      } catch (error: any) {
+        if (error.message.includes('404')) {
+          return null;
+        }
         throw error;
       }
-
-      return data as BlogPost | null;
     },
     enabled: !!slug,
   });

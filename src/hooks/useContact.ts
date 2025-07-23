@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { apiClient } from '@/lib/api';
 import { useToast } from '@/hooks/use-toast';
 
 export interface ContactFormData {
@@ -19,11 +19,7 @@ export const useContact = () => {
   const submitContact = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase
-        .from('contacts')
-        .insert([data]);
-
-      if (error) throw error;
+      await apiClient.submitContact(data);
 
       toast({
         title: "Message Sent Successfully!",
@@ -31,11 +27,11 @@ export const useContact = () => {
       });
 
       return { success: true };
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error submitting contact form:', error);
       toast({
         title: "Error",
-        description: "There was an error sending your message. Please try again.",
+        description: error.message || "There was an error sending your message. Please try again.",
         variant: "destructive",
       });
       return { success: false, error };
