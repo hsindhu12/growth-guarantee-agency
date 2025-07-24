@@ -129,4 +129,142 @@ switch ($action) {
         }
         break;
 }
+
+// Handle pages routes
+if (preg_match('#^pages#', $action)) {
+    handlePagesRoutes($action, $method, $user);
+}
+
+function handlePagesRoutes($action, $method, $user) {
+    global $db;
+    
+    // Extract page ID from action if present
+    preg_match('#^pages(?:/(\d+))?#', $action, $matches);
+    $pageId = $matches[1] ?? null;
+    
+    switch ($method) {
+        case 'GET':
+            if ($pageId) {
+                // Get single page
+                try {
+                    $page = $db->fetchOne('SELECT * FROM pages WHERE id = ?', [$pageId]);
+                    if (!$page) {
+                        http_response_code(404);
+                        echo json_encode(['error' => 'Page not found']);
+                        return;
+                    }
+                    echo json_encode($page);
+                } catch (Exception $e) {
+                    http_response_code(500);
+                    echo json_encode(['error' => 'Server error']);
+                }
+            } else {
+                // Get all pages
+                try {
+                    $pages = $db->fetchAll('SELECT * FROM pages ORDER BY updated_at DESC');
+                    echo json_encode(['pages' => $pages]);
+                } catch (Exception $e) {
+                    http_response_code(500);
+                    echo json_encode(['error' => 'Server error']);
+                }
+            }
+            break;
+            
+        case 'POST':
+            // Create new page
+            $input = json_decode(file_get_contents('php://input'), true);
+            
+            if (empty($input['title']) || empty($input['slug'])) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Title and slug required']);
+                return;
+            }
+            
+            try {
+                $db->execute(
+                    'INSERT INTO pages (title, slug, content, meta_title, meta_description, status, template, author_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+                    [
+                        $input['title'],
+                        $input['slug'],
+                        $input['content'] ?? '{}',
+                        $input['meta_title'] ?? $input['title'],
+                        $input['meta_description'] ?? '',
+                        $input['status'] ?? 'draft',
+                        $input['template'] ?? 'default',
+                        $user['id']
+                    ]
+                );
+                
+                $pageId = $db->lastInsertId();
+                $page = $db->fetchOne('SELECT * FROM pages WHERE id = ?', [$pageId]);
+                
+                echo json_encode($page);
+                
+            } catch (Exception $e) {
+                http_response_code(500);
+                echo json_encode(['error' => 'Server error']);
+            }
+            break;
+            
+        case 'PUT':
+            if (!$pageId) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Page ID required']);
+                return;
+            }
+            
+            $input = json_decode(file_get_contents('php://input'), true);
+            
+            try {
+                $updateFields = [];
+                $params = [];
+                
+                foreach (['title', 'slug', 'content', 'meta_title', 'meta_description', 'status', 'template'] as $field) {
+                    if (isset($input[$field])) {
+                        $updateFields[] = "$field = ?";
+                        $params[] = $input[$field];
+                    }
+                }
+                
+                if (!empty($updateFields)) {
+                    $params[] = $pageId;
+                    $db->execute(
+                        'UPDATE pages SET ' . implode(', ', $updateFields) . ', updated_at = NOW() WHERE id = ?',
+                        $params
+                    );
+                }
+                
+                $page = $db->fetchOne('SELECT * FROM pages WHERE id = ?', [$pageId]);
+                echo json_encode($page);
+                
+            } catch (Exception $e) {
+                http_response_code(500);
+                echo json_encode(['error' => 'Server error']);
+            }
+            break;
+            
+        case 'DELETE':
+            if (!$pageId) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Page ID required']);
+                return;
+            }
+            
+            try {
+                $db->execute('DELETE FROM pages WHERE id = ?', [$pageId]);
+                echo json_encode(['message' => 'Page deleted successfully']);
+                
+            } catch (Exception $e) {
+                http_response_code(500);
+                echo json_encode(['error' => 'Server error']);
+            }
+            break;
+            
+        default:
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+            break;
+    }
+}
+}
 ?>

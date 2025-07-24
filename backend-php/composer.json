@@ -12,6 +12,8 @@
         }
     },
     "scripts": {
-        "migrate": "php migrations/migrate.php"
+        "migrate": "php migrations/migrate.php",
+        "sample-data": "php migrations/load-sample-data.php",
+        "setup-pages": "php migrations/migrate.php && mysql -h$DB_HOST -u$DB_USER -p$DB_PASSWORD $DB_NAME < migrations/003_pages_table.sql"
     }
 }
