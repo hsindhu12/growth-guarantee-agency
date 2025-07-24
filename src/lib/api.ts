@@ -1,4 +1,7 @@
-const API_BASE_URL = 'http://localhost:3001/api';
+// Update this to your PHP backend URL
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://yourdomain.com/api' // Replace with your Hostinger domain
+  : 'http://localhost/backend-php'; // For local PHP development
 
 class ApiClient {
   private baseURL: string;
