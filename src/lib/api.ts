@@ -233,6 +233,42 @@ class ApiClient {
     });
   }
 
+  // Pages methods
+  async getPages(params?: { status?: string; limit?: number; offset?: number }) {
+    const searchParams = new URLSearchParams();
+    if (params) {
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined) {
+          searchParams.append(key, value.toString());
+        }
+      });
+    }
+    const query = searchParams.toString();
+    return await this.request(`/pages${query ? `?${query}` : ''}`);
+  }
+
+  async getPage(id: string) {
+    return await this.request(`/pages/${id}`);
+  }
+
+  async createPage(data: any) {
+    return await this.request('/pages', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async updatePage(id: string, data: any) {
+    return await this.request(`/pages/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async deletePage(id: string) {
+    return await this.request(`/pages/${id}`, { method: 'DELETE' });
+  }
+
   // Admin methods
   async getDashboardStats() {
     return await this.request('/admin/dashboard');

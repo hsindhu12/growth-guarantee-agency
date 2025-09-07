@@ -19,6 +19,12 @@ CREATE TABLE IF NOT EXISTS pages (
 
 -- Sample pages
 INSERT INTO pages (title, slug, content, meta_title, meta_description, status, author_id) VALUES
+('Home', 'home', 
+'{"elements": [{"type": "hero", "content": {"heading": "ICONA - Digital Marketing Excellence", "subheading": "Transform your business with our comprehensive digital marketing solutions"}}, {"type": "services", "content": {}}, {"type": "success-stories", "content": {}}, {"type": "contact", "content": {}}]}',
+'ICONA - Digital Marketing Agency | SEO, PPC, Social Media',
+'Leading digital marketing agency specializing in SEO, PPC, social media marketing, and web development. Grow your business online with ICONA.',
+'published', 1),
+
 ('About Us', 'about-us', 
 '{"elements": [{"type": "hero", "content": {"heading": "About ICONA", "subheading": "Leading digital marketing agency with 10+ years of experience"}}, {"type": "paragraph", "content": {"text": "We are a team of passionate digital marketing experts dedicated to helping businesses grow their online presence and achieve measurable results."}}]}',
 'About ICONA - Digital Marketing Experts',

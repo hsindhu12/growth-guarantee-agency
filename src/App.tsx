@@ -14,6 +14,7 @@ import NotFound from "./pages/NotFound";
 import SuccessStories from "./pages/SuccessStories";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
+import PageEditor from "./pages/PageEditor";
 
 // Service pages
 import EcommerceMarketing from "./pages/EcommerceMarketing";
@@ -48,6 +49,7 @@ function App() {
             <Route path="/success-stories" element={<SuccessStories />} />
             <Route path="/secret-admin-access" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/page-editor/:id" element={<PageEditor />} />
             
             {/* Service Routes */}
             <Route path="/services/ecommerce-marketing" element={<EcommerceMarketing />} />

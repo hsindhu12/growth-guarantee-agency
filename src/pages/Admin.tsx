@@ -171,7 +171,12 @@ const Admin = () => {
                 <CardTitle>Content Management</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <Button variant="outline" className="p-6 h-auto flex-col" onClick={() => navigate('/page-editor/new')}>
+                    <Palette className="h-8 w-8 mb-2" />
+                    <span>Page Builder</span>
+                    <span className="text-sm text-gray-500">Visual page editor</span>
+                  </Button>
                   <Button variant="outline" className="p-6 h-auto flex-col">
                     <FileText className="h-8 w-8 mb-2" />
                     <span>Manage Blog Posts</span>

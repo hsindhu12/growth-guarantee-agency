@@ -11,6 +11,7 @@ const newsletterRoutes = require('./routes/newsletter');
 const successStoriesRoutes = require('./routes/successStories');
 const serviceRoutes = require('./routes/services');
 const adminRoutes = require('./routes/admin');
+const pagesRoutes = require('./routes/pages');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -44,6 +45,7 @@ app.use('/api/newsletter', newsletterRoutes);
 app.use('/api/success-stories', successStoriesRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/pages', pagesRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
