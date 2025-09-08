@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '@/hooks/useAuth.ts';
+import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -33,7 +33,13 @@ const Auth = () => {
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await signIn(email, password);
+    console.log('Form submitted with:', email, password);
+    const result = await signIn(email, password);
+    console.log('Sign in result:', result);
+    if (result.error) {
+      console.error('Login error:', result.error);
+      alert('Login failed: ' + result.error);
+    }
     setLoading(false);
   };
 

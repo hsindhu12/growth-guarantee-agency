@@ -46,7 +46,9 @@ export const useAuth = () => {
 
   const signIn = async (email: string, password: string) => {
     try {
+      console.log('Attempting login with:', email);
       const result = await apiClient.login(email, password);
+      console.log('Login result:', result);
       setUser(result.user);
       return { error: null };
     } catch (error: any) {
