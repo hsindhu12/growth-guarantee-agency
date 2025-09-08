@@ -47,7 +47,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/career" element={<Career />} />
             <Route path="/success-stories" element={<SuccessStories />} />
-            <Route path="/secret-admin-access" element={<Auth />} />
+            <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/page-editor/:id" element={<PageEditor />} />
             

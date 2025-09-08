@@ -1,7 +1,7 @@
-// Update this to your PHP backend URL
+// Node.js backend URL
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://yourdomain.com/api' // Replace with your Hostinger domain
-  : 'http://localhost/backend-php'; // For local PHP development
+  ? 'https://yourdomain.com/api' // Replace with your production domain
+  : 'http://localhost:3001/api'; // Node.js backend
 
 class ApiClient {
   private baseURL: string;

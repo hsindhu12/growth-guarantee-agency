@@ -55,6 +55,9 @@ const Footer = () => {
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
           <p>&copy; 2024 ICONA. All rights reserved. Driving digital excellence.</p>
+          <div className="mt-2">
+            <Link to="/auth" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">Admin</Link>
+          </div>
         </div>
       </div>
     </footer>
