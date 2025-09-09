@@ -47,6 +47,26 @@ app.use('/api/services', serviceRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/pages', pagesRoutes);
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Icona Backend API Server', 
+    version: '1.0.0',
+    status: 'Running',
+    endpoints: [
+      '/api/health',
+      '/api/auth',
+      '/api/blog',
+      '/api/contact',
+      '/api/newsletter',
+      '/api/success-stories',
+      '/api/services',
+      '/api/admin',
+      '/api/pages'
+    ]
+  });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
