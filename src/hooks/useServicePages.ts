@@ -1,6 +1,5 @@
-
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import { apiClient } from '@/lib/api';
 
 export interface ServicePage {
   id: string;
@@ -23,18 +22,7 @@ export const useServicePages = () => {
   return useQuery({
     queryKey: ['servicePages'],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('service_pages')
-        .select('*')
-        .eq('published', true)
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.error('Error fetching service pages:', error);
-        throw error;
-      }
-
-      return data as ServicePage[];
+      return await apiClient.getServicePages();
     },
   });
 };
@@ -43,19 +31,14 @@ export const useServicePage = (serviceType: string) => {
   return useQuery({
     queryKey: ['servicePage', serviceType],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('service_pages')
-        .select('*')
-        .eq('service_type', serviceType)
-        .eq('published', true)
-        .maybeSingle();
-
-      if (error) {
-        console.error('Error fetching service page:', error);
+      try {
+        return await apiClient.getServicePage(serviceType);
+      } catch (error: any) {
+        if (error.message.includes('404')) {
+          return null;
+        }
         throw error;
       }
-
-      return data as ServicePage | null;
     },
     enabled: !!serviceType,
   });
@@ -66,15 +49,7 @@ export const useUpdateServicePage = () => {
   
   return useMutation({
     mutationFn: async ({ id, updates }: { id: string; updates: Partial<ServicePage> }) => {
-      const { data, error } = await supabase
-        .from('service_pages')
-        .update(updates)
-        .eq('id', id)
-        .select()
-        .single();
-
-      if (error) throw error;
-      return data;
+      return await apiClient.updateServicePage(id, updates);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['servicePages'] });

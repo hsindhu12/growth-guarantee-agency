@@ -12,7 +12,7 @@ class ApiClient {
     this.token = localStorage.getItem('authToken');
   }
 
-  private async request(endpoint: string, options: RequestInit = {}) {
+  public async request(endpoint: string, options: RequestInit = {}) {
     const url = `${this.baseURL}${endpoint}`;
     
     const config: RequestInit = {
@@ -267,6 +267,14 @@ class ApiClient {
 
   async deletePage(id: string) {
     return await this.request(`/pages/${id}`, { method: 'DELETE' });
+  }
+
+  // Career application methods
+  async submitCareerApplication(data: any) {
+    return await this.request('/career-applications', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
   }
 
   // Admin methods

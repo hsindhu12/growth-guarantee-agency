@@ -1,6 +1,5 @@
-
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
+import { apiClient } from '@/lib/api';
 
 export interface SiteSetting {
   id: string;
@@ -15,17 +14,7 @@ export const useSiteSettings = () => {
   return useQuery({
     queryKey: ['siteSettings'],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('site_settings')
-        .select('*')
-        .order('key');
-
-      if (error) {
-        console.error('Error fetching site settings:', error);
-        throw error;
-      }
-
-      return data as SiteSetting[];
+      return await apiClient.getSiteSettings();
     },
   });
 };
@@ -34,18 +23,13 @@ export const useSiteSetting = (key: string) => {
   return useQuery({
     queryKey: ['siteSetting', key],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from('site_settings')
-        .select('*')
-        .eq('key', key)
-        .maybeSingle();
-
-      if (error) {
+      try {
+        const settings = await apiClient.getSiteSettings();
+        return settings.find((setting: SiteSetting) => setting.key === key) || null;
+      } catch (error) {
         console.error('Error fetching site setting:', error);
         throw error;
       }
-
-      return data as SiteSetting | null;
     },
     enabled: !!key,
   });
@@ -56,15 +40,7 @@ export const useUpdateSiteSetting = () => {
   
   return useMutation({
     mutationFn: async ({ key, value }: { key: string; value: any }) => {
-      const { data, error } = await supabase
-        .from('site_settings')
-        .update({ value, updated_at: new Date().toISOString() })
-        .eq('key', key)
-        .select()
-        .single();
-
-      if (error) throw error;
-      return data;
+      return await apiClient.updateSiteSetting(key, value);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['siteSettings'] });
