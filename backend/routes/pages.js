@@ -1,7 +1,7 @@
 const express = require('express');
 const { body, validationResult, param } = require('express-validator');
 const db = require('../config/database');
-const auth = require('../middleware/auth');
+const { authenticateToken } = require('../middleware/auth');
 const slugify = require('slugify');
 
 const router = express.Router();
@@ -62,7 +62,7 @@ router.get('/slug/:slug', param('slug').isSlug(), async (req, res) => {
 });
 
 // Get page by ID (admin only)
-router.get('/:id', auth, param('id').isInt(), async (req, res) => {
+router.get('/:id', authenticateToken, param('id').isInt(), async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -84,7 +84,7 @@ router.get('/:id', auth, param('id').isInt(), async (req, res) => {
 });
 
 // Create new page (admin only)
-router.post('/', auth, [
+router.post('/', authenticateToken, [
   body('title').notEmpty().trim().escape(),
   body('content').optional().isJSON(),
   body('meta_title').optional().trim().escape(),
@@ -136,7 +136,7 @@ router.post('/', auth, [
 });
 
 // Update page (admin only)
-router.put('/:id', auth, [
+router.put('/:id', authenticateToken, [
   param('id').isInt(),
   body('title').optional().notEmpty().trim().escape(),
   body('content').optional().isJSON(),
@@ -194,7 +194,7 @@ router.put('/:id', auth, [
 });
 
 // Delete page (admin only)
-router.delete('/:id', auth, param('id').isInt(), async (req, res) => {
+router.delete('/:id', authenticateToken, param('id').isInt(), async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
