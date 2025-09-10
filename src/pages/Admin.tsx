@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { useSuccessStories } from '@/hooks/useSuccessStories';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
-import { useThemes } from '@/hooks/useThemes';
+// import { useThemes } from '@/hooks/useThemes';
 
 const Admin = () => {
   const { user, loading, signOut } = useAuth();
@@ -28,7 +28,7 @@ const Admin = () => {
   const { data: blogPosts } = useBlogPosts();
   const { data: successStories } = useSuccessStories();
   const { data: siteSettings } = useSiteSettings();
-  const { data: themes } = useThemes();
+  // const { data: themes } = useThemes();
 
   React.useEffect(() => {
     console.log('Admin: useEffect triggered - user:', user, 'loading:', loading);
@@ -51,7 +51,7 @@ const Admin = () => {
   const stats = [
     { title: 'Blog Posts', value: blogPosts?.length || 0, icon: FileText },
     { title: 'Success Stories', value: successStories?.length || 0, icon: Users },
-    { title: 'Themes', value: themes?.length || 0, icon: Palette },
+    { title: 'Themes', value: 0, icon: Palette },
     { title: 'Settings', value: siteSettings?.length || 0, icon: Settings }
   ];
 
@@ -210,26 +210,7 @@ const Admin = () => {
               <CardContent>
                 <p className="text-gray-600 mb-4">Customize your website's appearance and branding.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {themes?.map((theme) => (
-                    <div key={theme.id} className="border rounded-lg p-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-medium">{theme.name}</h3>
-                        {theme.is_active && (
-                          <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">
-                            Active
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-sm text-gray-600 mb-3">
-                        Last updated: {new Date(theme.updated_at).toLocaleDateString()}
-                      </p>
-                      {!theme.is_active && (
-                        <Button size="sm" variant="outline">
-                          Activate Theme
-                        </Button>
-                      )}
-                    </div>
-                  )) || <p className="text-gray-500">No themes available</p>}
+                  <p className="text-gray-500">Theme management coming soon</p>
                 </div>
               </CardContent>
             </Card>
