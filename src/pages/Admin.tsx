@@ -274,7 +274,7 @@ const Admin = () => {
                   {siteSettings?.map((setting) => (
                     <div key={setting.id} className="flex justify-between items-center p-3 border rounded">
                       <div>
-                        <h4 className="font-medium capitalize">{setting.key.replace('_', ' ')}</h4>
+                        <h4 className="font-medium capitalize">{setting.key?.replace('_', ' ') || 'Unknown Setting'}</h4>
                         <p className="text-sm text-gray-600">{setting.description}</p>
                       </div>
                       <Button size="sm" variant="outline">
