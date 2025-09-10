@@ -23,36 +23,45 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log('useAuth: useEffect triggered');
     checkAuth();
   }, []);
 
   const checkAuth = async () => {
     try {
+      console.log('useAuth: checkAuth started, loading:', loading);
       const token = localStorage.getItem('authToken');
+      console.log('useAuth: token found:', !!token);
       if (!token) {
+        console.log('useAuth: no token, setting loading to false');
         setLoading(false);
         return;
       }
 
+      console.log('useAuth: verifying token...');
       const result = await apiClient.verifyToken();
+      console.log('useAuth: token verified, user:', result.user);
       setUser(result.user);
     } catch (error) {
       console.error('Auth check failed:', error);
       apiClient.clearToken();
+      setUser(null);
     } finally {
+      console.log('useAuth: checkAuth finished, setting loading to false');
       setLoading(false);
     }
   };
 
   const signIn = async (email: string, password: string) => {
     try {
-      console.log('Attempting login with:', email);
+      console.log('useAuth: Attempting login with:', email);
       const result = await apiClient.login(email, password);
-      console.log('Login result:', result);
+      console.log('useAuth: Login result:', result);
       setUser(result.user);
+      console.log('useAuth: User set after login:', result.user);
       return { error: null };
     } catch (error: any) {
-      console.error('Sign in failed:', error);
+      console.error('useAuth: Sign in failed:', error);
       return { error: error.message };
     }
   };

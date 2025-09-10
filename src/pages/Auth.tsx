@@ -16,12 +16,17 @@ const Auth = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    console.log('Auth: useEffect triggered - user:', user, 'authLoading:', authLoading);
     const checkAndRedirect = async () => {
       if (user && !authLoading) {
+        console.log('Auth: User found, checking admin status...');
         const { isAdmin } = await checkAdminStatus(user.id);
+        console.log('Auth: Admin status:', isAdmin);
         if (isAdmin) {
+          console.log('Auth: Redirecting to /admin');
           navigate('/admin');
         } else {
+          console.log('Auth: Redirecting to /');
           navigate('/');
         }
       }

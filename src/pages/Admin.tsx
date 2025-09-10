@@ -31,8 +31,12 @@ const Admin = () => {
   const { data: themes } = useThemes();
 
   React.useEffect(() => {
+    console.log('Admin: useEffect triggered - user:', user, 'loading:', loading);
     if (!loading && !user) {
+      console.log('Admin: No user found, redirecting to /auth');
       navigate('/auth');
+    } else if (user && !loading) {
+      console.log('Admin: User found, staying on admin page');
     }
   }, [user, loading, navigate]);
 
