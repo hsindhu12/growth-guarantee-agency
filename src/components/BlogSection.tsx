@@ -4,40 +4,36 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Calendar, User, TrendingUp, Target, Zap, BarChart3 } from "lucide-react";
+import { useBlogPosts } from "@/hooks/useBlogPosts";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
 
 const BlogSection = () => {
-  const blogPosts = [
-    {
-      title: "Advanced Retargeting Strategies That Deliver 300% Better Results",
-      excerpt: "Discover sophisticated retargeting methodologies that transform window shoppers into loyal customers with precision targeting and dynamic creative optimization.",
-      author: "ICONA Strategy Team",
-      date: "Dec 25, 2024",
-      readTime: "8 min read",
-      category: "Digital Marketing",
-      icon: Target,
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=250&fit=crop&crop=center"
-    },
-    {
-      title: "How ICONA Achieved 500% ROI for Enterprise Clients in 90 Days",
-      excerpt: "Learn the comprehensive framework ICONA uses to transform struggling enterprises into market leaders through data-driven growth strategies and systematic optimization.",
-      author: "ICONA Growth Team",
-      date: "Dec 22, 2024",
-      readTime: "12 min read",
-      category: "Business Growth",
-      icon: TrendingUp,
-      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=250&fit=crop&crop=center"
-    },
-    {
-      title: "Marketplace Domination: Complete Amazon & Ecommerce Strategy Guide",
-      excerpt: "Inside look at how ICONA helps brands achieve #1 rankings on major marketplaces using advanced optimization techniques, competitive analysis, and strategic positioning.",
-      author: "ICONA Marketplace Experts",
-      date: "Dec 20, 2024",
-      readTime: "10 min read",
-      category: "Ecommerce Growth",
-      icon: Zap,
-      image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400&h=250&fit=crop&crop=center"
+  const { data: blogPosts, isLoading } = useBlogPosts(true); // Get featured blog posts
+  const { data: blogTitle } = useSiteSetting('blog_section_title');
+  const { data: blogSubtitle } = useSiteSetting('blog_section_subtitle');
+  const { data: blogBadgeText } = useSiteSetting('blog_section_badge');
+  const { data: blogCTATitle } = useSiteSetting('blog_cta_title');
+  const { data: blogCTADescription } = useSiteSetting('blog_cta_description');
+  const { data: blogCTAButtonText } = useSiteSetting('blog_cta_button_text');
+
+  const getCategoryIcon = (category: string) => {
+    switch (category.toLowerCase()) {
+      case 'digital marketing': return Target;
+      case 'business growth': return TrendingUp;
+      case 'ecommerce growth': return Zap;
+      default: return BarChart3;
     }
-  ];
+  };
+
+  if (isLoading) {
+    return (
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center">Loading blog posts...</div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
@@ -50,24 +46,24 @@ const BlogSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <Badge className="mb-6 bg-primary/10 text-primary border-primary/30 hover:scale-110 transition-all duration-300 text-lg px-6 py-3">
-            📚 Expert Insights & Strategies
+            {blogBadgeText?.value || "📚 Expert Insights & Strategies"}
           </Badge>
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-primary to-blue-800 bg-clip-text text-transparent">
-            ICONA Expert Knowledge
+            {blogTitle?.value || "ICONA Expert Knowledge"}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Learn from ICONA's years of experience in digital growth, strategic marketing, and marketplace optimization 📈
+            {blogSubtitle?.value || "Learn from ICONA's years of experience in digital growth, strategic marketing, and marketplace optimization 📈"}
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-          {blogPosts.map((post, index) => {
-            const IconComponent = post.icon;
+          {blogPosts?.slice(0, 3).map((post, index) => {
+            const IconComponent = getCategoryIcon(post.category);
             return (
-              <Card key={index} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 bg-white/80 backdrop-blur-sm overflow-hidden">
+              <Card key={post.id} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 bg-white/80 backdrop-blur-sm overflow-hidden">
                 <div className="relative overflow-hidden">
                   <img 
-                    src={post.image} 
+                    src={post.featured_image_url || "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=250&fit=crop&crop=center"} 
                     alt={post.title}
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
@@ -84,7 +80,7 @@ const BlogSection = () => {
                     {post.title}
                   </CardTitle>
                   <CardDescription className="text-gray-600 line-clamp-3">
-                    {post.excerpt}
+                    {post.excerpt || post.content.substring(0, 150) + "..."}
                   </CardDescription>
                 </CardHeader>
                 
@@ -93,14 +89,14 @@ const BlogSection = () => {
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center">
                         <User className="w-4 h-4 mr-1" />
-                        {post.author}
+                        {post.author_name}
                       </div>
                       <div className="flex items-center">
                         <Calendar className="w-4 h-4 mr-1" />
-                        {post.date}
+                        {new Date(post.created_at).toLocaleDateString()}
                       </div>
                     </div>
-                    <span className="text-blue-600 font-medium">{post.readTime}</span>
+                    <span className="text-blue-600 font-medium">5 min read</span>
                   </div>
                   
                   <Button variant="ghost" className="w-full group-hover:bg-blue-50 group-hover:text-blue-600 transition-all duration-300">
@@ -116,12 +112,12 @@ const BlogSection = () => {
         {/* Call to action */}
         <div className="text-center">
           <div className="bg-gradient-to-r from-primary to-blue-600 rounded-3xl p-8 max-w-2xl mx-auto text-white">
-            <h3 className="text-2xl font-bold mb-4">Want More Expert Knowledge?</h3>
+            <h3 className="text-2xl font-bold mb-4">{blogCTATitle?.value || "Want More Expert Knowledge?"}</h3>
             <p className="mb-6 text-blue-100">
-              Subscribe to get ICONA's latest growth strategies, market insights, and proven methodologies delivered weekly.
+              {blogCTADescription?.value || "Subscribe to get ICONA's latest growth strategies, market insights, and proven methodologies delivered weekly."}
             </p>
             <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all duration-300">
-              📈 Get ICONA's Weekly Insights
+              {blogCTAButtonText?.value || "📈 Get ICONA's Weekly Insights"}
             </Button>
           </div>
         </div>

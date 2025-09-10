@@ -1,7 +1,13 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, MessageCircle, Calendar } from "lucide-react";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
+
 const CTASection = () => {
+  const { data: ctaTitle } = useSiteSetting('cta_section_title');
+  const { data: ctaDescription } = useSiteSetting('cta_section_description');
+  const { data: ctaPrimaryButton } = useSiteSetting('cta_primary_button_text');
+  const { data: ctaSecondaryButton } = useSiteSetting('cta_secondary_button_text');
   return <section id="contact" className="py-20 bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
@@ -27,12 +33,11 @@ const CTASection = () => {
           </div>
           
           <h2 className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent animate-pulse">
-            Ready to Guarantee Your Growth?
+            {ctaTitle?.value || "Ready to Guarantee Your Growth?"}
           </h2>
           
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Join <span className="font-bold text-yellow-400 animate-pulse">500+ brands</span> that have achieved 
-            <span className="font-bold text-green-400"> explosive growth</span> with our proven strategies.
+            {ctaDescription?.value || "Join 500+ brands that have achieved explosive growth with our proven strategies."}
             <span className="block mt-2 text-lg">
               💯 <span className="font-semibold">100% Growth Guaranteed</span> or We Work for FREE!
             </span>
@@ -59,7 +64,7 @@ const CTASection = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 px-12 py-6 text-xl font-bold rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group relative overflow-hidden">
               <span className="relative z-10 flex items-center">
-                📞 Get Free Strategy Call
+                {ctaPrimaryButton?.value || "📞 Get Free Strategy Call"}
                 <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-200" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -67,7 +72,7 @@ const CTASection = () => {
             
             <Button variant="outline" size="lg" className="border-2 border-white hover:bg-white px-12 py-6 text-xl font-bold rounded-full hover:scale-105 transition-all duration-300 group relative overflow-hidden text-slate-800">
               <span className="flex items-center">
-                📱 WhatsApp: +91 XXXXX XXXXX
+                {ctaSecondaryButton?.value || "📱 WhatsApp: +91 XXXXX XXXXX"}
                 <MessageCircle className="ml-3 h-6 w-6 group-hover:animate-bounce" />
               </span>
             </Button>

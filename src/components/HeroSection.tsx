@@ -2,8 +2,18 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, TrendingUp, Users, Award, Building2 } from "lucide-react";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
+
 const HeroSection = () => {
-  const stats = [{
+  const { data: heroTitle } = useSiteSetting('hero_title');
+  const { data: heroSubtitle } = useSiteSetting('hero_subtitle');
+  const { data: heroDescription } = useSiteSetting('hero_description');
+  const { data: heroBadgeText } = useSiteSetting('hero_badge_text');
+  const { data: heroPrimaryButtonText } = useSiteSetting('hero_primary_button_text');
+  const { data: heroSecondaryButtonText } = useSiteSetting('hero_secondary_button_text');
+  const { data: heroStats } = useSiteSetting('hero_stats');
+
+  const defaultStats = [{
     number: "500+",
     label: "Brands Grown",
     icon: Users
@@ -20,6 +30,8 @@ const HeroSection = () => {
     label: "Years Experience",
     icon: Building2
   }];
+
+  const stats = heroStats?.value || defaultStats;
   return <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-blue-600 to-blue-800 text-white overflow-hidden pt-16">
       {/* Professional background elements */}
       <div className="absolute inset-0">
@@ -31,33 +43,34 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 relative z-10 text-center">
         
         <Badge className="mb-6 bg-white/20 text-white border-white/30 hover:bg-white/30 text-lg px-6 py-2 animate-pulse hover:animate-none transition-all duration-300 hover:scale-110">
-          ✨ Professional Digital Growth Solutions ✨
+          {heroBadgeText?.value || "✨ Professional Digital Growth Solutions ✨"}
         </Badge>
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          <span className="inline-block animate-fade-in">Welcome to</span>{" "}
-          <span className="inline-block animate-fade-in delay-200">ICONA</span>
+          <span className="inline-block animate-fade-in">
+            {heroTitle?.value?.split(' ').slice(0, 2).join(' ') || "Welcome to"}
+          </span>{" "}
+          <span className="inline-block animate-fade-in delay-200">
+            {heroTitle?.value?.split(' ').slice(2, 3).join(' ') || "ICONA"}
+          </span>
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 animate-gradient-x">
-            Digital Excellence
+            {heroSubtitle?.value || "Digital Excellence"}
           </span>
         </h1>
         
         <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100 animate-fade-in delay-300">
-          ICONA delivers comprehensive digital solutions that drive measurable growth for your business. From ecommerce optimization to cutting-edge digital marketing, 
-          <span className="font-semibold text-yellow-300 inline-block hover:scale-105 transition-transform duration-200"> 
-            we're your strategic partner for success.
-          </span>
+          {heroDescription?.value || "ICONA delivers comprehensive digital solutions that drive measurable growth for your business. From ecommerce optimization to cutting-edge digital marketing, we're your strategic partner for success."}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in delay-500">
           <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all group relative overflow-hidden">
             <span className="relative z-10 flex items-center">
-              Start Your Growth Journey
+              {heroPrimaryButtonText?.value || "Start Your Growth Journey"}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Button>
           <Button variant="outline" size="lg" className="border-white px-8 py-4 text-lg hover:scale-105 transition-all duration-300 hover:shadow-xl text-slate-50 bg-[#ff8402] rounded-full">
-            View Our Portfolio
+            {heroSecondaryButtonText?.value || "View Our Portfolio"}
           </Button>
         </div>
         

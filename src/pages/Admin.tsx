@@ -4,6 +4,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ContentEditor } from '@/components/ui/content-editor';
 import { 
   LayoutDashboard, 
   FileText, 
@@ -262,29 +263,177 @@ const Admin = () => {
           </TabsContent>
 
           <TabsContent value="settings">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Settings className="h-5 w-5 mr-2" />
-                  Site Settings
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {siteSettings?.map((setting) => (
-                    <div key={setting.id} className="flex justify-between items-center p-3 border rounded">
-                      <div>
-                        <h4 className="font-medium capitalize">{setting.key?.replace('_', ' ') || 'Unknown Setting'}</h4>
-                        <p className="text-sm text-gray-600">{setting.description}</p>
-                      </div>
-                      <Button size="sm" variant="outline">
-                        Edit
-                      </Button>
-                    </div>
-                  )) || <p className="text-gray-500">No settings configured</p>}
-                </div>
-              </CardContent>
-            </Card>
+            {/* Content Management */}
+            <div className="grid gap-6">
+              <ContentEditor
+                title="Hero Section"
+                sections={[
+                  {
+                    key: 'hero_title',
+                    title: 'Hero Title',
+                    description: 'Main heading text for the hero section',
+                    type: 'text',
+                    defaultValue: 'Welcome to ICONA'
+                  },
+                  {
+                    key: 'hero_subtitle',
+                    title: 'Hero Subtitle',
+                    description: 'Secondary heading text',
+                    type: 'text',
+                    defaultValue: 'Digital Excellence'
+                  },
+                  {
+                    key: 'hero_description',
+                    title: 'Hero Description',
+                    description: 'Main description paragraph',
+                    type: 'textarea',
+                    defaultValue: 'ICONA delivers comprehensive digital solutions that drive measurable growth for your business.'
+                  },
+                  {
+                    key: 'hero_badge_text',
+                    title: 'Hero Badge Text',
+                    description: 'Text inside the floating badge',
+                    type: 'text',
+                    defaultValue: '✨ Professional Digital Growth Solutions ✨'
+                  },
+                  {
+                    key: 'hero_primary_button_text',
+                    title: 'Primary Button Text',
+                    description: 'Text for the main CTA button',
+                    type: 'text',
+                    defaultValue: 'Start Your Growth Journey'
+                  },
+                  {
+                    key: 'hero_secondary_button_text',
+                    title: 'Secondary Button Text',
+                    description: 'Text for the secondary button',
+                    type: 'text',
+                    defaultValue: 'View Our Portfolio'
+                  },
+                  {
+                    key: 'hero_stats',
+                    title: 'Hero Statistics',
+                    description: 'Statistics displayed in the hero section (JSON format)',
+                    type: 'json',
+                    defaultValue: [
+                      { number: "500+", label: "Brands Grown" },
+                      { number: "99%", label: "Success Rate" },
+                      { number: "$50M+", label: "Revenue Generated" },
+                      { number: "10+", label: "Years Experience" }
+                    ]
+                  }
+                ]}
+              />
+              
+              <ContentEditor
+                title="Blog Section"
+                sections={[
+                  {
+                    key: 'blog_section_title',
+                    title: 'Blog Section Title',
+                    description: 'Main heading for blog section',
+                    type: 'text',
+                    defaultValue: 'ICONA Expert Knowledge'
+                  },
+                  {
+                    key: 'blog_section_subtitle',
+                    title: 'Blog Section Subtitle',
+                    description: 'Description below blog title',
+                    type: 'textarea',
+                    defaultValue: 'Learn from ICONA\'s years of experience in digital growth, strategic marketing, and marketplace optimization 📈'
+                  },
+                  {
+                    key: 'blog_section_badge',
+                    title: 'Blog Section Badge',
+                    description: 'Badge text above blog title',
+                    type: 'text',
+                    defaultValue: '📚 Expert Insights & Strategies'
+                  },
+                  {
+                    key: 'blog_cta_title',
+                    title: 'Blog CTA Title',
+                    description: 'Title for blog call-to-action',
+                    type: 'text',
+                    defaultValue: 'Want More Expert Knowledge?'
+                  },
+                  {
+                    key: 'blog_cta_description',
+                    title: 'Blog CTA Description',
+                    description: 'Description for blog call-to-action',
+                    type: 'textarea',
+                    defaultValue: 'Subscribe to get ICONA\'s latest growth strategies, market insights, and proven methodologies delivered weekly.'
+                  },
+                  {
+                    key: 'blog_cta_button_text',
+                    title: 'Blog CTA Button Text',
+                    description: 'Text for blog CTA button',
+                    type: 'text',
+                    defaultValue: '📈 Get ICONA\'s Weekly Insights'
+                  }
+                ]}
+              />
+
+              <ContentEditor
+                title="Services Section"
+                sections={[
+                  {
+                    key: 'services_section_title',
+                    title: 'Services Section Title',
+                    description: 'Main heading for services section',
+                    type: 'text',
+                    defaultValue: 'Complete Digital Solutions'
+                  },
+                  {
+                    key: 'services_section_subtitle',
+                    title: 'Services Section Subtitle',
+                    description: 'Description below services title',
+                    type: 'textarea',
+                    defaultValue: 'From ecommerce marketing to website development, we handle every aspect of your digital success 🚀'
+                  },
+                  {
+                    key: 'services_section_badge',
+                    title: 'Services Section Badge',
+                    description: 'Badge text above services title',
+                    type: 'text',
+                    defaultValue: '🎯 Our Services'
+                  }
+                ]}
+              />
+
+              <ContentEditor
+                title="CTA Section"
+                sections={[
+                  {
+                    key: 'cta_section_title',
+                    title: 'CTA Section Title',
+                    description: 'Main heading for call-to-action section',
+                    type: 'text',
+                    defaultValue: 'Ready to Guarantee Your Growth?'
+                  },
+                  {
+                    key: 'cta_section_description',
+                    title: 'CTA Section Description',
+                    description: 'Description text for CTA section',
+                    type: 'textarea',
+                    defaultValue: 'Join 500+ brands that have achieved explosive growth with our proven strategies.'
+                  },
+                  {
+                    key: 'cta_primary_button_text',
+                    title: 'CTA Primary Button Text',
+                    description: 'Text for the main CTA button',
+                    type: 'text',
+                    defaultValue: '📞 Get Free Strategy Call'
+                  },
+                  {
+                    key: 'cta_secondary_button_text',
+                    title: 'CTA Secondary Button Text',
+                    description: 'Text for the secondary CTA button',
+                    type: 'text',
+                    defaultValue: '📱 WhatsApp: +91 XXXXX XXXXX'
+                  }
+                ]}
+              />
+            </div>
           </TabsContent>
         </Tabs>
       </div>

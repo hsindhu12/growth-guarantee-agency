@@ -3,9 +3,14 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ShoppingCart, TrendingUp, Camera, Video, Globe, Rocket, Users, Shield, Monitor, Search, Megaphone, Code, BarChart3, Smartphone, ArrowRight } from "lucide-react";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
 import Mascot from './Mascot';
+
 const ServicesSection = () => {
   const [activeCategory, setActiveCategory] = useState('all');
+  const { data: servicesTitle } = useSiteSetting('services_section_title');
+  const { data: servicesSubtitle } = useSiteSetting('services_section_subtitle');
+  const { data: servicesBadge } = useSiteSetting('services_section_badge');
   const services = [
   // Ecommerce Services
   {
@@ -118,13 +123,13 @@ const ServicesSection = () => {
         <div className="text-center mb-16">
           
           <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200 hover:scale-105 transition-all duration-300">
-            🎯 Our Services
+            {servicesBadge?.value || "🎯 Our Services"}
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
-            Complete Digital Solutions
+            {servicesTitle?.value || "Complete Digital Solutions"}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From ecommerce marketing to website development, we handle every aspect of your digital success 🚀
+            {servicesSubtitle?.value || "From ecommerce marketing to website development, we handle every aspect of your digital success 🚀"}
           </p>
         </div>
 

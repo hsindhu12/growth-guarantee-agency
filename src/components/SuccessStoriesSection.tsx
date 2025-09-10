@@ -4,9 +4,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, TrendingUp, Calendar, Award, Target } from "lucide-react";
+import { useSuccessStories } from "@/hooks/useSuccessStories";
+import { useSiteSetting } from "@/hooks/useSiteSettings";
 
 const SuccessStoriesSection = () => {
-  const successStories = [
+  const { data: successStories, isLoading } = useSuccessStories(true); // Get featured success stories
+  const { data: successTitle } = useSiteSetting('success_section_title');
+  const { data: successSubtitle } = useSiteSetting('success_section_subtitle');
+  const { data: successBadge } = useSiteSetting('success_section_badge');
+
+  const defaultStories = [
     {
       companyName: "FashionForward",
       industry: "Fashion Ecommerce",
@@ -75,6 +82,18 @@ const SuccessStoriesSection = () => {
     }
   ];
 
+  const displayStories = successStories || defaultStories;
+  
+  if (isLoading) {
+    return (
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center">Loading success stories...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
       {/* Animated background elements */}
@@ -96,10 +115,10 @@ const SuccessStoriesSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <Badge className="mb-6 bg-yellow-500/20 text-yellow-300 border-yellow-400 hover:scale-110 transition-all duration-300 text-lg px-6 py-3">
-            🏆 Success Stories That Inspire
+            {successBadge?.value || "🏆 Success Stories That Inspire"}
           </Badge>
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-yellow-200 to-orange-200 bg-clip-text text-transparent">
-            When ICONA Works Its Magic
+            {successTitle?.value || "When ICONA Works Its Magic"}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
             Real brands, real growth, real results. See how ICONA's strategic techniques transformed these businesses 🚀✨
