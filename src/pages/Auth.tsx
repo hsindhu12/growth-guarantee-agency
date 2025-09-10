@@ -9,7 +9,7 @@ import { Mail, Lock, ArrowLeft } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Auth = () => {
-  const { user, signIn, checkAdminStatus } = useAuth();
+  const { user, loading: authLoading, signIn, checkAdminStatus } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ const Auth = () => {
 
   useEffect(() => {
     const checkAndRedirect = async () => {
-      if (user) {
+      if (user && !authLoading) {
         const { isAdmin } = await checkAdminStatus(user.id);
         if (isAdmin) {
           navigate('/admin');
@@ -28,7 +28,7 @@ const Auth = () => {
     };
     
     checkAndRedirect();
-  }, [user, navigate, checkAdminStatus]);
+  }, [user, navigate, checkAdminStatus, authLoading]);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();

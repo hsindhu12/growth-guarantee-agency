@@ -23,7 +23,7 @@ import { useSiteSettings } from '@/hooks/useSiteSettings';
 import { useThemes } from '@/hooks/useThemes';
 
 const Admin = () => {
-  const { user, signOut } = useAuth();
+  const { user, loading, signOut } = useAuth();
   const navigate = useNavigate();
   const { data: blogPosts } = useBlogPosts();
   const { data: successStories } = useSuccessStories();
@@ -31,16 +31,17 @@ const Admin = () => {
   const { data: themes } = useThemes();
 
   React.useEffect(() => {
-    if (!user) {
+    if (!loading && !user) {
       navigate('/auth');
     }
-  }, [user, navigate]);
+  }, [user, loading, navigate]);
 
   const handleSignOut = async () => {
     await signOut();
     navigate('/');
   };
 
+  if (loading) return <div>Loading...</div>;
   if (!user) return null;
 
   const stats = [
