@@ -266,6 +266,33 @@ const Admin = () => {
             {/* Content Management */}
             <div className="grid gap-6">
               <ContentEditor
+                title="Header & Footer Content"
+                sections={[
+                  {
+                    key: 'header_logo_text',
+                    title: 'Logo Text',
+                    description: 'Text displayed in the header logo',
+                    type: 'text',
+                    defaultValue: 'ICONA'
+                  },
+                  {
+                    key: 'header_button_text',
+                    title: 'Header Button Text',
+                    description: 'Text for the main CTA button in header',
+                    type: 'text',
+                    defaultValue: 'Get Started'
+                  },
+                  {
+                    key: 'footer_description',
+                    title: 'Footer Description',
+                    description: 'Company description in footer',
+                    type: 'textarea',
+                    defaultValue: 'Your trusted partner for comprehensive digital growth and innovative business solutions across all platforms.'
+                  }
+                ]}
+              />
+
+              <ContentEditor
                 title="Hero Section"
                 sections={[
                   {

@@ -4,207 +4,217 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ShoppingCart, TrendingUp, Camera, Video, Globe, Rocket, Users, Shield, Monitor, Search, Megaphone, Code, BarChart3, Smartphone, ArrowRight } from "lucide-react";
 import { useSiteSetting } from "@/hooks/useSiteSettings";
+import { useServicePages } from "@/hooks/useServicePages";
+import { Link } from "react-router-dom";
 import Mascot from './Mascot';
+
+const getServiceIcon = (serviceType: string) => {
+  const iconMap: Record<string, any> = {
+    'ecommerce-marketing': ShoppingCart,
+    'marketplace-management': Globe,
+    'seo-services': Search,
+    'digital-marketing': Megaphone,
+    'product-photography': Camera,
+    'video-production': Video,
+    'website-development': Monitor,
+    'mobile-app-development': Smartphone,
+    'brand-development': Rocket,
+    'analytics-reporting': BarChart3,
+    'product-launch': Rocket,
+    'advertising': TrendingUp
+  };
+  return iconMap[serviceType] || Monitor;
+};
+
+const getServiceCategory = (serviceType: string) => {
+  const ecommerceServices = ['ecommerce-marketing', 'marketplace-management', 'product-photography', 'video-production', 'advertising', 'brand-development', 'product-launch'];
+  return ecommerceServices.includes(serviceType) ? 'Ecommerce' : 'Digital';
+};
+
+const getServiceColor = (index: number) => {
+  const colors = [
+    "from-blue-500 to-purple-600",
+    "from-green-500 to-teal-600", 
+    "from-pink-500 to-rose-600",
+    "from-orange-500 to-red-600",
+    "from-indigo-500 to-blue-600",
+    "from-cyan-500 to-blue-600",
+    "from-violet-500 to-purple-600",
+    "from-emerald-500 to-green-600",
+    "from-slate-500 to-gray-600",
+    "from-lime-500 to-green-600",
+    "from-yellow-500 to-orange-600"
+  ];
+  return colors[index % colors.length];
+};
 
 const ServicesSection = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const { data: servicesTitle } = useSiteSetting('services_section_title');
   const { data: servicesSubtitle } = useSiteSetting('services_section_subtitle');
   const { data: servicesBadge } = useSiteSetting('services_section_badge');
-  const services = [
-  // Ecommerce Services
-  {
-    icon: ShoppingCart,
-    title: "Ecommerce Marketing",
-    category: "Ecommerce",
-    description: "Complete digital marketing strategies tailored for ecommerce success",
-    features: ["PPC Campaigns", "Social Media Marketing", "Email Marketing", "SEO Optimization"],
-    color: "from-blue-500 to-purple-600"
-  }, {
-    icon: TrendingUp,
-    title: "Ecommerce Sales Growth",
-    category: "Ecommerce",
-    description: "Data-driven strategies to boost your online sales and conversion rates",
-    features: ["Conversion Optimization", "Sales Funnel Design", "A/B Testing", "Performance Analytics"],
-    color: "from-green-500 to-teal-600"
-  }, {
-    icon: Camera,
-    title: "Brand Product Shoot",
-    category: "Ecommerce",
-    description: "Professional product photography that drives conversions",
-    features: ["Studio Photography", "Lifestyle Shots", "360° Product Views", "Image Editing"],
-    color: "from-pink-500 to-rose-600"
-  }, {
-    icon: Video,
-    title: "Product Video Production",
-    category: "Ecommerce",
-    description: "Engaging video content that showcases your products effectively",
-    features: ["Product Demos", "Unboxing Videos", "Brand Stories", "Social Media Videos"],
-    color: "from-orange-500 to-red-600"
-  }, {
-    icon: Globe,
-    title: "Marketplace Management",
-    category: "Ecommerce",
-    description: "Expert management across all major ecommerce platforms",
-    features: ["Amazon India", "Flipkart", "Myntra", "Swiggy Instamart", "Zepto", "Noon.com", "Walmart"],
-    color: "from-indigo-500 to-blue-600"
-  }, {
-    icon: Rocket,
-    title: "Brand Growth & Launch",
-    category: "Ecommerce",
-    description: "End-to-end brand building and product launch strategies",
-    features: ["Brand Strategy", "Product Launch", "Market Research", "Competitive Analysis"],
-    color: "from-cyan-500 to-blue-600"
-  }, {
-    icon: Users,
-    title: "Influencer Management",
-    category: "Ecommerce",
-    description: "Strategic influencer partnerships that amplify your brand reach",
-    features: ["Influencer Sourcing", "Campaign Management", "Content Strategy", "Performance Tracking"],
-    color: "from-violet-500 to-purple-600"
-  }, {
-    icon: Shield,
-    title: "Brand Partnerships",
-    category: "Ecommerce",
-    description: "Strategic collaborations that expand your market presence",
-    features: ["Partnership Strategy", "Deal Negotiation", "Co-marketing", "Joint Ventures"],
-    color: "from-emerald-500 to-green-600"
-  },
-  // Digital Services
-  {
-    icon: Monitor,
-    title: "Website Development",
-    category: "Digital",
-    description: "Custom websites that convert visitors into customers",
-    features: ["Responsive Design", "E-commerce Sites", "Landing Pages", "Web Applications"],
-    color: "from-slate-500 to-gray-600"
-  }, {
-    icon: Search,
-    title: "SEO Services",
-    category: "Digital",
-    description: "Dominate search results and drive organic traffic",
-    features: ["Keyword Research", "On-Page SEO", "Link Building", "Technical SEO"],
-    color: "from-lime-500 to-green-600"
-  }, {
-    icon: Megaphone,
-    title: "Digital Marketing",
-    category: "Digital",
-    description: "Comprehensive digital marketing campaigns across all channels",
-    features: ["Google Ads", "Facebook Ads", "Content Marketing", "Social Media Management"],
-    color: "from-yellow-500 to-orange-600"
-  }, {
-    icon: Code,
-    title: "Web Applications",
-    category: "Digital",
-    description: "Custom web applications tailored to your business needs",
-    features: ["SaaS Solutions", "CRM Systems", "Booking Platforms", "Management Tools"],
-    color: "from-teal-500 to-cyan-600"
-  }, {
-    icon: BarChart3,
-    title: "Analytics & Reporting",
-    category: "Digital",
-    description: "Data-driven insights to optimize your digital presence",
-    features: ["Google Analytics", "Performance Reports", "ROI Tracking", "Custom Dashboards"],
-    color: "from-red-500 to-pink-600"
-  }, {
-    icon: Smartphone,
-    title: "Mobile Optimization",
-    category: "Digital",
-    description: "Ensure your digital presence works perfectly on all devices",
-    features: ["Mobile-First Design", "App Development", "Progressive Web Apps", "Mobile SEO"],
-    color: "from-purple-500 to-violet-600"
-  }];
-  const filteredServices = activeCategory === 'all' ? services : services.filter(service => service.category === activeCategory);
-  return <section id="services" className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 relative overflow-hidden">
-      {/* Background decoration */}
-      
-      
+  const { data: servicePages } = useServicePages();
+
+  // Transform service pages to match component format
+  const services = servicePages?.data?.map((page, index) => ({
+    icon: getServiceIcon(page.service_type),
+    title: page.title,
+    category: getServiceCategory(page.service_type),
+    description: page.subtitle || page.hero_content?.description || '',
+    features: page.features?.map(f => f.title || f.description) || [],
+    color: getServiceColor(index),
+    href: `/services/${page.service_type}`
+  })) || [];
+
+  const filteredServices = activeCategory === 'all' 
+    ? services 
+    : services.filter(service => service.category === activeCategory);
+
+  if (!servicePages?.data || servicePages.data.length === 0) {
+    return (
+      <section className="py-16 bg-gradient-to-br from-background via-background/50 to-primary/5">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-muted-foreground">Loading services...</p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-background via-background/50 to-primary/5">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-secondary/5 rounded-full blur-3xl"></div>
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
+        {/* Header Section */}
         <div className="text-center mb-16">
+          <div className="flex justify-center mb-6">
+            <Badge variant="outline" className="text-sm px-4 py-2 bg-primary/10 text-primary border-primary/20">
+              {servicesBadge?.value || '🚀 Premium Services'}
+            </Badge>
+          </div>
           
-          <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200 hover:scale-105 transition-all duration-300">
-            {servicesBadge?.value || "🎯 Our Services"}
-          </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
-            {servicesTitle?.value || "Complete Digital Solutions"}
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+            {servicesTitle?.value || (
+              <>
+                Our Professional <span className="bg-gradient-to-r from-primary via-primary/80 to-secondary bg-clip-text text-transparent">Services</span>
+              </>
+            )}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {servicesSubtitle?.value || "From ecommerce marketing to website development, we handle every aspect of your digital success 🚀"}
+          
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            {servicesSubtitle?.value || 'Comprehensive digital solutions designed to accelerate your business growth across all platforms and channels'}
           </p>
         </div>
 
-        {/* Service Category Filter */}
+        {/* Category Filter */}
         <div className="flex justify-center mb-12">
-          <div className="bg-white rounded-2xl p-2 shadow-lg border flex flex-wrap gap-2">
-            {['all', 'Ecommerce', 'Digital'].map(category => <Button key={category} onClick={() => setActiveCategory(category)} variant={activeCategory === category ? "default" : "ghost"} className={`rounded-xl transition-all duration-300 ${activeCategory === category ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg scale-105' : 'hover:bg-gray-100 hover:scale-105'}`}>
-                {category === 'all' ? '🌟 All Services' : category === 'Ecommerce' ? '🛒 Ecommerce' : '💻 Digital'}
-              </Button>)}
-          </div>
-        </div>
-
-        {/* Service Categories Overview */}
-        <div className="mb-12">
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="text-center p-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-3xl hover:scale-105 transition-all duration-300 shadow-xl group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative z-10">
-                <ShoppingCart className="h-16 w-16 mx-auto mb-4 group-hover:animate-bounce" />
-                <h3 className="text-3xl font-bold mb-4">Ecommerce Services</h3>
-                <p className="text-blue-100 text-lg mb-4">Complete ecommerce growth solutions</p>
-                <Button variant="outline" className="border-white text-white hover:text-blue-600 bg-white-300 hover:bg-blue-200 text-base">
-                  Explore Ecommerce <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-            <div className="text-center p-8 bg-gradient-to-br from-green-500 to-teal-600 text-white rounded-3xl hover:scale-105 transition-all duration-300 shadow-xl group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-teal-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative z-10">
-                <Monitor className="h-16 w-16 mx-auto mb-4 group-hover:animate-bounce" />
-                <h3 className="text-3xl font-bold mb-4">Digital Services</h3>
-                <p className="text-green-100 text-lg mb-4">Web development & digital marketing</p>
-                <Button variant="outline" className="border-white bg-green-100/0 text-slate-50">
-                  Explore Digital <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
+          <div className="bg-background/80 backdrop-blur-xl p-2 rounded-2xl border border-border/50 shadow-lg">
+            <div className="flex space-x-2">
+              {['all', 'Ecommerce', 'Digital'].map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                    activeCategory === category
+                      ? 'bg-primary text-primary-foreground shadow-lg'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-primary/5'
+                  }`}
+                >
+                  {category === 'all' ? 'All Services' : `${category} Services`}
+                </button>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {filteredServices.map((service, index) => <Card key={index} className="p-6 hover:shadow-2xl transition-all duration-500 border-0 bg-white hover:-translate-y-4 group relative overflow-hidden rounded-2xl">
-              {/* Gradient background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-              
-              <div className="relative z-10">
-                <div className="flex items-center mb-6">
-                  <div className={`p-4 rounded-2xl text-white group-hover:scale-110 transition-all duration-300 bg-gradient-to-br ${service.color} shadow-lg`}>
-                    <service.icon className="h-8 w-8" />
-                  </div>
-                  <Badge variant="outline" className="ml-auto text-xs hover:scale-105 transition-transform duration-200">
-                    {service.category === 'Ecommerce' ? '🛒' : '💻'} {service.category}
-                  </Badge>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-                <ul className="space-y-3">
-                  {service.features.map((feature, fIndex) => <li key={fIndex} className="flex items-center text-sm text-gray-700 group-hover:text-gray-800 transition-colors duration-200">
-                      <CheckCircle className="h-4 w-4 text-green-500 mr-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" />
-                      <span className="hover:font-medium transition-all duration-200">{feature}</span>
-                    </li>)}
-                </ul>
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {filteredServices.map((service, index) => {
+            const IconComponent = service.icon;
+            return (
+              <Card key={index} className="group relative overflow-hidden bg-background/80 backdrop-blur-xl border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                 
-                {/* Hidden button that appears on hover */}
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                  <Button size="sm" className={`w-full bg-gradient-to-r ${service.color} hover:shadow-lg transition-all duration-300`}>
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                <div className="p-8 relative z-10">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <IconComponent className="h-8 w-8 text-white" />
+                  </div>
+                  
+                  <Badge variant="outline" className="mb-4 text-xs bg-background/50">
+                    {service.category}
+                  </Badge>
+                  
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+                  
+                  <div className="space-y-2 mb-6">
+                    {service.features.slice(0, 4).map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <Link to={service.href}>
+                    <Button className="w-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
-              </div>
-            </Card>)}
+              </Card>
+            );
+          })}
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 rounded-3xl p-12 border border-border/50 backdrop-blur-xl">
+            <Mascot className="w-20 h-20 mx-auto mb-6" />
+            
+            <h3 className="text-3xl font-bold text-foreground mb-4">
+              Ready to Transform Your Business?
+            </h3>
+            
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Let's discuss how our services can accelerate your growth and help you achieve your business goals.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact">
+                <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 font-semibold rounded-xl group">
+                  <span className="flex items-center gap-2">
+                    Get Started Today
+                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Button>
+              </Link>
+              
+              <Link to="/services">
+                <Button variant="outline" size="lg" className="border-border/50 hover:border-primary/50 bg-background/50 hover:bg-background/80 px-8 py-4 font-semibold rounded-xl group">
+                  <span className="flex items-center gap-2">
+                    View All Services
+                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default ServicesSection;
