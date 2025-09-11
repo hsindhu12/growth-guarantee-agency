@@ -82,7 +82,20 @@ const SuccessStoriesSection = () => {
     }
   ];
 
-  const displayStories = successStories || defaultStories;
+  // Transform backend data to match display format
+  const transformedStories = successStories?.map(story => ({
+    companyName: story.client_name,
+    industry: story.industry || 'Business',
+    challenge: story.challenge,
+    solution: story.solution,
+    revenue: story.results,
+    image: story.image_url || 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop&crop=center',
+    color: 'from-blue-500 to-indigo-600',
+    growthPercentage: story.metrics?.growthPercentage || 250,
+    timespan: story.metrics?.timespan || '6 months'
+  })) || [];
+
+  const displayStories = transformedStories.length > 0 ? transformedStories : defaultStories;
   
   if (isLoading) {
     return (
@@ -126,7 +139,7 @@ const SuccessStoriesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
-          {successStories.map((story, index) => (
+          {displayStories.map((story, index) => (
             <Card key={index} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-0 bg-white/5 backdrop-blur-lg overflow-hidden hover:bg-white/10">
               <div className="relative overflow-hidden">
                 <img 
