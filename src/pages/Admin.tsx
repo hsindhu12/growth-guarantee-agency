@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ContentEditor } from '@/components/ui/content-editor';
+import { ServiceManager } from '@/components/admin/ServiceManager';
 import { 
   LayoutDashboard, 
   FileText, 
@@ -177,27 +178,34 @@ const Admin = () => {
                 <CardTitle>Content Management</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  <Button variant="outline" className="p-6 h-auto flex-col" onClick={() => navigate('/page-editor/new')}>
-                    <Palette className="h-8 w-8 mb-2" />
-                    <span>Page Builder</span>
-                    <span className="text-sm text-gray-500">Visual page editor</span>
-                  </Button>
-                  <Button variant="outline" className="p-6 h-auto flex-col">
-                    <FileText className="h-8 w-8 mb-2" />
-                    <span>Manage Blog Posts</span>
-                    <span className="text-sm text-gray-500">{blogPosts?.length || 0} posts</span>
-                  </Button>
-                  <Button variant="outline" className="p-6 h-auto flex-col">
-                    <Users className="h-8 w-8 mb-2" />
-                    <span>Success Stories</span>
-                    <span className="text-sm text-gray-500">{successStories?.length || 0} stories</span>
-                  </Button>
-                  <Button variant="outline" className="p-6 h-auto flex-col">
-                    <Globe className="h-8 w-8 mb-2" />
-                    <span>Service Pages</span>
-                    <span className="text-sm text-gray-500">Manage service content</span>
-                  </Button>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                      <Button variant="outline" className="p-6 h-auto flex-col" onClick={() => navigate('/page-editor/new')}>
+                        <Palette className="h-8 w-8 mb-2" />
+                        <span>Page Builder</span>
+                        <span className="text-sm text-gray-500">Visual page editor</span>
+                      </Button>
+                      <Button variant="outline" className="p-6 h-auto flex-col">
+                        <FileText className="h-8 w-8 mb-2" />
+                        <span>Manage Blog Posts</span>
+                        <span className="text-sm text-gray-500">{blogPosts?.length || 0} posts</span>
+                      </Button>
+                      <Button variant="outline" className="p-6 h-auto flex-col">
+                        <Users className="h-8 w-8 mb-2" />
+                        <span>Success Stories</span>
+                        <span className="text-sm text-gray-500">{successStories?.length || 0} stories</span>
+                      </Button>
+                      <Button variant="outline" className="p-6 h-auto flex-col">
+                        <Globe className="h-8 w-8 mb-2" />
+                        <span>Service Pages</span>
+                        <span className="text-sm text-gray-500">Manage service content</span>
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  <ServiceManager />
                 </div>
               </CardContent>
             </Card>
