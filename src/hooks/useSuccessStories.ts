@@ -1,6 +1,6 @@
 
 import { useQuery } from '@tanstack/react-query';
-import { apiClient } from '@/lib/api';
+import { supabase } from '@/integrations/supabase/client';
 
 export interface SuccessStory {
   id: string;
@@ -20,7 +20,23 @@ export const useSuccessStories = (featured?: boolean) => {
   return useQuery({
     queryKey: ['successStories', featured],
     queryFn: async () => {
-      const data = await apiClient.getSuccessStories({ featured });
+      let query = supabase
+        .from('success_stories')
+        .select('*')
+        .eq('published', true)
+        .order('created_at', { ascending: false });
+
+      if (featured !== undefined) {
+        query = query.eq('featured', featured);
+      }
+
+      const { data, error } = await query;
+
+      if (error) {
+        console.error('Error fetching success stories:', error);
+        throw error;
+      }
+
       return data as SuccessStory[];
     },
   });

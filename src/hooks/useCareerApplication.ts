@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { apiClient } from '@/lib/api';
+import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 export interface CareerApplicationData {
@@ -23,7 +23,11 @@ export const useCareerApplication = () => {
   const submitApplication = async (data: CareerApplicationData) => {
     setIsSubmitting(true);
     try {
-      await apiClient.submitCareerApplication(data);
+      const { error } = await supabase
+        .from('career_applications')
+        .insert([data]);
+
+      if (error) throw error;
 
       toast({
         title: "Application Submitted Successfully!",

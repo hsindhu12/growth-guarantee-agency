@@ -1,5 +1,6 @@
+
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { apiClient } from '@/lib/api';
+import { supabase } from '@/integrations/supabase/client';
 
 export interface Theme {
   id: string;
@@ -14,7 +15,17 @@ export const useThemes = () => {
   return useQuery({
     queryKey: ['themes'],
     queryFn: async () => {
-      return await apiClient.request('/themes');
+      const { data, error } = await supabase
+        .from('themes')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error('Error fetching themes:', error);
+        throw error;
+      }
+
+      return data as Theme[];
     },
   });
 };
@@ -23,7 +34,18 @@ export const useActiveTheme = () => {
   return useQuery({
     queryKey: ['activeTheme'],
     queryFn: async () => {
-      return await apiClient.request('/themes/active');
+      const { data, error } = await supabase
+        .from('themes')
+        .select('*')
+        .eq('is_active', true)
+        .maybeSingle();
+
+      if (error) {
+        console.error('Error fetching active theme:', error);
+        throw error;
+      }
+
+      return data as Theme | null;
     },
   });
 };
@@ -33,9 +55,22 @@ export const useActivateTheme = () => {
   
   return useMutation({
     mutationFn: async (themeId: string) => {
-      return await apiClient.request(`/themes/${themeId}/activate`, {
-        method: 'POST',
-      });
+      // First deactivate all themes
+      await supabase
+        .from('themes')
+        .update({ is_active: false })
+        .neq('id', '00000000-0000-0000-0000-000000000000');
+
+      // Then activate the selected theme
+      const { data, error } = await supabase
+        .from('themes')
+        .update({ is_active: true })
+        .eq('id', themeId)
+        .select()
+        .single();
+
+      if (error) throw error;
+      return data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['themes'] });

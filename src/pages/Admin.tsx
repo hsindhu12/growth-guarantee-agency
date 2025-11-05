@@ -4,8 +4,6 @@ import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ContentEditor } from '@/components/ui/content-editor';
-import { ServiceManager } from '@/components/admin/ServiceManager';
 import { 
   LayoutDashboard, 
   FileText, 
@@ -22,38 +20,33 @@ import { useNavigate } from 'react-router-dom';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { useSuccessStories } from '@/hooks/useSuccessStories';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
-// import { useThemes } from '@/hooks/useThemes';
+import { useThemes } from '@/hooks/useThemes';
 
 const Admin = () => {
-  const { user, loading, signOut } = useAuth();
+  const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const { data: blogPosts } = useBlogPosts();
   const { data: successStories } = useSuccessStories();
   const { data: siteSettings } = useSiteSettings();
-  // const { data: themes } = useThemes();
+  const { data: themes } = useThemes();
 
   React.useEffect(() => {
-    console.log('Admin: useEffect triggered - user:', user, 'loading:', loading);
-    if (!loading && !user) {
-      console.log('Admin: No user found, redirecting to /auth');
+    if (!user) {
       navigate('/auth');
-    } else if (user && !loading) {
-      console.log('Admin: User found, staying on admin page');
     }
-  }, [user, loading, navigate]);
+  }, [user, navigate]);
 
   const handleSignOut = async () => {
     await signOut();
     navigate('/');
   };
 
-  if (loading) return <div>Loading...</div>;
   if (!user) return null;
 
   const stats = [
     { title: 'Blog Posts', value: blogPosts?.length || 0, icon: FileText },
     { title: 'Success Stories', value: successStories?.length || 0, icon: Users },
-    { title: 'Themes', value: 0, icon: Palette },
+    { title: 'Themes', value: themes?.length || 0, icon: Palette },
     { title: 'Settings', value: siteSettings?.length || 0, icon: Settings }
   ];
 
@@ -178,34 +171,22 @@ const Admin = () => {
                 <CardTitle>Content Management</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                      <Button variant="outline" className="p-6 h-auto flex-col" onClick={() => navigate('/page-editor/new')}>
-                        <Palette className="h-8 w-8 mb-2" />
-                        <span>Page Builder</span>
-                        <span className="text-sm text-gray-500">Visual page editor</span>
-                      </Button>
-                      <Button variant="outline" className="p-6 h-auto flex-col">
-                        <FileText className="h-8 w-8 mb-2" />
-                        <span>Manage Blog Posts</span>
-                        <span className="text-sm text-gray-500">{blogPosts?.length || 0} posts</span>
-                      </Button>
-                      <Button variant="outline" className="p-6 h-auto flex-col">
-                        <Users className="h-8 w-8 mb-2" />
-                        <span>Success Stories</span>
-                        <span className="text-sm text-gray-500">{successStories?.length || 0} stories</span>
-                      </Button>
-                      <Button variant="outline" className="p-6 h-auto flex-col">
-                        <Globe className="h-8 w-8 mb-2" />
-                        <span>Service Pages</span>
-                        <span className="text-sm text-gray-500">Manage service content</span>
-                      </Button>
-                    </div>
-                  </div>
-                  
-                  <ServiceManager />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <Button variant="outline" className="p-6 h-auto flex-col">
+                    <FileText className="h-8 w-8 mb-2" />
+                    <span>Manage Blog Posts</span>
+                    <span className="text-sm text-gray-500">{blogPosts?.length || 0} posts</span>
+                  </Button>
+                  <Button variant="outline" className="p-6 h-auto flex-col">
+                    <Users className="h-8 w-8 mb-2" />
+                    <span>Success Stories</span>
+                    <span className="text-sm text-gray-500">{successStories?.length || 0} stories</span>
+                  </Button>
+                  <Button variant="outline" className="p-6 h-auto flex-col">
+                    <Globe className="h-8 w-8 mb-2" />
+                    <span>Service Pages</span>
+                    <span className="text-sm text-gray-500">Manage service content</span>
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -219,7 +200,26 @@ const Admin = () => {
               <CardContent>
                 <p className="text-gray-600 mb-4">Customize your website's appearance and branding.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <p className="text-gray-500">Theme management coming soon</p>
+                  {themes?.map((theme) => (
+                    <div key={theme.id} className="border rounded-lg p-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <h3 className="font-medium">{theme.name}</h3>
+                        {theme.is_active && (
+                          <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">
+                            Active
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm text-gray-600 mb-3">
+                        Last updated: {new Date(theme.updated_at).toLocaleDateString()}
+                      </p>
+                      {!theme.is_active && (
+                        <Button size="sm" variant="outline">
+                          Activate Theme
+                        </Button>
+                      )}
+                    </div>
+                  )) || <p className="text-gray-500">No themes available</p>}
                 </div>
               </CardContent>
             </Card>
@@ -271,204 +271,29 @@ const Admin = () => {
           </TabsContent>
 
           <TabsContent value="settings">
-            {/* Content Management */}
-            <div className="grid gap-6">
-              <ContentEditor
-                title="Header & Footer Content"
-                sections={[
-                  {
-                    key: 'header_logo_text',
-                    title: 'Logo Text',
-                    description: 'Text displayed in the header logo',
-                    type: 'text',
-                    defaultValue: 'ICONA'
-                  },
-                  {
-                    key: 'header_button_text',
-                    title: 'Header Button Text',
-                    description: 'Text for the main CTA button in header',
-                    type: 'text',
-                    defaultValue: 'Get Started'
-                  },
-                  {
-                    key: 'footer_description',
-                    title: 'Footer Description',
-                    description: 'Company description in footer',
-                    type: 'textarea',
-                    defaultValue: 'Your trusted partner for comprehensive digital growth and innovative business solutions across all platforms.'
-                  }
-                ]}
-              />
-
-              <ContentEditor
-                title="Hero Section"
-                sections={[
-                  {
-                    key: 'hero_title',
-                    title: 'Hero Title',
-                    description: 'Main heading text for the hero section',
-                    type: 'text',
-                    defaultValue: 'Welcome to ICONA'
-                  },
-                  {
-                    key: 'hero_subtitle',
-                    title: 'Hero Subtitle',
-                    description: 'Secondary heading text',
-                    type: 'text',
-                    defaultValue: 'Digital Excellence'
-                  },
-                  {
-                    key: 'hero_description',
-                    title: 'Hero Description',
-                    description: 'Main description paragraph',
-                    type: 'textarea',
-                    defaultValue: 'ICONA delivers comprehensive digital solutions that drive measurable growth for your business.'
-                  },
-                  {
-                    key: 'hero_badge_text',
-                    title: 'Hero Badge Text',
-                    description: 'Text inside the floating badge',
-                    type: 'text',
-                    defaultValue: '✨ Professional Digital Growth Solutions ✨'
-                  },
-                  {
-                    key: 'hero_primary_button_text',
-                    title: 'Primary Button Text',
-                    description: 'Text for the main CTA button',
-                    type: 'text',
-                    defaultValue: 'Start Your Growth Journey'
-                  },
-                  {
-                    key: 'hero_secondary_button_text',
-                    title: 'Secondary Button Text',
-                    description: 'Text for the secondary button',
-                    type: 'text',
-                    defaultValue: 'View Our Portfolio'
-                  },
-                  {
-                    key: 'hero_stats',
-                    title: 'Hero Statistics',
-                    description: 'Statistics displayed in the hero section (JSON format)',
-                    type: 'json',
-                    defaultValue: [
-                      { number: "500+", label: "Brands Grown" },
-                      { number: "99%", label: "Success Rate" },
-                      { number: "$50M+", label: "Revenue Generated" },
-                      { number: "10+", label: "Years Experience" }
-                    ]
-                  }
-                ]}
-              />
-              
-              <ContentEditor
-                title="Blog Section"
-                sections={[
-                  {
-                    key: 'blog_section_title',
-                    title: 'Blog Section Title',
-                    description: 'Main heading for blog section',
-                    type: 'text',
-                    defaultValue: 'ICONA Expert Knowledge'
-                  },
-                  {
-                    key: 'blog_section_subtitle',
-                    title: 'Blog Section Subtitle',
-                    description: 'Description below blog title',
-                    type: 'textarea',
-                    defaultValue: 'Learn from ICONA\'s years of experience in digital growth, strategic marketing, and marketplace optimization 📈'
-                  },
-                  {
-                    key: 'blog_section_badge',
-                    title: 'Blog Section Badge',
-                    description: 'Badge text above blog title',
-                    type: 'text',
-                    defaultValue: '📚 Expert Insights & Strategies'
-                  },
-                  {
-                    key: 'blog_cta_title',
-                    title: 'Blog CTA Title',
-                    description: 'Title for blog call-to-action',
-                    type: 'text',
-                    defaultValue: 'Want More Expert Knowledge?'
-                  },
-                  {
-                    key: 'blog_cta_description',
-                    title: 'Blog CTA Description',
-                    description: 'Description for blog call-to-action',
-                    type: 'textarea',
-                    defaultValue: 'Subscribe to get ICONA\'s latest growth strategies, market insights, and proven methodologies delivered weekly.'
-                  },
-                  {
-                    key: 'blog_cta_button_text',
-                    title: 'Blog CTA Button Text',
-                    description: 'Text for blog CTA button',
-                    type: 'text',
-                    defaultValue: '📈 Get ICONA\'s Weekly Insights'
-                  }
-                ]}
-              />
-
-              <ContentEditor
-                title="Services Section"
-                sections={[
-                  {
-                    key: 'services_section_title',
-                    title: 'Services Section Title',
-                    description: 'Main heading for services section',
-                    type: 'text',
-                    defaultValue: 'Complete Digital Solutions'
-                  },
-                  {
-                    key: 'services_section_subtitle',
-                    title: 'Services Section Subtitle',
-                    description: 'Description below services title',
-                    type: 'textarea',
-                    defaultValue: 'From ecommerce marketing to website development, we handle every aspect of your digital success 🚀'
-                  },
-                  {
-                    key: 'services_section_badge',
-                    title: 'Services Section Badge',
-                    description: 'Badge text above services title',
-                    type: 'text',
-                    defaultValue: '🎯 Our Services'
-                  }
-                ]}
-              />
-
-              <ContentEditor
-                title="CTA Section"
-                sections={[
-                  {
-                    key: 'cta_section_title',
-                    title: 'CTA Section Title',
-                    description: 'Main heading for call-to-action section',
-                    type: 'text',
-                    defaultValue: 'Ready to Guarantee Your Growth?'
-                  },
-                  {
-                    key: 'cta_section_description',
-                    title: 'CTA Section Description',
-                    description: 'Description text for CTA section',
-                    type: 'textarea',
-                    defaultValue: 'Join 500+ brands that have achieved explosive growth with our proven strategies.'
-                  },
-                  {
-                    key: 'cta_primary_button_text',
-                    title: 'CTA Primary Button Text',
-                    description: 'Text for the main CTA button',
-                    type: 'text',
-                    defaultValue: '📞 Get Free Strategy Call'
-                  },
-                  {
-                    key: 'cta_secondary_button_text',
-                    title: 'CTA Secondary Button Text',
-                    description: 'Text for the secondary CTA button',
-                    type: 'text',
-                    defaultValue: '📱 WhatsApp: +91 XXXXX XXXXX'
-                  }
-                ]}
-              />
-            </div>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Settings className="h-5 w-5 mr-2" />
+                  Site Settings
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {siteSettings?.map((setting) => (
+                    <div key={setting.id} className="flex justify-between items-center p-3 border rounded">
+                      <div>
+                        <h4 className="font-medium capitalize">{setting.key.replace('_', ' ')}</h4>
+                        <p className="text-sm text-gray-600">{setting.description}</p>
+                      </div>
+                      <Button size="sm" variant="outline">
+                        Edit
+                      </Button>
+                    </div>
+                  )) || <p className="text-gray-500">No settings configured</p>}
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
         </Tabs>
       </div>

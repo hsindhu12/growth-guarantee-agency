@@ -9,42 +9,31 @@ import { Mail, Lock, ArrowLeft } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Auth = () => {
-  const { user, loading: authLoading, signIn, checkAdminStatus } = useAuth();
+  const { user, signIn, checkAdminStatus } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log('Auth: useEffect triggered - user:', user, 'authLoading:', authLoading);
     const checkAndRedirect = async () => {
-      if (user && !authLoading) {
-        console.log('Auth: User found, checking admin status...');
+      if (user) {
         const { isAdmin } = await checkAdminStatus(user.id);
-        console.log('Auth: Admin status:', isAdmin);
         if (isAdmin) {
-          console.log('Auth: Redirecting to /admin');
           navigate('/admin');
         } else {
-          console.log('Auth: Redirecting to /');
           navigate('/');
         }
       }
     };
     
     checkAndRedirect();
-  }, [user, navigate, checkAdminStatus, authLoading]);
+  }, [user, navigate, checkAdminStatus]);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    console.log('Form submitted with:', email, password);
-    const result = await signIn(email, password);
-    console.log('Sign in result:', result);
-    if (result.error) {
-      console.error('Login error:', result.error);
-      alert('Login failed: ' + result.error);
-    }
+    await signIn(email, password);
     setLoading(false);
   };
 

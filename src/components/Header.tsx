@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,40 +12,84 @@ import {
 import { Menu, X, ChevronDown, Sparkles, ArrowRight, Star, Users, Award } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSiteSetting } from "@/hooks/useSiteSettings";
-import { useServicePages } from "@/hooks/useServicePages";
-
-const getServiceIcon = (serviceType: string) => {
-  const iconMap: Record<string, string> = {
-    'ecommerce-marketing': '🛒',
-    'marketplace-management': '🏪',
-    'seo-services': '🔍',
-    'digital-marketing': '📱',
-    'product-photography': '📸',
-    'video-production': '🎥',
-    'website-development': '💻',
-    'mobile-app-development': '📲',
-    'brand-development': '⭐',
-    'analytics-reporting': '📊',
-    'product-launch': '🚀',
-    'advertising': '📈'
-  };
-  return iconMap[serviceType] || '⚡';
-};
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { data: logoText } = useSiteSetting('header_logo_text');
-  const { data: headerButton } = useSiteSetting('header_button_text');
-  const { data: servicePages } = useServicePages();
 
-  // Transform service pages to match header format
-  const services = servicePages?.data?.map(page => ({
-    name: page.title,
-    href: `/services/${page.service_type}`,
-    description: page.subtitle || page.hero_content?.description || '',
-    icon: getServiceIcon(page.service_type)
-  })) || [];
+  const services = [
+    { 
+      name: "E-commerce Marketing", 
+      href: "/services/ecommerce-marketing",
+      description: "Drive sales and ROI with strategic e-commerce campaigns",
+      icon: "🛒"
+    },
+    { 
+      name: "Marketplace Management", 
+      href: "/services/marketplace-management",
+      description: "Dominate Amazon, Flipkart, and other major platforms",
+      icon: "🏪"
+    },
+    { 
+      name: "SEO Services", 
+      href: "/services/seo-services",
+      description: "Rank higher and attract organic traffic",
+      icon: "🔍"
+    },
+    { 
+      name: "Digital Marketing", 
+      href: "/services/digital-marketing",
+      description: "360° digital strategies for maximum impact",
+      icon: "📱"
+    },
+    { 
+      name: "Product Photography", 
+      href: "/services/product-photography",
+      description: "Professional visuals that convert browsers to buyers",
+      icon: "📸"
+    },
+    { 
+      name: "Video Production", 
+      href: "/services/video-production",
+      description: "Engaging videos that tell your brand story",
+      icon: "🎥"
+    },
+    { 
+      name: "Website Development", 
+      href: "/services/website-development",
+      description: "High-converting websites built for growth",
+      icon: "💻"
+    },
+    { 
+      name: "Mobile App Development", 
+      href: "/services/mobile-app-development",
+      description: "User-friendly apps that drive engagement",
+      icon: "📲"
+    },
+    { 
+      name: "Brand Development", 
+      href: "/services/brand-development",
+      description: "Build a brand that customers love and trust",
+      icon: "⭐"
+    },
+    { 
+      name: "Analytics & Reporting", 
+      href: "/services/analytics-reporting",
+      description: "Data-driven insights for smarter decisions",
+      icon: "📊"
+    },
+    { 
+      name: "Product Launch", 
+      href: "/services/product-launch",
+      description: "Strategic launches that create market buzz",
+      icon: "🚀"
+    },
+    { 
+      name: "Advertising", 
+      href: "/services/advertising",
+      description: "High-performance ads that maximize ROI",
+      icon: "📈"
+    },
+  ];
 
   return (
     <header className="fixed top-0 w-full bg-gradient-to-r from-background/95 to-background/98 backdrop-blur-xl z-50 border-b border-border/50 shadow-lg">
@@ -56,9 +101,7 @@ const Header = () => {
               <Sparkles className="h-8 w-8 transition-transform group-hover:scale-110" />
               <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-            <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-              {logoText?.value || 'ICONA'}
-            </span>
+            <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">ICONA</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -181,7 +224,7 @@ const Header = () => {
               <Link to="/contact">
                 <Button className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 px-6 py-2 font-semibold rounded-xl group">
                   <span className="flex items-center gap-2">
-                    {headerButton?.value || 'Get Started'}
+                    Get Started
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
@@ -285,7 +328,7 @@ const Header = () => {
               <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 py-3 font-semibold rounded-xl">
                   <span className="flex items-center justify-center gap-2">
-                    {headerButton?.value || 'Get Started'}
+                    Get Started
                     <ArrowRight className="h-4 w-4" />
                   </span>
                 </Button>

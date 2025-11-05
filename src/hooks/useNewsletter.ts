@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { apiClient } from '@/lib/api';
+import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 export const useNewsletter = () => {
@@ -10,7 +10,21 @@ export const useNewsletter = () => {
   const subscribe = async (email: string, name?: string) => {
     setIsSubscribing(true);
     try {
-      await apiClient.subscribeNewsletter(email, name);
+      const { error } = await supabase
+        .from('newsletter_subscribers')
+        .insert([{ email, name }]);
+
+      if (error) {
+        if (error.code === '23505') { // Unique constraint violation
+          toast({
+            title: "Already Subscribed",
+            description: "You're already subscribed to our newsletter!",
+            variant: "destructive",
+          });
+          return { success: false, error: 'already_subscribed' };
+        }
+        throw error;
+      }
 
       toast({
         title: "Successfully Subscribed!",
@@ -18,21 +32,11 @@ export const useNewsletter = () => {
       });
 
       return { success: true };
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error subscribing to newsletter:', error);
-      
-      if (error.message.includes('already subscribed')) {
-        toast({
-          title: "Already Subscribed",
-          description: "You're already subscribed to our newsletter!",
-          variant: "destructive",
-        });
-        return { success: false, error: 'already_subscribed' };
-      }
-
       toast({
         title: "Error",
-        description: error.message || "There was an error subscribing. Please try again.",
+        description: "There was an error subscribing. Please try again.",
         variant: "destructive",
       });
       return { success: false, error };

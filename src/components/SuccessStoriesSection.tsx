@@ -4,16 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, TrendingUp, Calendar, Award, Target } from "lucide-react";
-import { useSuccessStories } from "@/hooks/useSuccessStories";
-import { useSiteSetting } from "@/hooks/useSiteSettings";
 
 const SuccessStoriesSection = () => {
-  const { data: successStories, isLoading } = useSuccessStories(true); // Get featured success stories
-  const { data: successTitle } = useSiteSetting('success_section_title');
-  const { data: successSubtitle } = useSiteSetting('success_section_subtitle');
-  const { data: successBadge } = useSiteSetting('success_section_badge');
-
-  const defaultStories = [
+  const successStories = [
     {
       companyName: "FashionForward",
       industry: "Fashion Ecommerce",
@@ -82,31 +75,6 @@ const SuccessStoriesSection = () => {
     }
   ];
 
-  // Transform backend data to match display format
-  const transformedStories = successStories?.map(story => ({
-    companyName: story.client_name,
-    industry: story.industry || 'Business',
-    challenge: story.challenge,
-    solution: story.solution,
-    revenue: story.results,
-    image: story.image_url || 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop&crop=center',
-    color: 'from-blue-500 to-indigo-600',
-    growthPercentage: story.metrics?.growthPercentage || 250,
-    timespan: story.metrics?.timespan || '6 months'
-  })) || [];
-
-  const displayStories = transformedStories.length > 0 ? transformedStories : defaultStories;
-  
-  if (isLoading) {
-    return (
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center">Loading success stories...</div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
       {/* Animated background elements */}
@@ -128,10 +96,10 @@ const SuccessStoriesSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <Badge className="mb-6 bg-yellow-500/20 text-yellow-300 border-yellow-400 hover:scale-110 transition-all duration-300 text-lg px-6 py-3">
-            {successBadge?.value || "🏆 Success Stories That Inspire"}
+            🏆 Success Stories That Inspire
           </Badge>
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-yellow-200 to-orange-200 bg-clip-text text-transparent">
-            {successTitle?.value || "When ICONA Works Its Magic"}
+            When ICONA Works Its Magic
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
             Real brands, real growth, real results. See how ICONA's strategic techniques transformed these businesses 🚀✨
@@ -139,7 +107,7 @@ const SuccessStoriesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
-          {displayStories.map((story, index) => (
+          {successStories.map((story, index) => (
             <Card key={index} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-0 bg-white/5 backdrop-blur-lg overflow-hidden hover:bg-white/10">
               <div className="relative overflow-hidden">
                 <img 
