@@ -56,9 +56,7 @@ const HeroSection = () => {
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Button>
-          <Button variant="outline" size="lg" className="border-white px-8 py-4 text-lg hover:scale-105 transition-all duration-300 hover:shadow-xl text-slate-50 bg-[#ff8402] rounded-full">
-            View Our Portfolio
-          </Button>
+          <Button variant="outline" size="lg" className="border-white px-8 py-4 text-lg hover:scale-105 transition-all duration-300 hover:shadow-xl text-slate-50 bg-[#ff8402] rounded-full">View Success Stories</Button>
         </div>
         
         {/* Professional Stats */}

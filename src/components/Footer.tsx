@@ -1,11 +1,8 @@
-
 import React from 'react';
 import { Building2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 const Footer = () => {
-  return (
-    <footer className="bg-gray-900 text-white py-12">
+  return <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
@@ -46,8 +43,8 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>Email: hello@icona.com</li>
-              <li>Phone: +1 (555) 123-4567</li>
+              <li>Email: sales@iconabrands.com</li>
+              <li>Phone: +91-8630365336</li>
               <li>Professional Growth Solutions</li>
               <li><Link to="/career" className="hover:text-white transition-colors">Join Our Team</Link></li>
             </ul>
@@ -57,8 +54,6 @@ const Footer = () => {
           <p>&copy; 2024 ICONA. All rights reserved. Driving digital excellence.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

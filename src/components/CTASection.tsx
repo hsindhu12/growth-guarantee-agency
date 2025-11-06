@@ -66,9 +66,7 @@ const CTASection = () => {
             </Button>
             
             <Button variant="outline" size="lg" className="border-2 border-white hover:bg-white px-12 py-6 text-xl font-bold rounded-full hover:scale-105 transition-all duration-300 group relative overflow-hidden text-slate-800">
-              <span className="flex items-center">
-                📱 WhatsApp: +91 XXXXX XXXXX
-                <MessageCircle className="ml-3 h-6 w-6 group-hover:animate-bounce" />
+              <span className="flex items-center">📱 WhatsApp: +91-8630365336<MessageCircle className="ml-3 h-6 w-6 group-hover:animate-bounce" />
               </span>
             </Button>
           </div>
