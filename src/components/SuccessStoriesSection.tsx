@@ -1,11 +1,12 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, TrendingUp, Calendar, Award, Target } from "lucide-react";
+import LeadCaptureModal from "@/components/LeadCaptureModal";
 
 const SuccessStoriesSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   const successStories = [
     {
       companyName: "FashionForward",
@@ -181,7 +182,11 @@ const SuccessStoriesSection = () => {
             <p className="text-gray-300 mb-6">
               Join the ranks of brands that ICONA has transformed. Your growth story starts with a single conversation.
             </p>
-            <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-semibold px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group">
+            <Button 
+              size="lg" 
+              onClick={() => setModalOpen(true)}
+              className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-semibold px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group"
+            >
               <span className="flex items-center">
                 🥷 Start My Success Story
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
@@ -189,6 +194,13 @@ const SuccessStoriesSection = () => {
             </Button>
           </div>
         </div>
+        
+        <LeadCaptureModal 
+          open={modalOpen} 
+          onOpenChange={setModalOpen}
+          title="🥷 Start Your Success Story"
+          description="Join 500+ brands achieving explosive growth. Let's write your success story together!"
+        />
       </div>
     </section>
   );

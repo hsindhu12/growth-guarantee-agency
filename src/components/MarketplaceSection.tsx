@@ -1,10 +1,11 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
+import LeadCaptureModal from "@/components/LeadCaptureModal";
 
 const MarketplaceSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   const marketplaces = [
     { 
       name: "Amazon India", 
@@ -136,7 +137,11 @@ const MarketplaceSection = () => {
             <p className="text-blue-200 mb-6">
               Let ICONA handle your marketplace presence with strategic precision while you focus on growing your business.
             </p>
-            <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-semibold px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group">
+            <Button 
+              size="lg" 
+              onClick={() => setModalOpen(true)}
+              className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-black font-semibold px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group"
+            >
               <span className="flex items-center">
                 🚀 Unleash ICONA's Power
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
@@ -144,6 +149,13 @@ const MarketplaceSection = () => {
             </Button>
           </div>
         </div>
+        
+        <LeadCaptureModal 
+          open={modalOpen} 
+          onOpenChange={setModalOpen}
+          title="🚀 Unleash ICONA's Power"
+          description="Let ICONA's experts handle your marketplace dominance. Get started with a free consultation!"
+        />
       </div>
     </section>
   );

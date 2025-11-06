@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, TrendingUp, Users, Award, Building2 } from "lucide-react";
+import LeadCaptureModal from "@/components/LeadCaptureModal";
+
 const HeroSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   const stats = [{
     number: "500+",
     label: "Brands Grown",
@@ -50,7 +53,11 @@ const HeroSection = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in delay-500">
-          <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all group relative overflow-hidden">
+          <Button 
+            size="lg" 
+            onClick={() => setModalOpen(true)}
+            className="bg-white text-primary hover:bg-gray-100 px-8 py-4 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all group relative overflow-hidden"
+          >
             <span className="relative z-10 flex items-center">
               Start Your Growth Journey
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -58,6 +65,13 @@ const HeroSection = () => {
           </Button>
           <Button variant="outline" size="lg" className="border-white px-8 py-4 text-lg hover:scale-105 transition-all duration-300 hover:shadow-xl text-slate-50 bg-[#ff8402] rounded-full">View Success Stories</Button>
         </div>
+        
+        <LeadCaptureModal 
+          open={modalOpen} 
+          onOpenChange={setModalOpen}
+          title="🚀 Start Your Growth Journey"
+          description="Join 500+ brands achieving explosive growth with ICONA. Fill out the form and get your free strategy call!"
+        />
         
         {/* Professional Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">

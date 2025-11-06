@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Zap, Shield, Heart, Trophy, Target } from "lucide-react";
 import Mascot from './Mascot';
+import LeadCaptureModal from "@/components/LeadCaptureModal";
+
 const USPSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   return <section className="py-20 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 opacity-30">
@@ -91,7 +94,11 @@ const USPSection = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Button size="lg" className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-12 py-6 text-xl rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+                <Button 
+                  size="lg" 
+                  onClick={() => setModalOpen(true)}
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-12 py-6 text-xl rounded-full shadow-2xl hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+                >
                   <span className="relative z-10 flex items-center">
                     🚀 Start Your Risk-Free Growth Journey
                     <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-200" />
@@ -108,6 +115,13 @@ const USPSection = () => {
                   </div>
                 </div>
               </div>
+              
+              <LeadCaptureModal 
+                open={modalOpen} 
+                onOpenChange={setModalOpen}
+                title="🚀 Start Your Risk-Free Growth Journey"
+                description="Zero upfront fees, 100% growth guaranteed. Let's transform your business together!"
+              />
             </div>
           </div>
         </div>

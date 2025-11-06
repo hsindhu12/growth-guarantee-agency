@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, MessageCircle, Calendar } from "lucide-react";
+import LeadCaptureModal from "@/components/LeadCaptureModal";
+
 const CTASection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   return <section id="contact" className="py-20 bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
@@ -57,7 +60,11 @@ const CTASection = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 px-12 py-6 text-xl font-bold rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group relative overflow-hidden">
+            <Button 
+              size="lg" 
+              onClick={() => setModalOpen(true)}
+              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 px-12 py-6 text-xl font-bold rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group relative overflow-hidden"
+            >
               <span className="relative z-10 flex items-center">
                 📞 Get Free Strategy Call
                 <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform duration-200" />
@@ -70,6 +77,13 @@ const CTASection = () => {
               </span>
             </Button>
           </div>
+          
+          <LeadCaptureModal 
+            open={modalOpen} 
+            onOpenChange={setModalOpen}
+            title="📞 Get Your Free Strategy Call"
+            description="Book your 30-minute consultation with our growth experts. 100% free, zero obligation!"
+          />
           
           <div className="mt-12 text-center">
             <div className="inline-flex items-center space-x-4 bg-white/10 backdrop-blur-sm rounded-full px-8 py-4 border border-white/20">
