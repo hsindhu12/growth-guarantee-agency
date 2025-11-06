@@ -4,77 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, TrendingUp, Calendar, Award, Target } from "lucide-react";
 import LeadCaptureModal from "@/components/LeadCaptureModal";
+import { Link } from "react-router-dom";
+import { useSuccessStories } from "@/hooks/useSuccessStories";
 
 const SuccessStoriesSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const successStories = [
-    {
-      companyName: "FashionForward",
-      industry: "Fashion Ecommerce",
-      growthPercentage: 340,
-      timespan: "6 months",
-      revenue: "₹2.5Cr to ₹11Cr",
-      challenge: "Low conversion rates and high cart abandonment",
-      solution: "ICONA's precision retargeting campaigns + marketplace optimization",
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop&crop=center",
-      color: "from-pink-500 to-rose-600"
-    },
-    {
-      companyName: "TechGadgets Pro",
-      industry: "Electronics",
-      growthPercentage: 280,
-      timespan: "4 months",
-      revenue: "₹1.8Cr to ₹6.8Cr",
-      challenge: "Poor Amazon ranking and low visibility",
-      solution: "ICONA's advanced SEO tactics + strategic PPC campaigns",
-      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=300&h=200&fit=crop&crop=center",
-      color: "from-blue-500 to-indigo-600"
-    },
-    {
-      companyName: "HealthyLiving Store",
-      industry: "Health & Wellness",
-      growthPercentage: 420,
-      timespan: "8 months",
-      revenue: "₹80L to ₹4.2Cr",
-      challenge: "Brand awareness and customer acquisition",
-      solution: "ICONA's multi-platform strategy + influencer retargeting",
-      image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=300&h=200&fit=crop&crop=center",
-      color: "from-green-500 to-emerald-600"
-    },
-    {
-      companyName: "HomeDecor Emporium",
-      industry: "Home & Living",
-      growthPercentage: 195,
-      timespan: "5 months",
-      revenue: "₹1.2Cr to ₹3.5Cr",
-      challenge: "Seasonal sales fluctuations",
-      solution: "ICONA's year-round engagement strategy + smart automation",
-      image: "https://images.unsplash.com/photo-1501286353178-1ec881214838?w=300&h=200&fit=crop&crop=center",
-      color: "from-orange-500 to-red-600"
-    },
-    {
-      companyName: "SportsFit Gear",
-      industry: "Sports & Fitness",
-      growthPercentage: 310,
-      timespan: "7 months",
-      revenue: "₹1.5Cr to ₹6.2Cr",
-      challenge: "High competition and low margins",
-      solution: "ICONA's value optimization + premium positioning tactics",
-      image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302?w=300&h=200&fit=crop&crop=center",
-      color: "from-purple-500 to-violet-600"
-    },
-    {
-      companyName: "BeautyBliss Cosmetics",
-      industry: "Beauty & Personal Care",
-      growthPercentage: 265,
-      timespan: "6 months",
-      revenue: "₹90L to ₹3.3Cr",
-      challenge: "Building trust with online customers",
-      solution: "ICONA's social proof campaigns + review optimization",
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=300&h=200&fit=crop&crop=center",
-      color: "from-cyan-500 to-blue-600"
-    }
-  ];
+  const { data: stories } = useSuccessStories();
+  const displayStories = stories?.slice(0, 6) || [];
 
   return (
     <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
@@ -108,71 +44,89 @@ const SuccessStoriesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
-          {successStories.map((story, index) => (
-            <Card key={index} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-0 bg-white/5 backdrop-blur-lg overflow-hidden hover:bg-white/10">
-              <div className="relative overflow-hidden">
-                <img 
-                  src={story.image} 
-                  alt={story.companyName}
-                  className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-r ${story.color} opacity-60 group-hover:opacity-40 transition-opacity duration-300`}></div>
-                <div className="absolute top-3 right-3">
-                  <Badge className="bg-green-500/80 text-white border-0 text-xs">
-                    <Award className="w-3 h-3 mr-1" />
-                    Success
-                  </Badge>
-                </div>
-              </div>
-              
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between mb-2">
-                  <CardTitle className="text-lg text-white group-hover:text-yellow-300 transition-colors duration-300">
-                    {story.companyName}
-                  </CardTitle>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-green-400">
-                      +{story.growthPercentage}%
-                    </div>
-                    <div className="text-xs text-gray-400 flex items-center">
-                      <Calendar className="w-3 h-3 mr-1" />
-                      {story.timespan}
-                    </div>
+          {displayStories.map((story) => {
+            const growthMetric = story.metrics && Object.entries(story.metrics).find(([key]) => key.toLowerCase().includes('growth'));
+            const growthValue = growthMetric ? growthMetric[1] : null;
+            
+            return (
+              <Card key={story.id} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border-0 bg-white/5 backdrop-blur-lg overflow-hidden hover:bg-white/10">
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={story.image_url || "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop&crop=center"} 
+                    alt={story.client_name}
+                    className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
+                  <div className="absolute top-3 right-3">
+                    <Badge className="bg-green-500/80 text-white border-0 text-xs">
+                      <Award className="w-3 h-3 mr-1" />
+                      Success
+                    </Badge>
                   </div>
                 </div>
-                <div className="text-sm text-blue-300 font-medium">{story.industry}</div>
-              </CardHeader>
-              
-              <CardContent className="space-y-3">
-                <div className="bg-white/5 rounded-lg p-3">
-                  <div className="text-yellow-300 font-semibold text-sm mb-1">Revenue Growth</div>
-                  <div className="text-white font-bold">{story.revenue}</div>
-                  <div className="flex items-center mt-2">
-                    <TrendingUp className="w-4 h-4 text-green-400 mr-1" />
-                    <span className="text-green-400 text-sm">Consistent upward trend</span>
+                
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <CardTitle className="text-lg text-white group-hover:text-yellow-300 transition-colors duration-300">
+                      {story.client_name}
+                    </CardTitle>
+                    {growthValue && (
+                      <div className="text-right">
+                        <div className="text-2xl font-bold text-green-400">
+                          {growthValue}
+                        </div>
+                        <div className="text-xs text-gray-400 flex items-center">
+                          <Calendar className="w-3 h-3 mr-1" />
+                          {story.metrics?.timeframe || '6 months'}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
+                  {story.industry && (
+                    <div className="text-sm text-blue-300 font-medium">{story.industry}</div>
+                  )}
+                </CardHeader>
+                
+                <CardContent className="space-y-3">
+                  {story.metrics && Object.keys(story.metrics).length > 0 && (
+                    <div className="bg-white/5 rounded-lg p-3">
+                      <div className="text-yellow-300 font-semibold text-sm mb-1">Key Results</div>
+                      {Object.entries(story.metrics).slice(0, 2).map(([key, value], idx) => {
+                        if (key === 'timeframe') return null;
+                        return (
+                          <div key={idx} className="text-white font-bold text-sm">{value as string}</div>
+                        );
+                      })}
+                      <div className="flex items-center mt-2">
+                        <TrendingUp className="w-4 h-4 text-green-400 mr-1" />
+                        <span className="text-green-400 text-sm">Consistent upward trend</span>
+                      </div>
+                    </div>
+                  )}
 
-                <div>
-                  <div className="text-red-300 text-sm font-medium mb-1">Challenge:</div>
-                  <div className="text-gray-300 text-sm">{story.challenge}</div>
-                </div>
+                  <div>
+                    <div className="text-red-300 text-sm font-medium mb-1">Challenge:</div>
+                    <div className="text-gray-300 text-sm line-clamp-2">{story.challenge}</div>
+                  </div>
 
-                <div>
-                  <div className="text-green-300 text-sm font-medium mb-1">ICONA's Solution:</div>
-                  <div className="text-gray-300 text-sm">{story.solution}</div>
-                </div>
+                  <div>
+                    <div className="text-green-300 text-sm font-medium mb-1">ICONA's Solution:</div>
+                    <div className="text-gray-300 text-sm line-clamp-2">{story.solution}</div>
+                  </div>
 
-                <div className="pt-2">
-                  <Button variant="ghost" className="w-full text-yellow-300 hover:bg-yellow-500/10 hover:text-yellow-200 transition-all duration-300 group/btn">
-                    <Target className="w-4 h-4 mr-2" />
-                    See Full Case Study
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                  <div className="pt-2">
+                    <Link to={`/success-stories/${story.id}`}>
+                      <Button variant="ghost" className="w-full text-yellow-300 hover:bg-yellow-500/10 hover:text-yellow-200 transition-all duration-300 group/btn">
+                        <Target className="w-4 h-4 mr-2" />
+                        See Full Case Study
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
         {/* Call to action */}

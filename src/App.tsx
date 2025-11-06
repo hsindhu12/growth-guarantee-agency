@@ -28,6 +28,8 @@ import BrandDevelopment from "./pages/BrandDevelopment";
 import AnalyticsReporting from "./pages/AnalyticsReporting";
 import ProductLaunch from "./pages/ProductLaunch";
 import Advertising from "./pages/Advertising";
+import BlogPost from "./pages/BlogPost";
+import SuccessStoryDetail from "./pages/SuccessStoryDetail";
 
 const queryClient = new QueryClient();
 
@@ -44,8 +46,10 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/career" element={<Career />} />
             <Route path="/success-stories" element={<SuccessStories />} />
+            <Route path="/success-stories/:id" element={<SuccessStoryDetail />} />
             <Route path="/secret-admin-access" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
             

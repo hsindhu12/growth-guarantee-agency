@@ -9,6 +9,7 @@ import { Calendar, Clock, User, ArrowRight, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const { data: blogPosts, isLoading, error } = useBlogPosts();
@@ -132,10 +133,12 @@ const Blog = () => {
                         </div>
                       </div>
                       
-                      <Button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                        Read More
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
+                      <Link to={`/blog/${post.slug}`}>
+                        <Button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                          Read Full Article
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
                     </CardContent>
                   </Card>
                 ))
@@ -193,10 +196,12 @@ const Blog = () => {
                       </div>
                     </div>
                     
-                    <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                      Read More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    <Link to={`/blog/${post.slug}`}>
+                      <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                        Read Full Article
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               ))

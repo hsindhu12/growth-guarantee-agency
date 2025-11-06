@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, TrendingUp, Calendar, Target, Zap } from "lucide-react";
 import { useSuccessStories } from "@/hooks/useSuccessStories";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "react-router-dom";
 
 const SuccessStories = () => {
   const { data: successStories, isLoading, error } = useSuccessStories();
@@ -177,6 +178,13 @@ const SuccessStories = () => {
                         <p className="text-lg italic text-gray-700 mb-4">"{story.results}"</p>
                         <footer className="font-semibold text-gray-900">— {story.client_name}</footer>
                       </blockquote>
+                      
+                      <Link to={`/success-stories/${story.id}`}>
+                        <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                          Read Full Case Study
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </Card>
@@ -242,7 +250,7 @@ const SuccessStories = () => {
                         "{story.results}"
                       </p>
                       
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between mb-4">
                         <div className="text-sm text-gray-500">
                           <Calendar className="h-4 w-4 inline mr-1" />
                           {story.metrics?.timeframe || "6 months"}
@@ -251,6 +259,13 @@ const SuccessStories = () => {
                           {story.client_name}
                         </div>
                       </div>
+                      
+                      <Link to={`/success-stories/${story.id}`}>
+                        <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                          Read Full Case Study
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
                     </CardContent>
                   </Card>
                 ))
