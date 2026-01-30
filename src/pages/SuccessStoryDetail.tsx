@@ -6,14 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, ArrowLeft, TrendingUp } from "lucide-react";
-import { useSuccessStories } from "@/hooks/useSuccessStories";
+import { useSuccessStory } from "@/hooks/useSuccessStory";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const SuccessStoryDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const { data: stories, isLoading, error } = useSuccessStories();
-  
-  const story = stories?.find(s => s.id === id);
+  const { data: story, isLoading, error } = useSuccessStory(id || '');
 
   if (isLoading) {
     return (
